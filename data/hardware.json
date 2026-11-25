@@ -1,25 +1,284 @@
 {
-	"_meta": {
-		"updated": "2026-11-25",
-		"electricity_usd_kwh": 0.35,
-		"decode_efficiency": 0.55,
-		"tok_s_formula": "tokens/s (batch 1, decode) = bande passante memoire (GB/s) x 0.55 / poids actifs (Go). Dense : poids actifs = poids totaux. MoE : un token ne lit que les parametres actives.",
-		"notes": "Prix = occasion/marche constates, ordre de grandeur, USD. Bande passante et TDP = fiches techniques constructeur. Les tok/s sont des estimations rule-of-thumb (typique llama.cpp), pas des mesures : la vraie vie implique KV cache, thermique et drivers capricieux."
-	},
-	"hardware": [
-		{ "id": "rtx-3060-12", "name": "RTX 3060 12 Go", "brand": "NVIDIA", "year": 2021, "vram_gb": 12, "bw_gbs": 360, "tdp_w": 170, "price_usd": 200, "note": "le plain-pied de l'auto-hebergement" },
-		{ "id": "rtx-4060ti-16", "name": "RTX 4060 Ti 16 Go", "brand": "NVIDIA", "year": 2023, "vram_gb": 16, "bw_gbs": 288, "tdp_w": 165, "price_usd": 400, "note": "16 Go mais bus etroit : theorique, pas rapide" },
-		{ "id": "rx-7900xtx-24", "name": "RX 7900 XTX 24 Go", "brand": "AMD", "year": 2022, "vram_gb": 24, "bw_gbs": 960, "tdp_w": 355, "price_usd": 800, "note": "ROCm s'est ameliore, priez quand meme" },
-		{ "id": "rtx-3090-24", "name": "RTX 3090 24 Go", "brand": "NVIDIA", "year": 2020, "vram_gb": 24, "bw_gbs": 936, "tdp_w": 350, "price_usd": 700, "note": "la reine de l'occasion, chauffe comme un radiateur" },
-		{ "id": "2x-rtx-3090-48", "name": "2x RTX 3090 (48 Go)", "brand": "NVIDIA", "year": 2020, "vram_gb": 48, "bw_gbs": 1872, "tdp_w": 700, "price_usd": 1400, "note": "le combo culte du self-host, assurez votre compteur electrique" },
-		{ "id": "rtx-4090-24", "name": "RTX 4090 24 Go", "brand": "NVIDIA", "year": 2022, "vram_gb": 24, "bw_gbs": 1008, "tdp_w": 450, "price_usd": 1400, "note": "le standard de fait du LLM local" },
-		{ "id": "rtx-5090-32", "name": "RTX 5090 32 Go", "brand": "NVIDIA", "year": 2025, "vram_gb": 32, "bw_gbs": 1792, "tdp_w": 575, "price_usd": 2300, "note": "GDDR7, belle bete, belle facture" },
-		{ "id": "tesla-p40-24", "name": "Tesla P40 24 Go", "brand": "NVIDIA", "year": 2016, "vram_gb": 24, "bw_gbs": 346, "tdp_w": 250, "price_usd": 150, "note": "24 Go au prix d'un menu, Pascal : llama.cpp ou rien" },
-		{ "id": "rtx-a6000-48", "name": "RTX A6000 48 Go", "brand": "NVIDIA", "year": 2020, "vram_gb": 48, "bw_gbs": 768, "tdp_w": 300, "price_usd": 2500, "note": "48 Go silencieux en tour, le luxe discret" },
-		{ "id": "l4-24", "name": "L4 24 Go", "brand": "NVIDIA", "year": 2023, "vram_gb": 24, "bw_gbs": 300, "tdp_w": 72, "price_usd": 2000, "note": "basse conso (72 W), pour les serveurs ou l'electricite compte" },
-		{ "id": "a100-80", "name": "A100 80 Go", "brand": "NVIDIA", "year": 2020, "vram_gb": 80, "bw_gbs": 2039, "tdp_w": 300, "price_usd": 6500, "note": "l'ex-datacenter, encore tres courant en location" },
-		{ "id": "h100-80", "name": "H100 80 Go", "brand": "NVIDIA", "year": 2022, "vram_gb": 80, "bw_gbs": 3350, "tdp_w": 700, "price_usd": 25000, "note": "le stade de football personnel, import a vos risques et perils" },
-		{ "id": "mac-studio-m4-ultra", "name": "Mac Studio M4 Ultra (288 Go)", "brand": "Apple", "year": 2025, "vram_gb": 288, "bw_gbs": 853, "tdp_w": 175, "price_usd": 9500, "note": "memoire unifiee : gros modeles lents mais ils tiennent, 175 W" },
-		{ "id": "cpu-ddr5-64", "name": "Ryzen 9 + 64 Go DDR5 (CPU seul)", "brand": "AMD", "year": 2024, "vram_gb": 64, "bw_gbs": 105, "tdp_w": 230, "price_usd": 1100, "note": "le goulot memoire en personne : ca tient, ca rame" }
-	]
+ "_meta": {
+  "updated": "2026-11-25",
+  "electricity_usd_kwh": 0.35,
+  "decode_efficiency": 0.55,
+  "tok_s_formula": "tokens/s (batch 1, decode) = bande passante memoire (GB/s) x 0.55 / poids actifs (Go, selon la quantisation). Dense : poids actifs = poids totaux. MoE : un token ne lit que les parametres actives.",
+  "notes": "Prix = occasion/marche constates, ordre de grandeur, USD. Bande passante et TDP = fiches techniques constructeur. Les tok/s sont des estimations rule-of-thumb (typique llama.cpp), pas des mesures : la vraie vie implique KV cache, thermique et drivers capricieux.",
+  "quant": {
+   "order": [
+    "q2",
+    "q3",
+    "q4",
+    "q5",
+    "q6",
+    "q8",
+    "fp16"
+   ],
+   "q2": {
+    "label": "Q2",
+    "bits": "~2.6",
+    "bytes_per_param": 0.33,
+    "overhead_gb": 1.0
+   },
+   "q3": {
+    "label": "Q3",
+    "bits": "~3.4",
+    "bytes_per_param": 0.42,
+    "overhead_gb": 1.2
+   },
+   "q4": {
+    "label": "Q4",
+    "bits": "~4.6",
+    "bytes_per_param": 0.58,
+    "overhead_gb": 1.5
+   },
+   "q5": {
+    "label": "Q5",
+    "bits": "~5.6",
+    "bytes_per_param": 0.7,
+    "overhead_gb": 1.5
+   },
+   "q6": {
+    "label": "Q6",
+    "bits": "~6.6",
+    "bytes_per_param": 0.82,
+    "overhead_gb": 1.8
+   },
+   "q8": {
+    "label": "Q8",
+    "bits": "~8.8",
+    "bytes_per_param": 1.1,
+    "overhead_gb": 1.5
+   },
+   "fp16": {
+    "label": "FP16",
+    "bits": "16",
+    "bytes_per_param": 2.0,
+    "overhead_gb": 2.5
+   }
+  }
+ },
+ "hardware": [
+  {
+   "id": "rtx-3060-12",
+   "name": "RTX 3060 12 Go",
+   "brand": "NVIDIA",
+   "year": 2021,
+   "vram_gb": 12,
+   "bw_gbs": 360,
+   "tdp_w": 170,
+   "price_usd": 200,
+   "note": "le plain-pied de l'auto-hebergement"
+  },
+  {
+   "id": "rtx-4060ti-16",
+   "name": "RTX 4060 Ti 16 Go",
+   "brand": "NVIDIA",
+   "year": 2023,
+   "vram_gb": 16,
+   "bw_gbs": 288,
+   "tdp_w": 165,
+   "price_usd": 400,
+   "note": "16 Go mais bus etroit : theorique, pas rapide"
+  },
+  {
+   "id": "rx-7900xtx-24",
+   "name": "RX 7900 XTX 24 Go",
+   "brand": "AMD",
+   "year": 2022,
+   "vram_gb": 24,
+   "bw_gbs": 960,
+   "tdp_w": 355,
+   "price_usd": 800,
+   "note": "ROCm s'est ameliore, priez quand meme"
+  },
+  {
+   "id": "rtx-3090-24",
+   "name": "RTX 3090 24 Go",
+   "brand": "NVIDIA",
+   "year": 2020,
+   "vram_gb": 24,
+   "bw_gbs": 936,
+   "tdp_w": 350,
+   "price_usd": 700,
+   "note": "la reine de l'occasion, chauffe comme un radiateur"
+  },
+  {
+   "id": "2x-rtx-3090-48",
+   "name": "2x RTX 3090 (48 Go)",
+   "brand": "NVIDIA",
+   "year": 2020,
+   "vram_gb": 48,
+   "bw_gbs": 1872,
+   "tdp_w": 700,
+   "price_usd": 1400,
+   "note": "le combo culte du self-host, assurez votre compteur electrique"
+  },
+  {
+   "id": "rtx-4090-24",
+   "name": "RTX 4090 24 Go",
+   "brand": "NVIDIA",
+   "year": 2022,
+   "vram_gb": 24,
+   "bw_gbs": 1008,
+   "tdp_w": 450,
+   "price_usd": 1400,
+   "note": "le standard de fait du LLM local"
+  },
+  {
+   "id": "rtx-5090-32",
+   "name": "RTX 5090 32 Go",
+   "brand": "NVIDIA",
+   "year": 2025,
+   "vram_gb": 32,
+   "bw_gbs": 1792,
+   "tdp_w": 575,
+   "price_usd": 2300,
+   "note": "GDDR7, belle bete, belle facture"
+  },
+  {
+   "id": "tesla-p40-24",
+   "name": "Tesla P40 24 Go",
+   "brand": "NVIDIA",
+   "year": 2016,
+   "vram_gb": 24,
+   "bw_gbs": 346,
+   "tdp_w": 250,
+   "price_usd": 150,
+   "note": "24 Go au prix d'un menu, Pascal : llama.cpp ou rien"
+  },
+  {
+   "id": "rtx-a6000-48",
+   "name": "RTX A6000 48 Go",
+   "brand": "NVIDIA",
+   "year": 2020,
+   "vram_gb": 48,
+   "bw_gbs": 768,
+   "tdp_w": 300,
+   "price_usd": 2500,
+   "note": "48 Go silencieux en tour, le luxe discret"
+  },
+  {
+   "id": "l4-24",
+   "name": "L4 24 Go",
+   "brand": "NVIDIA",
+   "year": 2023,
+   "vram_gb": 24,
+   "bw_gbs": 300,
+   "tdp_w": 72,
+   "price_usd": 2000,
+   "note": "basse conso (72 W), pour les serveurs ou l'electricite compte"
+  },
+  {
+   "id": "a100-80",
+   "name": "A100 80 Go",
+   "brand": "NVIDIA",
+   "year": 2020,
+   "vram_gb": 80,
+   "bw_gbs": 2039,
+   "tdp_w": 300,
+   "price_usd": 6500,
+   "note": "l'ex-datacenter, encore tres courant en location"
+  },
+  {
+   "id": "h100-80",
+   "name": "H100 80 Go",
+   "brand": "NVIDIA",
+   "year": 2022,
+   "vram_gb": 80,
+   "bw_gbs": 3350,
+   "tdp_w": 700,
+   "price_usd": 25000,
+   "note": "le stade de football personnel, import a vos risques et perils"
+  },
+  {
+   "id": "mac-studio-m4-ultra",
+   "name": "Mac Studio M4 Ultra (288 Go)",
+   "brand": "Apple",
+   "year": 2025,
+   "vram_gb": 288,
+   "bw_gbs": 853,
+   "tdp_w": 175,
+   "price_usd": 9500,
+   "note": "memoire unifiee : gros modeles lents mais ils tiennent, 175 W"
+  },
+  {
+   "id": "cpu-ddr5-64",
+   "name": "Ryzen 9 + 64 Go DDR5 (CPU seul)",
+   "brand": "AMD",
+   "year": 2024,
+   "vram_gb": 64,
+   "bw_gbs": 105,
+   "tdp_w": 230,
+   "price_usd": 1100,
+   "note": "le goulot memoire en personne : ca tient, ca rame"
+  },
+  {
+   "id": "arc-b580-12",
+   "name": "Arc B580 12 Go",
+   "brand": "Intel",
+   "year": 2024,
+   "vram_gb": 12,
+   "bw_gbs": 456,
+   "tdp_w": 190,
+   "price_usd": 250,
+   "note": "Battlemage, le meilleur rapport Go/$ du neuf, drivers IPEX-LLM en progrès"
+  },
+  {
+   "id": "arc-a770-16",
+   "name": "Arc A770 16 Go",
+   "brand": "Intel",
+   "year": 2022,
+   "vram_gb": 16,
+   "bw_gbs": 512,
+   "tdp_w": 225,
+   "price_usd": 280,
+   "note": "16 Go pas chers, support logiciel homemade mais ça marche"
+  },
+  {
+   "id": "rx-7600xt-16",
+   "name": "RX 7600 XT 16 Go",
+   "brand": "AMD",
+   "year": 2024,
+   "vram_gb": 16,
+   "bw_gbs": 288,
+   "tdp_w": 190,
+   "price_usd": 330,
+   "note": "16 Go en petite carte, bus étroit pour 16 Go, ambiance"
+  },
+  {
+   "id": "gtx-1080ti-11",
+   "name": "GTX 1080 Ti 11 Go",
+   "brand": "NVIDIA",
+   "year": 2017,
+   "vram_gb": 11,
+   "bw_gbs": 484,
+   "tdp_w": 250,
+   "price_usd": 120,
+   "note": "9 ans et toujours vendue : 11 Go à 120 $, Pascal, llama.cpp ou rien"
+  },
+  {
+   "id": "jetson-orin-nano-8",
+   "name": "Jetson Orin Nano Super 8 Go",
+   "brand": "NVIDIA",
+   "year": 2024,
+   "vram_gb": 8,
+   "bw_gbs": 102,
+   "tdp_w": 25,
+   "price_usd": 249,
+   "note": "8 Go dans 25 W, pour les bricoleurs embarqués et les robots"
+  },
+  {
+   "id": "mac-mini-m4-32",
+   "name": "Mac mini M4 (32 Go)",
+   "brand": "Apple",
+   "year": 2024,
+   "vram_gb": 32,
+   "bw_gbs": 120,
+   "tdp_w": 65,
+   "price_usd": 1600,
+   "note": "32 Go en mémoire unifiée, bande passante famélique : ça tient, ça rame gentiment"
+  }
+ ]
 }

@@ -28,18 +28,14 @@
 
 	<section class="page-head">
 		<h1>hardware</h1>
-		<p>Le matériel capable de faire tourner les poids ouverts : coût initial, consommation, VRAM et tokens par seconde. Choisissez un modèle et sa quantisation, la page dit qui tient et à quelle vitesse.</p>
+		<p>Le matériel capable de faire tourner les poids ouverts : coût initial, consommation, VRAM et tokens par seconde. Choisissez un modèle et sa quantisation, la page dit qui tient et à quelle vitesse. Cliquez un composant : sa VRAM s'injecte directement dans le filtre de la page auto-hébergement.</p>
 	</section>
 
 	<div class="filters">
 		<label class="legend" for="hw-model">modèle</label>
 		<select id="hw-model"></select>
 		<label class="legend" for="hw-quant">quantisation</label>
-		<select id="hw-quant">
-			<option value="q4">Q4 (~4.5 bits/poids)</option>
-			<option value="q8">Q8 (~9 bits/poids)</option>
-			<option value="fp16">FP16 (native)</option>
-		</select>
+		<select id="hw-quant"></select>
 		<span class="legend" id="hw-fit-count"></span>
 	</div>
 
@@ -62,7 +58,7 @@
 	</section>
 
 	<p class="footer-note">
-		tok/s (batch 1, décode) = <code>bande passante (GB/s) × 0.55 / poids actifs (Go)</code>. Modèle dense : tous les poids sont lus.
+		tok/s (batch 1, décode) = <code>bande passante (GB/s) × 0.55 / (poids actifs × octets_par_poids)</code>, selon la quantisation choisie. Modèle dense : tous les poids sont lus.
 		MoE : un token ne lit que les paramètres actifs, c'est tout l'intérêt — mais la totalité réside en VRAM.
 		Estimation rule-of-thumb type llama.cpp, pas une mesure : KV cache, thermique et drivers fourbus non inclus.
 		$/h élec = TDP × 0.35 $/kWh, sans compter le reste de la tour.

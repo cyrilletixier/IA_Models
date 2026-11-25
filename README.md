@@ -20,8 +20,8 @@
 | `/models.html` | Liste des modèles : contexte, prix, indices Code / Analyse / Global, perf par $ |
 | `/costs.html` | Coûts par scénario de charge (chat, refactoring, analyse de docs) |
 | `/providers.html` | Comparateur par modèle : prix, vitesse et latence de chaque fournisseur (OpenRouter, DeepInfra, Together, API du labo…) |
-| `/hosting.html` | Auto-hébergement : filtre par VRAM de GPU, VRAM requise aux trois quantisations (Q4/Q8/FP16), option « seulement ce qui tient » |
-| `/hardware.html` | Hardware : le matériel qui fait tourner les poids ouverts — coût initial, consommation, VRAM, bande passante et tok/s estimés par modèle/quantisation |
+| `/hosting.html` | Auto-hébergement : filtre par VRAM de GPU (injectable depuis la page hardware via `#vram=N`), VRAM requise aux sept quantisations (Q2 à FP16), option « seulement ce qui tient » |
+| `/hardware.html` | Hardware : le matériel qui fait tourner les poids ouverts — petits constructeurs inclus (Arc, RX, Jetson, Mac), coût initial, consommation, VRAM, tok/s par quantisation ; cliquer un composant ouvre l'auto-hébergement pré-filtré sur sa VRAM |
 
 ## Indices suivis (v0)
 
@@ -37,14 +37,20 @@ Prix en $ / 1M tokens, mélange standard 75 % input / 25 % output : `(3×in + ou
 ## Hardware
 
 `data/hardware.json` (curé, committé) liste les composants pertinents pour l'auto-hébergement :
-GPU grand public et occasion, cartes datacenter, Mac à mémoire unifiée, même le CPU pour la
-blague. Champs : VRAM, bande passante mémoire, TDP, prix constaté (USD, marché/occasion).
+GPU grand public et occasion (y compris petits constructeurs : Intel Arc, AMD RX, Jetson,
+Mac), cartes datacenter, même le CPU pour la blague. Champs : VRAM, bande passante mémoire,
+TDP, prix constaté (USD, marché/occasion).
 
-Performance estimée, batch 1 en décode :
+Performance estimée, batch 1 en décode, selon la quantisation choisie :
 
 ```
-tokens/s = bande passante (GB/s) × 0.55 / poids actifs (Go)
+tokens/s = bande passante (GB/s) × 0.55 / (poids actifs × octets_par_poids)
 ```
+
+La table des quantisations vit dans `data/hardware.json` (`_meta.quant`) : Q2 à FP16,
+octets/poids et overhead par niveau. C'est la source unique partagée par la VRAM requise
+(auto-hébergement) et les tok/s (hardware). Cliquer un composant sur la page hardware ouvre
+`hosting.html#vram=N`, la VRAM du composant pré-remplit le filtre.
 
 Dense : les poids actifs = la totalité. MoE : un token ne lit que les paramètres actifs —
 c'est toute la valeur du Sparse — mais la totalité réside en VRAM (critère de fit).
@@ -72,13 +78,19 @@ la page fournisseurs filtrée sur ce modèle (`providers.html#model=<id>`).
 
 La page `/hosting.html` filtre les modèles à poids ouverts selon la VRAM de votre GPU
 (presets 6 à 96 Go ou valeur libre) et la quantisation (Q4 / Q8 / FP16). Pour chaque
-modèle dont la taille est publiée, la VRAM requise est estimée sur les poids seuls :
+modèle dont la taille est publiée, la VRAM requise est estimée sur les poids seuls,
+pour les sept quantisations (table `_meta.quant` de `data/hardware.json`) :
+`vram = params_B × octets/poids + overhead` :
 
-| Quantisation | Formule (Go) | ~bits/poids |
-|---|---|---|
-| Q4 | `params_B × 0.58 + 1.5` | ~4.5 |
-| Q8 | `params_B × 1.10 + 1.5` | ~9 |
-| FP16 | `params_B × 2.0 + 2.5` | 16 |
+| Quantisation | octets/poids | overhead (Go) | ~bits/poids |
+|---|---|---|---|
+| Q2 | 0.33 | 1.0 | ~2.6 |
+| Q3 | 0.42 | 1.2 | ~3.4 |
+| Q4 | 0.58 | 1.5 | ~4.6 |
+| Q5 | 0.70 | 1.5 | ~5.6 |
+| Q6 | 0.82 | 1.8 | ~6.6 |
+| Q8 | 1.10 | 1.5 | ~8.8 |
+| FP16 | 2.00 | 2.5 | 16 |
 
 KV cache, overhead moteur et migraine de compatibilité non inclus : prévoyez de la marge,
 surtout à long contexte. Pour un MoE, la totalité des poids réside en VRAM (c'est le

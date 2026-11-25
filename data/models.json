@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "generated_at_utc": "2026-11-25T16:47:31Z",
-  "pricing_fetched_at_utc": "2026-11-25T16:47:11Z",
+  "generated_at_utc": "2026-11-25T17:26:34Z",
+  "pricing_fetched_at_utc": "2026-11-25T17:11:05Z",
   "benchmarks_updated": "2026-11-25",
   "providers_fetched_at_utc": "2026-11-25T15:21:52Z",
   "providers_source": "BenchLeader pages modeles, section 'API pricing: where to run it' : prix propres de chaque fournisseur routant le modele via OpenRouter",
@@ -9,8 +9,61 @@
    "updated": "2026-11-25",
    "electricity_usd_kwh": 0.35,
    "decode_efficiency": 0.55,
-   "tok_s_formula": "tokens/s (batch 1, decode) = bande passante memoire (GB/s) x 0.55 / poids actifs (Go). Dense : poids actifs = poids totaux. MoE : un token ne lit que les parametres actives.",
-   "notes": "Prix = occasion/marche constates, ordre de grandeur, USD. Bande passante et TDP = fiches techniques constructeur. Les tok/s sont des estimations rule-of-thumb (typique llama.cpp), pas des mesures : la vraie vie implique KV cache, thermique et drivers capricieux."
+   "tok_s_formula": "tokens/s (batch 1, decode) = bande passante memoire (GB/s) x 0.55 / poids actifs (Go, selon la quantisation). Dense : poids actifs = poids totaux. MoE : un token ne lit que les parametres actives.",
+   "notes": "Prix = occasion/marche constates, ordre de grandeur, USD. Bande passante et TDP = fiches techniques constructeur. Les tok/s sont des estimations rule-of-thumb (typique llama.cpp), pas des mesures : la vraie vie implique KV cache, thermique et drivers capricieux.",
+   "quant": {
+    "order": [
+     "q2",
+     "q3",
+     "q4",
+     "q5",
+     "q6",
+     "q8",
+     "fp16"
+    ],
+    "q2": {
+     "label": "Q2",
+     "bits": "~2.6",
+     "bytes_per_param": 0.33,
+     "overhead_gb": 1.0
+    },
+    "q3": {
+     "label": "Q3",
+     "bits": "~3.4",
+     "bytes_per_param": 0.42,
+     "overhead_gb": 1.2
+    },
+    "q4": {
+     "label": "Q4",
+     "bits": "~4.6",
+     "bytes_per_param": 0.58,
+     "overhead_gb": 1.5
+    },
+    "q5": {
+     "label": "Q5",
+     "bits": "~5.6",
+     "bytes_per_param": 0.7,
+     "overhead_gb": 1.5
+    },
+    "q6": {
+     "label": "Q6",
+     "bits": "~6.6",
+     "bytes_per_param": 0.82,
+     "overhead_gb": 1.8
+    },
+    "q8": {
+     "label": "Q8",
+     "bits": "~8.8",
+     "bytes_per_param": 1.1,
+     "overhead_gb": 1.5
+    },
+    "fp16": {
+     "label": "FP16",
+     "bits": "16",
+     "bytes_per_param": 2.0,
+     "overhead_gb": 2.5
+    }
+   }
   },
   "sources": {
    "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
@@ -22,7 +75,7 @@
    "provider_blended": "meme formule appliquee aux prix propres de chaque fournisseur",
    "perf_per_dollar": "aa_intelligence / blended_per_m",
    "freshness": "score 1-5 : 5 < 2 mois, 4 < 5 mois, 3 < 1 an, 2 < 2 ans, 1 plus vieux",
-   "self_host_vram": "q4 = total_b*0.58+1.5, q8 = total_b*1.10+1.5, fp16 = total_b*2.0+2.5 (GB, poids seuls, KV cache non inclus)"
+   "self_host_vram": "vram = total_b * bytes_per_param + overhead_gb par quantisation (Q2..FP16), table dans data/hardware.json _meta.quant (GB, poids seuls, KV cache non inclus)"
   }
  },
  "models": [
@@ -2671,7 +2724,11 @@
     "perf_per_dollar": 70.0
    },
    "self_host": {
+    "vram_q2_gb": 4.0,
+    "vram_q3_gb": 5.0,
     "vram_q4_gb": 6.7,
+    "vram_q5_gb": 7.8,
+    "vram_q6_gb": 9.2,
     "vram_q8_gb": 11.4,
     "vram_fp16_gb": 20.5
    },
@@ -2782,7 +2839,11 @@
     "perf_per_dollar": 83.9875
    },
    "self_host": {
+    "vram_q2_gb": 9.9,
+    "vram_q3_gb": 12.5,
     "vram_q4_gb": 17.2,
+    "vram_q5_gb": 20.4,
+    "vram_q6_gb": 23.9,
     "vram_q8_gb": 31.2,
     "vram_fp16_gb": 56.5
    },
@@ -3043,7 +3104,11 @@
     "perf_per_dollar": 54.3662
    },
    "self_host": {
+    "vram_q2_gb": 12.6,
+    "vram_q3_gb": 15.9,
     "vram_q4_gb": 21.8,
+    "vram_q5_gb": 26.0,
+    "vram_q6_gb": 30.5,
     "vram_q8_gb": 40.0,
     "vram_fp16_gb": 72.5
    },
@@ -3150,7 +3215,11 @@
     "perf_per_dollar": 24.8951
    },
    "self_host": {
+    "vram_q2_gb": 41.3,
+    "vram_q3_gb": 52.4,
     "vram_q4_gb": 72.3,
+    "vram_q5_gb": 86.9,
+    "vram_q6_gb": 101.8,
     "vram_q8_gb": 135.7,
     "vram_fp16_gb": 246.5
    },
@@ -3215,7 +3284,11 @@
     "perf_per_dollar": 58.8
    },
    "self_host": {
+    "vram_q2_gb": 11.1,
+    "vram_q3_gb": 14.1,
     "vram_q4_gb": 19.3,
+    "vram_q5_gb": 23.0,
+    "vram_q6_gb": 27.0,
     "vram_q8_gb": 35.3,
     "vram_fp16_gb": 63.9
    },
@@ -3440,7 +3513,11 @@
     "perf_per_dollar": 117.193
    },
    "self_host": {
+    "vram_q2_gb": 9.3,
+    "vram_q3_gb": 11.8,
     "vram_q4_gb": 16.1,
+    "vram_q5_gb": 19.1,
+    "vram_q6_gb": 22.5,
     "vram_q8_gb": 29.2,
     "vram_fp16_gb": 52.9
    },
@@ -3637,7 +3714,11 @@
     "perf_per_dollar": 134.5455
    },
    "self_host": {
+    "vram_q2_gb": 3.6,
+    "vram_q3_gb": 4.6,
     "vram_q4_gb": 6.1,
+    "vram_q5_gb": 7.1,
+    "vram_q6_gb": 8.4,
     "vram_q8_gb": 10.3,
     "vram_fp16_gb": 18.5
    },
@@ -3694,7 +3775,11 @@
     "perf_per_dollar": 493.3333
    },
    "self_host": {
+    "vram_q2_gb": 3.6,
+    "vram_q3_gb": 4.5,
     "vram_q4_gb": 6.1,
+    "vram_q5_gb": 7.0,
+    "vram_q6_gb": 8.3,
     "vram_q8_gb": 10.2,
     "vram_fp16_gb": 18.3
    },
@@ -3741,7 +3826,11 @@
     "perf_per_dollar": 638.0952
    },
    "self_host": {
+    "vram_q2_gb": 41.9,
+    "vram_q3_gb": 53.3,
     "vram_q4_gb": 73.4,
+    "vram_q5_gb": 88.3,
+    "vram_q6_gb": 103.5,
     "vram_q8_gb": 137.9,
     "vram_fp16_gb": 250.5
    },
@@ -3798,7 +3887,11 @@
     "perf_per_dollar": 1.6
    },
    "self_host": {
+    "vram_q2_gb": 37.6,
+    "vram_q3_gb": 47.8,
     "vram_q4_gb": 65.9,
+    "vram_q5_gb": 79.2,
+    "vram_q6_gb": 92.8,
     "vram_q8_gb": 123.6,
     "vram_fp16_gb": 224.5
    },
@@ -3838,7 +3931,11 @@
     "perf_per_dollar": 216.5714
    },
    "self_host": {
+    "vram_q2_gb": 103.0,
+    "vram_q3_gb": 131.0,
     "vram_q4_gb": 180.7,
+    "vram_q5_gb": 217.8,
+    "vram_q6_gb": 255.2,
     "vram_q8_gb": 341.4,
     "vram_fp16_gb": 620.5
    },
@@ -3954,7 +4051,11 @@
     "blended_per_m": 1.425
    },
    "self_host": {
+    "vram_q2_gb": 199.0,
+    "vram_q3_gb": 253.2,
     "vram_q4_gb": 349.5,
+    "vram_q5_gb": 421.5,
+    "vram_q6_gb": 493.8,
     "vram_q8_gb": 661.5,
     "vram_fp16_gb": 1202.5
    },
@@ -4518,7 +4619,11 @@
     "perf_per_dollar": 48.0
    },
    "self_host": {
+    "vram_q2_gb": 2.0,
+    "vram_q3_gb": 2.5,
     "vram_q4_gb": 3.2,
+    "vram_q5_gb": 3.6,
+    "vram_q6_gb": 4.3,
     "vram_q8_gb": 4.8,
     "vram_fp16_gb": 8.5
    },
@@ -4581,7 +4686,11 @@
     "perf_per_dollar": 36.6667
    },
    "self_host": {
+    "vram_q2_gb": 3.6,
+    "vram_q3_gb": 4.6,
     "vram_q4_gb": 6.1,
+    "vram_q5_gb": 7.1,
+    "vram_q6_gb": 8.4,
     "vram_q8_gb": 10.3,
     "vram_fp16_gb": 18.5
    },
@@ -4644,7 +4753,11 @@
     "perf_per_dollar": 30.0
    },
    "self_host": {
+    "vram_q2_gb": 5.6,
+    "vram_q3_gb": 7.1,
     "vram_q4_gb": 9.6,
+    "vram_q5_gb": 11.3,
+    "vram_q6_gb": 13.3,
     "vram_q8_gb": 16.9,
     "vram_fp16_gb": 30.5
    },
@@ -4711,7 +4824,11 @@
     "perf_per_dollar": 53.6585
    },
    "self_host": {
+    "vram_q2_gb": 10.9,
+    "vram_q3_gb": 13.8,
     "vram_q4_gb": 18.9,
+    "vram_q5_gb": 22.5,
+    "vram_q6_gb": 26.4,
     "vram_q8_gb": 34.5,
     "vram_fp16_gb": 62.5
    },
@@ -4803,7 +4920,11 @@
     "perf_per_dollar": 153.1429
    },
    "self_host": {
+    "vram_q2_gb": 9.7,
+    "vram_q3_gb": 12.3,
     "vram_q4_gb": 16.8,
+    "vram_q5_gb": 20.0,
+    "vram_q6_gb": 23.4,
     "vram_q8_gb": 30.5,
     "vram_fp16_gb": 55.3
    },
@@ -4906,7 +5027,11 @@
     "perf_per_dollar": 61.1765
    },
    "self_host": {
+    "vram_q2_gb": 12.6,
+    "vram_q3_gb": 15.9,
     "vram_q4_gb": 21.8,
+    "vram_q5_gb": 26.0,
+    "vram_q6_gb": 30.5,
     "vram_q8_gb": 40.0,
     "vram_fp16_gb": 72.5
    },
@@ -5049,7 +5174,11 @@
     "perf_per_dollar": 180.0
    },
    "self_host": {
+    "vram_q2_gb": 7.9,
+    "vram_q3_gb": 10.0,
     "vram_q4_gb": 13.7,
+    "vram_q5_gb": 16.2,
+    "vram_q6_gb": 19.0,
     "vram_q8_gb": 24.6,
     "vram_fp16_gb": 44.5
    },
@@ -5192,7 +5321,11 @@
     "perf_per_dollar": 84.7619
    },
    "self_host": {
+    "vram_q2_gb": 10.9,
+    "vram_q3_gb": 13.8,
     "vram_q4_gb": 18.9,
+    "vram_q5_gb": 22.5,
+    "vram_q6_gb": 26.4,
     "vram_q8_gb": 34.5,
     "vram_fp16_gb": 62.5
    },
@@ -5234,7 +5367,11 @@
     "blended_per_m": 0.2125
    },
    "self_host": {
+    "vram_q2_gb": 8.9,
+    "vram_q3_gb": 11.3,
     "vram_q4_gb": 15.4,
+    "vram_q5_gb": 18.3,
+    "vram_q6_gb": 21.5,
     "vram_q8_gb": 27.9,
     "vram_fp16_gb": 50.5
    },
@@ -5291,7 +5428,11 @@
     "perf_per_dollar": 9.8824
    },
    "self_host": {
+    "vram_q2_gb": 10.9,
+    "vram_q3_gb": 13.8,
     "vram_q4_gb": 18.9,
+    "vram_q5_gb": 22.5,
+    "vram_q6_gb": 26.4,
     "vram_q8_gb": 34.5,
     "vram_fp16_gb": 62.5
    },
@@ -5374,7 +5515,11 @@
     "perf_per_dollar": 10.75
    },
    "self_host": {
+    "vram_q2_gb": 41.6,
+    "vram_q3_gb": 52.9,
     "vram_q4_gb": 72.8,
+    "vram_q5_gb": 87.6,
+    "vram_q6_gb": 102.7,
     "vram_q8_gb": 136.8,
     "vram_fp16_gb": 248.5
    },
@@ -5427,7 +5572,11 @@
     "perf_per_dollar": 27.1006
    },
    "self_host": {
+    "vram_q2_gb": 9.9,
+    "vram_q3_gb": 12.5,
     "vram_q4_gb": 17.2,
+    "vram_q5_gb": 20.4,
+    "vram_q6_gb": 23.9,
     "vram_q8_gb": 31.2,
     "vram_fp16_gb": 56.5
    },
@@ -5519,7 +5668,11 @@
     "perf_per_dollar": 263.1111
    },
    "self_host": {
+    "vram_q2_gb": 185.8,
+    "vram_q3_gb": 236.4,
     "vram_q4_gb": 326.3,
+    "vram_q5_gb": 393.5,
+    "vram_q6_gb": 461.0,
     "vram_q8_gb": 617.5,
     "vram_fp16_gb": 1122.5
    },
@@ -5572,7 +5725,11 @@
     "perf_per_dollar": 81.92
    },
    "self_host": {
+    "vram_q2_gb": 40.6,
+    "vram_q3_gb": 51.6,
     "vram_q4_gb": 71.1,
+    "vram_q5_gb": 85.5,
+    "vram_q6_gb": 100.2,
     "vram_q8_gb": 133.5,
     "vram_fp16_gb": 242.5
    },
@@ -5754,6 +5911,72 @@
    "tdp_w": 230,
    "price_usd": 1100,
    "note": "le goulot memoire en personne : ca tient, ca rame"
+  },
+  {
+   "id": "arc-b580-12",
+   "name": "Arc B580 12 Go",
+   "brand": "Intel",
+   "year": 2024,
+   "vram_gb": 12,
+   "bw_gbs": 456,
+   "tdp_w": 190,
+   "price_usd": 250,
+   "note": "Battlemage, le meilleur rapport Go/$ du neuf, drivers IPEX-LLM en progrès"
+  },
+  {
+   "id": "arc-a770-16",
+   "name": "Arc A770 16 Go",
+   "brand": "Intel",
+   "year": 2022,
+   "vram_gb": 16,
+   "bw_gbs": 512,
+   "tdp_w": 225,
+   "price_usd": 280,
+   "note": "16 Go pas chers, support logiciel homemade mais ça marche"
+  },
+  {
+   "id": "rx-7600xt-16",
+   "name": "RX 7600 XT 16 Go",
+   "brand": "AMD",
+   "year": 2024,
+   "vram_gb": 16,
+   "bw_gbs": 288,
+   "tdp_w": 190,
+   "price_usd": 330,
+   "note": "16 Go en petite carte, bus étroit pour 16 Go, ambiance"
+  },
+  {
+   "id": "gtx-1080ti-11",
+   "name": "GTX 1080 Ti 11 Go",
+   "brand": "NVIDIA",
+   "year": 2017,
+   "vram_gb": 11,
+   "bw_gbs": 484,
+   "tdp_w": 250,
+   "price_usd": 120,
+   "note": "9 ans et toujours vendue : 11 Go à 120 $, Pascal, llama.cpp ou rien"
+  },
+  {
+   "id": "jetson-orin-nano-8",
+   "name": "Jetson Orin Nano Super 8 Go",
+   "brand": "NVIDIA",
+   "year": 2024,
+   "vram_gb": 8,
+   "bw_gbs": 102,
+   "tdp_w": 25,
+   "price_usd": 249,
+   "note": "8 Go dans 25 W, pour les bricoleurs embarqués et les robots"
+  },
+  {
+   "id": "mac-mini-m4-32",
+   "name": "Mac mini M4 (32 Go)",
+   "brand": "Apple",
+   "year": 2024,
+   "vram_gb": 32,
+   "bw_gbs": 120,
+   "tdp_w": 65,
+   "price_usd": 1600,
+   "note": "32 Go en mémoire unifiée, bande passante famélique : ça tient, ça rame gentiment"
   }
  ]
 }

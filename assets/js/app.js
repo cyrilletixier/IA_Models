@@ -528,17 +528,21 @@ function renderProviders(dataset) {
 
 /* ---------- page auto-hebergement ---------- */
 
+function quantDefs(dataset) {
+	const meta = ((dataset._meta || {}).hardware || {}).quant || {};
+	const order = meta.order || [];
+	return order
+		.map((k) => ({ key: k, field: "vram_" + k + "_gb", label: meta[k].label, bpp: meta[k].bytes_per_param }))
+		.filter((q) => q.label && q.bpp != null);
+}
+
 const VRAM_PRESETS = [6, 8, 12, 16, 24, 32, 48, 64, 96];
-const HOST_QUANTA = [
-	{ key: "vram_q4_gb", label: "VRAM Q4" },
-	{ key: "vram_q8_gb", label: "VRAM Q8" },
-	{ key: "vram_fp16_gb", label: "VRAM FP16" },
-];
 
 function renderHosting(dataset) {
 	const host = document.querySelector("#hosting-table");
 	if (!host) return;
 	const open = dataset.models.filter((m) => m.open_weights);
+	const QUANTA = quantDefs(dataset);
 
 	let vram = 16;
 	let customMode = false;
@@ -550,10 +554,24 @@ function renderHosting(dataset) {
 	const countEl = document.querySelector("#fit-count");
 	const tbody = host.querySelector("tbody");
 
+	function hashVram() {
+		const match = (location.hash || "").match(/vram=([\d.]+)/);
+		return match ? parseFloat(match[1]) : null;
+	}
+	if (hashVram() != null) {
+		vram = hashVram();
+		if (!VRAM_PRESETS.includes(vram)) customMode = true;
+	}
+
 	vramSelect.innerHTML =
-		VRAM_PRESETS.map((v) => '<option value="' + v + '"' + (v === vram ? " selected" : "") + ">" + v + " Go</option>").join("") +
-		'<option value="custom">autre…</option>';
-	vramCustom.hidden = true;
+		VRAM_PRESETS.map((v) => '<option value="' + v + '"' + (!customMode && v === vram ? " selected" : "") + ">" + v + " Go</option>").join("") +
+		'<option value="custom"' + (customMode ? " selected" : "") + ">autre…</option>";
+	if (customMode) {
+		vramCustom.hidden = false;
+		vramCustom.value = String(vram);
+	} else {
+		vramCustom.hidden = true;
+	}
 
 	function currentVram() {
 		if (!customMode) return vram;
@@ -572,26 +590,28 @@ function renderHosting(dataset) {
 			.map((m) => {
 				const sh = m.self_host;
 				let vramCells = "";
-				let bestFit = null;
 				if (sh) {
-					for (const q of HOST_QUANTA) {
-						const need = sh[q.key];
+					for (const q of QUANTA) {
+						const need = sh[q.field];
 						const fits = gpu > 0 && need <= gpu;
-						if (fits && (!bestFit || need > bestFit.need)) bestFit = { quant: q, need };
 						vramCells +=
 							'<td class="num ' + (fits ? "fit-ok" : "fit-no") + '">' +
 							(fits ? "<b>" : "") + need.toFixed(1) + (fits ? "</b>" : "") + " Go</td>";
 					}
 				} else {
-					vramCells = '<td class="num" colspan="3"><span class="na">taille non publiée</span></td>';
+					vramCells = '<td class="num" colspan="' + QUANTA.length + '"><span class="na">taille non publiée</span></td>';
 				}
 				const params =
 					m.params_total_b == null
 						? '<span class="na">--</span>'
 						: m.params_total_b + "B" +
 						  (m.params_active_b != null ? ' <span class="cell-sub">A' + m.params_active_b + "B</span>" : "");
-				if (fitOnly && sh && !(gpu > 0 && sh.vram_q4_gb <= gpu)) return "";
-				if (fitOnly && !sh) return "";
+				if (sh) {
+					const smallest = sh[QUANTA[0].field];
+					if (fitOnly && !(gpu > 0 && smallest <= gpu)) return "";
+				} else if (fitOnly) {
+					return "";
+				}
 				const p = m.pricing;
 				return (
 					"<tr>" +
@@ -607,13 +627,16 @@ function renderHosting(dataset) {
 			})
 			.join("");
 
-		const nFit = (key) => open.filter((m) => m.self_host && m.self_host[key] <= gpu).length;
 		const nSized = open.filter((m) => m.self_host).length;
-		countEl.textContent =
-			gpu > 0
-				? nFit("vram_q4_gb") + " / " + nSized + " tiennent en " + gpu + " Go @ Q4 · " +
-				  nFit("vram_q8_gb") + " @ Q8 · " + nFit("vram_fp16_gb") + " @ FP16"
-				: "indiquez votre VRAM";
+		if (gpu <= 0) {
+			countEl.textContent = "indiquez votre VRAM";
+		} else {
+			const parts = QUANTA
+				.map((q) => [q.label, open.filter((m) => m.self_host && m.self_host[q.field] <= gpu).length])
+				.filter(([, n]) => n > 0)
+				.map(([label, n]) => label + " :" + n);
+			countEl.textContent = gpu + " Go : " + parts.join(" · ") + " (sur " + nSized + " tailles publiées)";
+		}
 	}
 
 	vramSelect.addEventListener("change", () => {
@@ -630,17 +653,26 @@ function renderHosting(dataset) {
 	});
 	vramCustom.addEventListener("input", draw);
 	if (fitOnlyBox) fitOnlyBox.addEventListener("change", () => { fitOnly = fitOnlyBox.checked; draw(); });
+	window.addEventListener("hashchange", () => {
+		const v = hashVram();
+		if (v == null) return;
+		vram = v;
+		customMode = !VRAM_PRESETS.includes(v);
+		if (customMode) {
+			vramSelect.value = "custom";
+			vramCustom.hidden = false;
+			vramCustom.value = String(v);
+		} else {
+			vramSelect.value = String(v);
+			vramCustom.hidden = true;
+		}
+		draw();
+	});
 
 	draw();
 }
 
 /* ---------- page hardware ---------- */
-
-const HW_QUANTA = {
-	q4: { key: "vram_q4_gb", bits_per_param: 0.58, label: "Q4" },
-	q8: { key: "vram_q8_gb", bits_per_param: 1.10, label: "Q8" },
-	fp16: { key: "vram_fp16_gb", bits_per_param: 2.0, label: "FP16" },
-};
 
 function renderHardware(dataset) {
 	const host = document.querySelector("#hardware-table");
@@ -652,6 +684,7 @@ function renderHardware(dataset) {
 	const meta = dataset._meta.hardware || {};
 	const eff = meta.decode_efficiency || 0.55;
 	const elec = meta.electricity_usd_kwh || 0.35;
+	const QUANTA = quantDefs(dataset);
 
 	const modelSelect = document.querySelector("#hw-model");
 	const quantSelect = document.querySelector("#hw-quant");
@@ -664,13 +697,31 @@ function renderHardware(dataset) {
 		.map((m) => '<option value="' + esc(m.id) + '">' + esc(m.name) + "</option>")
 		.join("");
 
+	quantSelect.innerHTML = QUANTA
+		.map((q, i) => '<option value="' + q.key + '"' + (q.key === "q4" || (!QUANTA.some((x) => x.key === "q4") && i === 0) ? " selected" : "") + ">" + q.label + " (~" + Math.round(q.bpp * 8) + " bits)" + "</option>")
+		.join("");
+
+	function hashModel() {
+		const match = (location.hash || "").match(/model=([^&]+)/);
+		return match ? decodeURIComponent(match[1]) : null;
+	}
+	const initial = hashModel();
+	if (initial && models.some((m) => m.id === initial)) modelSelect.value = initial;
+	window.addEventListener("hashchange", () => {
+		const target = hashModel();
+		if (target && models.some((m) => m.id === target)) {
+			modelSelect.value = target;
+			draw();
+		}
+	});
+
 	function draw() {
 		const m = models.find((x) => x.id === modelSelect.value) || models[0];
 		if (!m) return;
-		const q = HW_QUANTA[quantSelect.value];
-		const need = m.self_host[q.key];
+		const q = QUANTA.find((x) => x.key === quantSelect.value) || QUANTA[0];
+		const need = m.self_host[q.field];
 		const activeB = m.params_active_b != null ? m.params_active_b : m.params_total_b;
-		const activeGB = activeB * q.bits_per_param;
+		const activeGB = activeB * q.bpp;
 
 		const rows = hw
 			.map((h) => {
@@ -685,7 +736,7 @@ function renderHardware(dataset) {
 				const elecHour = (h.tdp_w / 1000 * elec).toFixed(2);
 				return (
 					"<tr" + (fits ? "" : ' class="row-dim"') + ">" +
-					'<td><span class="cell-main">' + esc(h.name) + "</span>" +
+					'<td><span class="cell-main"><a href="hosting.html#vram=' + h.vram_gb + '">' + esc(h.name) + "</a></span>" +
 					' <span class="badge">' + esc(h.brand) + " " + h.year + "</span>" +
 					'<div class="cell-sub">' + esc(h.note) + "</div></td>" +
 					'<td class="num">' + h.vram_gb + " Go</td>" +

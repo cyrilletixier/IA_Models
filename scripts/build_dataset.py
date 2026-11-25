@@ -14,9 +14,9 @@ Indices calculés :
     perf_per_dollar   aa_intelligence / price_blended (perf globale par $)
 
 Auto-hebergement (modeles open_weights avec params_total_b connus) :
-    vram_q4_gb    total_b * 0.58 + 1.5   (quantisation ~4.5 bits/poids)
-    vram_q8_gb    total_b * 1.10 + 1.5    (~9 bits/poids)
-    vram_fp16_gb  total_b * 2.0  + 2.5   (precision native)
+    vram_<q>_gb   pour chaque quantisation (Q2, Q3, Q4, Q5, Q6, Q8, FP16) :
+                  total_b * bytes_per_param + overhead_gb,
+                  table dans data/hardware.json _meta.quant
     Poids seuls, KV cache et overhead moteur NON inclus. MoE : la totalite
     des poids reside en VRAM, seuls les parametres actifs comptent au compute.
 
@@ -61,6 +61,7 @@ LAB_COLORS = {
     "Liquid AI": "#21d0c0",
 }
 DEFAULT_LAB_COLOR = "#7aa2f7"
+QUANT_TABLE: dict = {}
 
 
 def load_json(path: Path) -> dict:
@@ -101,10 +102,14 @@ def merge_model(bench_entry: dict, price_map: dict) -> dict:
     params_total = model["params_total_b"]
     if model["open_weights"] and params_total:
         # poids seuls ; MoE = la totalite des poids reside en VRAM, KV cache non inclus
-        q4 = round(params_total * 0.58 + 1.5, 1)   # ~4.5 bits/poids + overhead
-        q8 = round(params_total * 1.10 + 1.5, 1)  # ~9 bits/poids + overhead
-        fp16 = round(params_total * 2.0 + 2.5, 1) # ~16 bits/poids + overhead
-        model["self_host"] = {"vram_q4_gb": q4, "vram_q8_gb": q8, "vram_fp16_gb": fp16}
+        # table de quantisations : data/hardware.json -> _meta.quant (source unique,
+        # partagee avec la page hardware pour les tok/s)
+        model["self_host"] = {
+            f"vram_{key}_gb": round(
+                params_total * qdef["bytes_per_param"] + qdef["overhead_gb"], 1
+            )
+            for key, qdef in QUANT_TABLE.items()
+        }
 
     created = (price_info or {}).get("created")
     if created:
@@ -151,7 +156,18 @@ def merge_providers(model: dict, providers_by_model: dict) -> None:
     model["providers"] = out
 
 
+def load_quant_table() -> dict:
+    hw = load_json(HARDWARE_FILE) if HARDWARE_FILE.exists() else {}
+    quant = (hw.get("_meta") or {}).get("quant") or {}
+    table = {k: v for k, v in quant.items() if k != "order"}
+    if not table:
+        raise SystemExit("[erreur] data/hardware.json sans _meta.quant : table de quantisations absente")
+    return table
+
+
 def main() -> int:
+    global QUANT_TABLE
+    QUANT_TABLE = load_quant_table()
     bench = load_json(BENCH_FILE)
     pricing_snapshot = load_json(PRICING_FILE)
     providers_snapshot = load_json(PROVIDERS_FILE) if PROVIDERS_FILE.exists() else None
@@ -177,7 +193,7 @@ def main() -> int:
             "provider_blended": "meme formule appliquee aux prix propres de chaque fournisseur",
                 "perf_per_dollar": "aa_intelligence / blended_per_m",
                 "freshness": "score 1-5 : 5 < 2 mois, 4 < 5 mois, 3 < 1 an, 2 < 2 ans, 1 plus vieux",
-                "self_host_vram": "q4 = total_b*0.58+1.5, q8 = total_b*1.10+1.5, fp16 = total_b*2.0+2.5 (GB, poids seuls, KV cache non inclus)",
+                "self_host_vram": "vram = total_b * bytes_per_param + overhead_gb par quantisation (Q2..FP16), table dans data/hardware.json _meta.quant (GB, poids seuls, KV cache non inclus)",
             },
         },
         "models": models,

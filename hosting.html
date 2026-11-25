@@ -28,7 +28,7 @@
 
 	<section class="page-head">
 		<h1>auto-hébergement</h1>
-		<p>Les modèles à poids ouverts qu'on peut faire tourner chez soi. Choisissez votre VRAM : les trois quantisations s'affichent, en vert quand ça tient, en rouge quand l'alimentation pleure.</p>
+		<p>Les modèles à poids ouverts qu'on peut faire tourner chez soi. Choisissez votre VRAM : les sept quantisations s'affichent, en vert quand ça tient, en rouge quand l'alimentation pleure. Depuis la page hardware, cliquez un composant et sa mémoire s'injecte ici toute seule.</p>
 	</section>
 
 	<div class="filters">
@@ -46,7 +46,11 @@
 					<th>Modèle</th>
 					<th>Labo</th>
 					<th class="num">Params</th>
+					<th class="num">VRAM Q2</th>
+					<th class="num">VRAM Q3</th>
 					<th class="num">VRAM Q4</th>
+					<th class="num">VRAM Q5</th>
+					<th class="num">VRAM Q6</th>
 					<th class="num">VRAM Q8</th>
 					<th class="num">VRAM FP16</th>
 					<th class="num">$ API mélangé /M</th>
@@ -59,7 +63,8 @@
 	</section>
 
 	<p class="footer-note">
-		VRAM = poids seuls : Q4 = <code>params_B × 0.58 + 1.5</code>, Q8 = <code>params_B × 1.10 + 1.5</code>, FP16 = <code>params_B × 2.0 + 2.5</code> (Go).
+		VRAM = poids seuls, <code>params_B × octets/poids + overhead</code> selon la quantisation(Q2 0.33+1.0, Q3 0.42+1.2, Q4 0.58+1.5, Q5 0.70+1.5, Q6 0.82+1.8, Q8 1.10+1.5, FP16 2.0+2.5).
+		Table complète dans <code>data/hardware.json</code> (_meta.quant), la même qui alimente les tok/s de la page hardware.
 		KV cache et overhead moteur non inclus : prévoyez de la marge, surtout à long contexte.
 		MoE : la totalité des poids réside en VRAM, seuls les paramètres actifs comptent au compute.
 		« taille non publiée » = poids ouverts mais architecture gardée secrète, héberger sans les dimensions, c'est acheter un meuble en ligne sans le mode d'emploi.
