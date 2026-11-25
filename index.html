@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA_Models — Dashboard</title>
+<meta name="description" content="Suivi data driven des modèles d'IA : performances, coûts, fournisseurs d'inférence.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html">IA_Models<span class="cursor"></span></a>
+		<nav class="nav">
+			<a class="active" href="index.html">dashboard</a>
+			<a href="models.html">modèles</a>
+			<a href="costs.html">coûts</a>
+			<a href="providers.html">fournisseurs</a>
+		</nav>
+		<div class="top-status" id="data-status"><span class="dot">●</span> chargement…</div>
+	</div>
+</header>
+
+<main class="wrap">
+
+	<section class="page-head">
+		<h1>dashboard</h1>
+		<p>État des modèles d'IA suivis : performance, prix, rendement. Dernière génération du dataset : <span id="generated-at">--</span>.</p>
+	</section>
+
+	<section class="kpi-grid">
+		<div class="kpi"><div class="k-label">Top code · FrontierCode 2.0</div><div id="kpi-code"></div></div>
+		<div class="kpi"><div class="k-label">Top analyse · GPQA Diamond</div><div id="kpi-analyse"></div></div>
+		<div class="kpi"><div class="k-label">Top global · AA Intelligence</div><div id="kpi-global"></div></div>
+		<div class="kpi"><div class="k-label">Top perf / $ (indice global par $/1M)</div><div id="kpi-value"></div></div>
+		<div class="kpi"><div class="k-label">Prix mélangé le plus bas</div><div id="kpi-cheap"></div></div>
+		<div class="kpi"><div class="k-label">Contexte</div><div id="kpi-ctx"></div></div>
+	</section>
+
+	<section class="panel">
+		<div class="panel-title">top perf / $ — indice global par dollar</div>
+		<div class="panel-body" style="padding:0">
+			<table class="grid" id="top-value">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Modèle</th>
+						<th class="num">Global (AA)</th>
+						<th class="num">$ mélangé /M</th>
+						<th class="num">Perf / $</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</section>
+
+	<section class="panel">
+		<div class="panel-title">méthodo</div>
+		<div class="panel-body footer-note">
+			<p style="margin:0 0 6px">
+				<b class="legend">Code</b> = FrontierCode 2.0 (Artificial Analysis), 132 tâches réelles sur des repos open source.
+				<b class="legend">Analyse</b> = GPQA Diamond (Epoch AI), questions sciences de niveau doctorat « Google-proof ».
+				<b class="legend">Global</b> = AA Intelligence Index v5.0.1, composite 9 évaluations.
+				<b class="legend">Perf/$</b> = indice global divisé par le prix mélangé <code>(3·in + out)/4</code> en $/1M tokens.
+			</p>
+			<p style="margin:0">
+				Prix et contextes : API publique OpenRouter, fetch du <span id="pricing-at">--</span>. Benchmarks curatés dans le repo, chaque score daté avec son réglage de raisonnement (max / xhigh / high / medium).
+			</p>
+		</div>
+	</section>
+
+</main>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

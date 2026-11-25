@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA_Models — Coûts</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html">IA_Models<span class="cursor"></span></a>
+		<nav class="nav">
+			<a href="index.html">dashboard</a>
+			<a href="models.html">modèles</a>
+			<a class="active" href="costs.html">coûts</a>
+			<a href="providers.html">fournisseurs</a>
+		</nav>
+		<div class="top-status" id="data-status"><span class="dot">●</span> chargement…</div>
+	</div>
+</header>
+
+<main class="wrap">
+
+	<section class="page-head">
+		<h1>coûts</h1>
+		<p>Coût d'une charge de travail type, par modèle, du moins cher au plus cher. Choisir un scénario :</p>
+	</section>
+
+	<div class="filters">
+		<select id="workload"></select>
+		<span class="legend">prix $/1M tokens · source OpenRouter, fetch du <span id="pricing-at">--</span></span>
+	</div>
+
+	<section class="panel" style="overflow-x:auto">
+		<table class="grid" id="costs-table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Modèle</th>
+					<th class="num">Contexte</th>
+					<th class="num">Coût du scénario</th>
+				</tr>
+			</thead>
+			<tbody id="costs-tbody"></tbody>
+		</table>
+	</section>
+
+	<p class="footer-note">
+		Les modèles « gratuits » sont des APIs d'essai à débit limité, pas de la philanthropie.
+		Roadmap : historique des prix et alertes de variation, multi-fournisseurs par modèle.
+	</p>
+
+</main>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

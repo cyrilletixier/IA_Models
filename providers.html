@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA_Models — Fournisseurs</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html">IA_Models<span class="cursor"></span></a>
+		<nav class="nav">
+			<a href="index.html">dashboard</a>
+			<a href="models.html">modèles</a>
+			<a href="costs.html">coûts</a>
+			<a class="active" href="providers.html">fournisseurs</a>
+		</nav>
+		<div class="top-status" id="data-status"><span class="dot">●</span> chargement…</div>
+	</div>
+</header>
+
+<main class="wrap">
+
+	<section class="page-head">
+		<h1>fournisseurs</h1>
+		<p>Vue agrégée par laboratoire. Prix via OpenRouter (agrégateur) ; v1 : comparaison des fournisseurs d'inférence par modèle.</p>
+	</section>
+
+	<section>
+		<div class="provider-grid" id="providers"></div>
+	</section>
+
+	<p class="footer-note">
+		En v0, « fournisseur » = le labo qui publie le modèle, prix observés via l'agrégateur OpenRouter.
+		La v1 croisera plusieurs fournisseurs d'inférence (APIs natives, DeepInfra, Together, Fireworks…)
+		pour montrer, modèle par modèle, qui sert le moins cher, le plus rapide, le plus disponible.
+	</p>
+
+</main>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

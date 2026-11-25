@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA_Models — Modèles</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html">IA_Models<span class="cursor"></span></a>
+		<nav class="nav">
+			<a href="index.html">dashboard</a>
+			<a class="active" href="models.html">modèles</a>
+			<a href="costs.html">coûts</a>
+			<a href="providers.html">fournisseurs</a>
+		</nav>
+		<div class="top-status" id="data-status"><span class="dot">●</span> chargement…</div>
+	</div>
+</header>
+
+<main class="wrap">
+
+	<section class="page-head">
+		<h1>modèles</h1>
+		<p>Performance par modèle, orienté analyse et code. Cliquez un en-tête pour trier, le tri par défaut est l'indice global.</p>
+	</section>
+
+	<div class="filters">
+		<input type="search" id="model-search" placeholder="grep -i modele, labo, id…" size="24">
+		<select id="lab-filter"></select>
+		<span class="legend" id="row-count"></span>
+	</div>
+
+	<section class="panel" style="overflow-x:auto">
+		<table class="grid" id="models-table"></table>
+	</section>
+
+	<p class="footer-note">
+		Indices : <b>Code</b> = FrontierCode 2.0 (%), <b>Analyse</b> = GPQA Diamond (%), <b>Global</b> = AA Intelligence Index v5.0.1 (0-100).
+		Prix $/1M tokens, mélangé = (3·in + out)/4. Badge OPEN = poids ouverts. « -- » = pas de résultat publié.
+		Tracer les scores AA v5.0.1 avec les indices v4.x est un péché de méthode : ne le faites pas.
+	</p>
+
+</main>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
