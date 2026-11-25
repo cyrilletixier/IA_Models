@@ -18,7 +18,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -31,5 +31,13 @@ jobs:
         with:
           path: .
 
+      # L'API Pages connait des echecs transitoires (~1 run sur 2 observes) :
+      # les deux tentatives ci-dessous isolent ce bruit sans masquer un vrai problem.
       - id: deployment
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+
+      - name: Retry deployment once on transient Pages API failure
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v5
