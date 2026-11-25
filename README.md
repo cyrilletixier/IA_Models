@@ -5,7 +5,7 @@
 
 ```
  _________________  ____   __      ____   __________  __  ___
-\______   \_   ___\ \   \ / _\    /  _ \  \____   /  \ \ \/  /
+\_____   \_   ___\ \   \ / _\    /  _ \  \_____   /  \ \ \/  /
  |   ___/\ \  \  \|  |_ \(  <  /  /_\ \   /    /|   | \     /
  |   |____\ \  \__\|   |  \  \|  |    |  |  /    / |   | /     \
  |______ /  \_____ |___|   \_\   \___|_| /     /  |___|/___/\___\
@@ -55,7 +55,8 @@ python3 scripts/build_dataset.py  # fusion + calcul des indices -> data/models.j
 
 - `data/benchmarks.json` : benchmarks curatés à la main, chaque métrique avec sa date et
   son réglage de raisonnement (max / xhigh / high / medium). C'est le fichier à mettre à
-  jour quand de nouveaux scores sortent.
+  jour quand de nouveaux scores sortent. Politique de sélection : pour chaque indice, le
+  meilleur score publié du modèle, tous réglages de raisonnement confondus.
 - `scripts/fetch_pricing.py` : récupère les prix et contextes en direct sur l'API publique
   OpenRouter (aucune clé requise). Marque `OPEN` les modèles à poids ouverts.
 - `scripts/build_dataset.py` : fusionne le tout et calcule prix mélangé et perf/$.
