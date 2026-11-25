@@ -1,0 +1,491 @@
+{
+ "_meta": {
+  "generated_at_utc": "2026-11-25T09:11:26Z",
+  "pricing_fetched_at_utc": "2026-11-25T09:11:26Z",
+  "benchmarks_updated": "2026-11-25",
+  "sources": {
+   "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (via BenchLeader, data as of 2026-11-25)",
+   "frontiercode2": "FrontierCode 2.0 (AA), 132 tasks by Cognition (via BenchLeader, data as of 2026-11-25)",
+   "gpqa_diamond": "GPQA Diamond, Epoch AI Benchmarking Hub (via BenchLeader, data as of 2026-11-25)"
+  },
+  "formula": {
+   "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
+   "perf_per_dollar": "aa_intelligence / blended_per_m"
+  }
+ },
+ "models": [
+  {
+   "id": "anthropic/claude-fable-5.2",
+   "name": "Claude Fable 5.2",
+   "lab": "Anthropic",
+   "lab_color": "#d97757",
+   "open_weights": false,
+   "context_tokens": 1000000,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 64.8,
+     "setting": "max",
+     "date": "2026-11-09"
+    },
+    "frontiercode2": {
+     "value": 49.1,
+     "setting": "high",
+     "date": "2026-11-09"
+    },
+    "gpqa_diamond": {
+     "value": 93.9,
+     "setting": "max",
+     "date": "2026-11-09"
+    }
+   },
+   "pricing": {
+    "in_per_m": 8.0,
+    "out_per_m": 40.0,
+    "blended_per_m": 16.0,
+    "perf_per_dollar": 4.05
+   }
+  },
+  {
+   "id": "openai/gpt-6.2-astra",
+   "name": "GPT-6.2 Astra",
+   "lab": "OpenAI",
+   "lab_color": "#74aa9c",
+   "open_weights": false,
+   "context_tokens": 1050000,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 62.2,
+     "setting": "max",
+     "date": "2026-11-17"
+    },
+    "frontiercode2": {
+     "value": 49.0,
+     "setting": "xhigh",
+     "date": "2026-11-17"
+    },
+    "gpqa_diamond": {
+     "value": 96.8,
+     "setting": "max",
+     "date": "2026-11-17"
+    }
+   },
+   "pricing": {
+    "in_per_m": 8.0,
+    "out_per_m": 40.0,
+    "blended_per_m": 16.0,
+    "perf_per_dollar": 3.8875
+   }
+  },
+  {
+   "id": "google/gemini-4-neon",
+   "name": "Gemini 4 Neon",
+   "lab": "Google",
+   "lab_color": "#5b9bd5",
+   "open_weights": false,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 61.5,
+     "setting": "xhigh",
+     "date": "2026-11-18"
+    },
+    "frontiercode2": {
+     "value": 44.4,
+     "setting": "xhigh",
+     "date": "2026-11-18"
+    },
+    "gpqa_diamond": {
+     "value": 96.3,
+     "setting": "xhigh",
+     "date": "2026-11-18"
+    }
+   },
+   "pricing": {
+    "in_per_m": 3.0,
+    "out_per_m": 15.0,
+    "blended_per_m": 6.0,
+    "perf_per_dollar": 10.25
+   }
+  },
+  {
+   "id": "google/gemini-4-carbon",
+   "name": "Gemini 4 Carbon",
+   "lab": "Google",
+   "lab_color": "#5b9bd5",
+   "open_weights": false,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 60.1,
+     "setting": "high",
+     "date": "2026-10-28"
+    },
+    "frontiercode2": {
+     "value": 40.6,
+     "setting": "high",
+     "date": "2026-10-28"
+    },
+    "gpqa_diamond": {
+     "value": 96.5,
+     "setting": "high",
+     "date": "2026-10-28"
+    }
+   },
+   "pricing": {
+    "in_per_m": 2.0,
+    "out_per_m": 10.0,
+    "blended_per_m": 4.0,
+    "perf_per_dollar": 15.025
+   }
+  },
+  {
+   "id": "anthropic/claude-opus-5.5",
+   "name": "Claude Opus 5.5",
+   "lab": "Anthropic",
+   "lab_color": "#d97757",
+   "open_weights": false,
+   "context_tokens": 1000000,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 59.1,
+     "setting": "max",
+     "date": "2026-09-22"
+    },
+    "frontiercode2": {
+     "value": 46.9,
+     "setting": "max",
+     "date": "2026-09-22"
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 4.0,
+    "out_per_m": 20.0,
+    "blended_per_m": 8.0,
+    "perf_per_dollar": 7.3875
+   }
+  },
+  {
+   "id": "openai/gpt-6.2-sol",
+   "name": "GPT-6.2 Sol",
+   "lab": "OpenAI",
+   "lab_color": "#74aa9c",
+   "open_weights": false,
+   "context_tokens": 1050000,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 57.3,
+     "setting": "max",
+     "date": "2026-11-17"
+    },
+    "frontiercode2": {
+     "value": 44.4,
+     "setting": "max",
+     "date": "2026-11-17"
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 2.0,
+    "out_per_m": 10.0,
+    "blended_per_m": 4.0,
+    "perf_per_dollar": 14.325
+   }
+  },
+  {
+   "id": "openai/gpt-6-astra",
+   "name": "GPT-6 Astra",
+   "lab": "OpenAI",
+   "lab_color": "#74aa9c",
+   "open_weights": false,
+   "context_tokens": 1050000,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 56.9,
+     "setting": "max",
+     "date": "2026-09-03"
+    },
+    "frontiercode2": {
+     "value": 42.4,
+     "setting": "max",
+     "date": "2026-09-03"
+    },
+    "gpqa_diamond": {
+     "value": 95.8,
+     "setting": "max",
+     "date": "2026-09-03"
+    }
+   },
+   "pricing": {
+    "in_per_m": 10.0,
+    "out_per_m": 50.0,
+    "blended_per_m": 20.0,
+    "perf_per_dollar": 2.845
+   }
+  },
+  {
+   "id": "anthropic/claude-sonnet-5.5",
+   "name": "Claude Sonnet 5.5",
+   "lab": "Anthropic",
+   "lab_color": "#d97757",
+   "open_weights": false,
+   "context_tokens": 1000000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": {
+     "value": 41.9,
+     "setting": "max",
+     "date": "2026-09-28"
+    },
+    "gpqa_diamond": {
+     "value": 95.6,
+     "setting": "max",
+     "date": "2026-09-28"
+    }
+   },
+   "pricing": {
+    "in_per_m": 2.0,
+    "out_per_m": 10.0,
+    "blended_per_m": 4.0
+   }
+  },
+  {
+   "id": "openai/gpt-6.1-terra",
+   "name": "GPT-6.1 Terra",
+   "lab": "OpenAI",
+   "lab_color": "#74aa9c",
+   "open_weights": false,
+   "context_tokens": 1050000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": {
+     "value": 42.1,
+     "setting": "max",
+     "date": "2026-10-26"
+    },
+    "gpqa_diamond": {
+     "value": 94.3,
+     "setting": "max",
+     "date": "2026-10-26"
+    }
+   },
+   "pricing": {
+    "in_per_m": 1.0,
+    "out_per_m": 5.0,
+    "blended_per_m": 2.0
+   }
+  },
+  {
+   "id": "openai/gpt-6.1-sol",
+   "name": "GPT-6.1 Sol",
+   "lab": "OpenAI",
+   "lab_color": "#74aa9c",
+   "open_weights": false,
+   "context_tokens": 1050000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": {
+     "value": 40.6,
+     "setting": "max",
+     "date": "2026-09-29"
+    },
+    "gpqa_diamond": {
+     "value": 95.4,
+     "setting": "max",
+     "date": "2026-09-29"
+    }
+   },
+   "pricing": {
+    "in_per_m": 2.0,
+    "out_per_m": 10.0,
+    "blended_per_m": 4.0
+   }
+  },
+  {
+   "id": "google/gemini-4-hydrogen",
+   "name": "Gemini 4 Hydrogen",
+   "lab": "Google",
+   "lab_color": "#5b9bd5",
+   "open_weights": false,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 96.8,
+     "setting": "xhigh",
+     "date": "2026-11-12"
+    }
+   },
+   "pricing": {
+    "in_per_m": 1.5,
+    "out_per_m": 7.5,
+    "blended_per_m": 3.0
+   }
+  },
+  {
+   "id": "google/gemini-4-argon",
+   "name": "Gemini 4 Argon",
+   "lab": "Google",
+   "lab_color": "#5b9bd5",
+   "open_weights": false,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 96.4,
+     "setting": "high",
+     "date": "2026-10-13"
+    }
+   },
+   "pricing": {
+    "in_per_m": 2.0,
+    "out_per_m": 10.0,
+    "blended_per_m": 4.0
+   }
+  },
+  {
+   "id": "moonshotai/kimi-k3.1-pro",
+   "name": "Kimi K3.1 Pro",
+   "lab": "Moonshot AI",
+   "lab_color": "#a32cdf",
+   "open_weights": true,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 94.2,
+     "setting": "max",
+     "date": "2026-10-23"
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.2403,
+    "out_per_m": 8.4023,
+    "blended_per_m": 2.2808
+   }
+  },
+  {
+   "id": "qwen/qwen4-max",
+   "name": "Qwen4 Max",
+   "lab": "Alibaba",
+   "lab_color": "#e6a23c",
+   "open_weights": false,
+   "context_tokens": 1000000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 94.0,
+     "setting": "xhigh",
+     "date": "2026-11-16"
+    }
+   },
+   "pricing": {
+    "in_per_m": 1.425,
+    "out_per_m": 4.275,
+    "blended_per_m": 2.1375
+   }
+  },
+  {
+   "id": "x-ai/grok-4.7",
+   "name": "Grok 4.7",
+   "lab": "SpaceXAI",
+   "lab_color": "#9aa0a6",
+   "open_weights": false,
+   "context_tokens": 500000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 2.0,
+    "out_per_m": 6.0,
+    "blended_per_m": 3.0
+   }
+  },
+  {
+   "id": "anthropic/claude-haiku-5.5",
+   "name": "Claude Haiku 5.5",
+   "lab": "Anthropic",
+   "lab_color": "#d97757",
+   "open_weights": false,
+   "context_tokens": 1000000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.1,
+    "out_per_m": 0.5,
+    "blended_per_m": 0.2
+   }
+  },
+  {
+   "id": "openai/gpt-6-luna",
+   "name": "GPT-6 Luna",
+   "lab": "OpenAI",
+   "lab_color": "#74aa9c",
+   "open_weights": false,
+   "context_tokens": 1050000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": {
+     "value": 12.8,
+     "setting": "medium",
+     "date": "2026-09-22"
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.1,
+    "out_per_m": 0.5,
+    "blended_per_m": 0.2
+   }
+  },
+  {
+   "id": "mistralai/mistral-large-4-0",
+   "name": "Mistral Large 4",
+   "lab": "Mistral AI",
+   "lab_color": "#ff7000",
+   "open_weights": true,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": {
+     "value": 13.6,
+     "setting": "default",
+     "date": "2026-10-06"
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.7,
+    "out_per_m": 2.1,
+    "blended_per_m": 1.05
+   }
+  },
+  {
+   "id": "deepseek/deepseek-v4.1-flash",
+   "name": "DeepSeek V4.1 Flash",
+   "lab": "DeepSeek",
+   "lab_color": "#4d6bfe",
+   "open_weights": true,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.14,
+    "out_per_m": 0.42,
+    "blended_per_m": 0.21
+   }
+  }
+ ]
+}

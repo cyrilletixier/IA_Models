@@ -1,0 +1,14 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# os / editeurs
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# snapshot brut regenere par scripts/fetch_pricing.py (la CI le refait)
+data/raw/
