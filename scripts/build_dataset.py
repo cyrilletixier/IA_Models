@@ -36,6 +36,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BENCH_FILE = ROOT / "data" / "benchmarks.json"
 PRICING_FILE = ROOT / "data" / "raw" / "openrouter_models.json"
+PROVIDERS_FILE = ROOT / "data" / "providers.json"
 OUT_FILE = ROOT / "data" / "models.json"
 
 LAB_COLORS = {
@@ -53,6 +54,8 @@ LAB_COLORS = {
     "inclusionAI": "#5fc9a2",
     "StepFun": "#4dabf7",
     "Z.ai": "#3fc1ff",
+    "NVIDIA": "#76b900",
+    "Thinking Machines": "#f472b6",
 }
 DEFAULT_LAB_COLOR = "#7aa2f7"
 
@@ -113,21 +116,44 @@ def merge_model(bench_entry: dict, price_map: dict) -> dict:
     return model
 
 
+def merge_providers(model: dict, providers_by_model: dict) -> None:
+    """Attache les offres par fournisseur (BenchLeader) au modele, prix melange calcule."""
+    entry = providers_by_model.get(model["id"])
+    offers = entry.get("providers", []) if entry else []
+    out = []
+    for o in offers:
+        row = dict(o)
+        if row.get("in_per_m") is not None and row.get("out_per_m") is not None:
+            row["blended_per_m"] = round((3 * row["in_per_m"] + row["out_per_m"]) / 4, 6)
+        else:
+            row["blended_per_m"] = None
+        out.append(row)
+    out.sort(key=lambda r: (r.get("blended_per_m") is None, r.get("blended_per_m") or 0))
+    model["providers"] = out
+
+
 def main() -> int:
     bench = load_json(BENCH_FILE)
     pricing_snapshot = load_json(PRICING_FILE)
+    providers_snapshot = load_json(PROVIDERS_FILE) if PROVIDERS_FILE.exists() else None
     price_map = {m["id"]: m for m in pricing_snapshot["models"]}
+    providers_by_model = (providers_snapshot or {}).get("by_model", {})
 
     models = [merge_model(e, price_map) for e in bench["models"]]
+    for m in models:
+        merge_providers(m, providers_by_model)
 
     dataset = {
         "_meta": {
             "generated_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "pricing_fetched_at_utc": pricing_snapshot.get("fetched_at_utc"),
             "benchmarks_updated": bench["_meta"].get("updated"),
+            "providers_fetched_at_utc": (providers_snapshot or {}).get("_meta", {}).get("updated"),
+            "providers_source": (providers_snapshot or {}).get("_meta", {}).get("source"),
             "sources": dict(bench["_meta"].get("sources", {})),
             "formula": {
                 "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
+            "provider_blended": "meme formule appliquee aux prix propres de chaque fournisseur",
                 "perf_per_dollar": "aa_intelligence / blended_per_m",
                 "self_host_vram": "q4 = total_b*0.58+1.5, q8 = total_b*1.10+1.5, fp16 = total_b*2.0+2.5 (GB, poids seuls, KV cache non inclus)",
             },
@@ -143,9 +169,12 @@ def main() -> int:
     n_benched = sum(1 for m in models if m["benchmarks"]["aa_intelligence"])
     n_open = sum(1 for m in models if m["open_weights"])
     n_hostable = sum(1 for m in models if m["self_host"])
+    n_offers = sum(len(m["providers"]) for m in models)
+    n_multi = sum(1 for m in models if len(m["providers"]) > 1)
     print(f"[done] {len(models)} modeles, {n_priced} prix OpenRouter, "
           f"{n_benched} avec indice global, {n_open} open weights, "
-          f"{n_hostable} avec VRAM calculee -> {OUT_FILE}")
+          f"{n_hostable} avec VRAM calculee, {n_offers} offres fournisseurs "
+          f"({n_multi} modeles multi-offres) -> {OUT_FILE}")
     return 0
 
 

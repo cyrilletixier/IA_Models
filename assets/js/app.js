@@ -233,7 +233,13 @@ function renderModelsTable(dataset) {
 					'<td class="num">' + (p ? fmt.price(p.blended_per_m) : '<span class="na">--</span>') + "</td>" +
 					barCell(bmValue(m, "frontiercode2"), maxFC, "code") +
 					barCell(bmValue(m, "gpqa_diamond"), maxGPQA, "analyse") +
-					barCell(bmValue(m, "aa_intelligence"), maxAA, "global") +
+					(() => {
+						const aa = m.benchmarks.aa_intelligence;
+						return barCell(bmValue(m, "aa_intelligence"), maxAA, "global") +
+							(aa && aa.version && aa.version.startsWith("v4")
+								? '<span class="v4-tag">v4</span>'
+								: "");
+					})() +
 					'<td class="num">' +
 					(p && p.perf_per_dollar
 						? '<span class="pos">' + p.perf_per_dollar.toFixed(2) + "</span>"
@@ -334,47 +340,138 @@ function renderCosts(dataset) {
 
 /* ---------- page fournisseurs ---------- */
 
-function renderProviders(dataset) {
-	const host = document.querySelector("#providers");
-	if (!host) return;
-	const byLab = new Map();
-	for (const m of dataset.models) {
-		if (!byLab.has(m.lab)) byLab.set(m.lab, []);
-		byLab.get(m.lab).push(m);
-	}
-	const cards = [...byLab.entries()]
-		.map(([lab, ms]) => {
-			const priced = ms.filter((m) => m.pricing);
-			const cheapest = priced.length
-				? Math.min(...priced.map((m) => m.pricing.blended_per_m))
-				: null;
-			const priciest = priced.length
-				? Math.max(...priced.map((m) => m.pricing.blended_per_m))
-				: null;
-			const bestGlobal = ms
-				.map((m) => bmValue(m, "aa_intelligence"))
-				.filter((v) => v != null);
-			const color = ms[0].lab_color;
-			return (
-				'<div class="provider-card"><h3><span class="lab-dot" style="background:' +
-				color + '"></span>' + esc(lab) + "</h3>" +
-				'<div class="stat-row"><span>Modèles suivis</span><b>' + ms.length + "</b></div>" +
-				'<div class="stat-row"><span>Poids ouverts</span><b>' +
-				ms.filter((m) => m.open_weights).length + "</b></div>" +
-				'<div class="stat-row"><span>Prix mélangé</span><b>' +
-				(cheapest != null
-					? fmt.price(cheapest) + " → " + fmt.price(priciest)
-					: "--") +
-				" /M</b></div>" +
-				'<div class="stat-row"><span>Meilleur indice global</span><b>' +
-				(bestGlobal.length ? Math.max(...bestGlobal).toFixed(1) : "--") +
-				"</b></div></div>"
-			);
-		})
-		.join("");
-	host.innerHTML = cards;
-}
+/* fournisseurs qui sont l'API native du labo */
+const LAB_PROVIDER = {
+	"Anthropic": "Anthropic",
+	"OpenAI": "OpenAI",
+	"Google AI Studio": "Google",
+	"Google Vertex": "Google",
+	"Mistral": "Mistral AI",
+	"Moonshot AI": "Moonshot AI",
+	"Alibaba Cloud Int.": "Alibaba",
+	"Xiaomi": "Xiaomi",
+	"Z.ai": "Z.ai",
+	"Cohere": "Cohere",
+	"DeepSeek": "DeepSeek",
+	"SpaceXAI": "SpaceXAI",
+	"IBM": "IBM",
+	"inclusionAI": "inclusionAI",
+	"StepFun": "StepFun",
+};
 
+function renderProviders(dataset) {
+	const host = document.querySelector("#providers-table");
+	const select = document.querySelector("#provider-model");
+	if (!host || !select) return;
+
+	const models = [...dataset.models].sort(
+		(a, b) => (bmValue(b, "aa_intelligence") ?? -1) - (bmValue(a, "aa_intelligence") ?? -1)
+	);
+
+	select.innerHTML = models
+		.map((m) => '<option value="' + esc(m.id) + '">' + esc(m.name) + " — " + esc(m.lab) + "</option>")
+		.join("");
+
+	const tbody = host.querySelector("tbody");
+	const countEl = document.querySelector("#offer-count");
+	const summaryEl = document.querySelector("#provider-summary");
+	const stampEl = document.querySelector("#providers-at");
+	if (stampEl) stampEl.textContent = fmt.unixToISO(dataset._meta.providers_fetched_at_utc);
+
+	function describe(m) {
+		const offers = m.providers || [];
+		const labOffers = offers.filter((o) => LAB_PROVIDER[o.provider] === m.lab);
+		const orPrice = m.pricing ? m.pricing.blended_per_m : null;
+		const cheapest = offers.length
+			? offers.reduce((a, b) => ((b.blended_per_m ?? Infinity) < (a.blended_per_m ?? Infinity) ? b : a))
+			: null;
+		const parts = [];
+		parts.push('<div class="stat-row"><span>Modèle</span><b>' + esc(m.name) + "</b></div>");
+		parts.push('<div class="stat-row"><span>Labo</span><b>' + esc(m.lab) + "</b></div>");
+		parts.push(
+			'<div class="stat-row"><span>Offres publiées</span><b>' + offers.length +
+			(offers.length ? " dont " + labOffers.length + " via l'API du labo" : "") + "</b></div>"
+		);
+		if (cheapest && cheapest.blended_per_m != null) {
+			parts.push(
+				'<div class="stat-row"><span>Moins cher</span><b>' + esc(cheapest.provider) +
+				" (" + fmt.price(cheapest.blended_per_m) + " /M" +
+				(cheapest.quant ? ", " + esc(cheapest.quant) : "") + ")</b></div>"
+			);
+		}
+		if (orPrice != null && cheapest && cheapest.blended_per_m != null) {
+			const delta = ((cheapest.blended_per_m / orPrice - 1) * 100).toFixed(0);
+			parts.push(
+				'<div class="stat-row"><span>Routeur vs moins cher</span><b class="' +
+				(cheapest.blended_per_m < orPrice ? "pos" : "neg") + '">' +
+				(cheapest.blended_per_m < orPrice ? delta + " % de marge à prendre ailleurs" :
+					delta + " % (le routeur est le moins cher)") + "</b></div>"
+			);
+		}
+		if (summaryEl) summaryEl.innerHTML = '<div class="provider-summary">' + parts.join("") + "</div>";
+	}
+
+	function draw() {
+		const m = models.find((x) => x.id === select.value) || models[0];
+		if (!m) return;
+		describe(m);
+
+		const offers = m.providers || [];
+		const rows = [];
+		if (m.pricing) {
+			rows.push(
+				"<tr>" +
+				'<td><span class="cell-main">OpenRouter</span>' +
+				'<span class="badge open">routage</span></td>' +
+				'<td class="dim">–</td>' +
+				'<td class="num">' + fmt.price(m.pricing.in_per_m) + "</td>" +
+				'<td class="num">' + fmt.price(m.pricing.out_per_m) + "</td>" +
+				'<td class="num">' + fmt.price(m.pricing.blended_per_m) + "</td>" +
+				'<td class="num"><span class="na">--</span></td>' +
+				'<td class="num"><span class="na">--</span></td>' +
+				'<td class="num dim">' + fmt.context(m.context_tokens) + "</td></tr>"
+			);
+		}
+		const minBlend = Math.min(
+			m.pricing ? m.pricing.blended_per_m : Infinity,
+			...offers.map((o) => o.blended_per_m ?? Infinity)
+		);
+		rows.push(
+			offers
+				.map((o) => {
+					const isLab = LAB_PROVIDER[o.provider] === m.lab;
+					const best = o.blended_per_m != null && o.blended_per_m === minBlend;
+					return (
+						"<tr>" +
+						'<td><span class="cell-main">' + esc(o.provider) + "</span>" +
+						(isLab ? '<span class="badge open">API du labo</span>' : "") +
+						(best ? '<span class="badge best">moins cher</span>' : "") + "</td>" +
+						'<td class="dim">' + (o.quant ? esc(o.quant) : '<span class="na">--</span>') + "</td>" +
+						'<td class="num">' + fmt.price(o.in_per_m) + "</td>" +
+						'<td class="num">' + fmt.price(o.out_per_m) + "</td>" +
+						'<td class="num' + (best ? " pos" : "") + '">' +
+						(o.blended_per_m != null ? fmt.price(o.blended_per_m) : '<span class="na">--</span>') + "</td>" +
+						'<td class="num dim">' + (o.speed_tok_s != null ? Math.round(o.speed_tok_s) : '<span class="na">--</span>') + "</td>" +
+						'<td class="num dim">' + (o.first_token_s != null ? o.first_token_s.toFixed(2) + " s" : '<span class="na">--</span>') + "</td>" +
+						'<td class="num dim">' + (o.context ? esc(o.context) : '<span class="na">--</span>') + "</td></tr>"
+					);
+				})
+				.join("")
+		);
+		if (!m.pricing && !offers.length) {
+			rows.push(
+				'<tr><td colspan="8"><span class="na">Aucune offre publiée pour ce modèle — ' +
+				"servi uniquement par des canaux privés, ou curation incomplète.</span></td></tr>"
+			);
+		}
+		tbody.innerHTML = rows.join("");
+		if (countEl)
+			countEl.textContent = offers.length + " offre" + (offers.length > 1 ? "s" : "") + " hors routeur";
+	}
+
+	select.addEventListener("change", draw);
+	draw();
+}
 
 /* ---------- page auto-hebergement ---------- */
 

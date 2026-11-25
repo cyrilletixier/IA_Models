@@ -1,8 +1,10 @@
 {
  "_meta": {
-  "generated_at_utc": "2026-11-25T11:19:29Z",
-  "pricing_fetched_at_utc": "2026-11-25T11:19:29Z",
+  "generated_at_utc": "2026-11-25T14:50:23Z",
+  "pricing_fetched_at_utc": "2026-11-25T14:44:19Z",
   "benchmarks_updated": "2026-11-25",
+  "providers_fetched_at_utc": "2026-11-25T14:48:53Z",
+  "providers_source": "BenchLeader pages modeles, section 'API pricing: where to run it' : prix propres de chaque fournisseur routant le modele via OpenRouter",
   "sources": {
    "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
    "frontiercode2": "FrontierCode 2.0 (AA), 132 tasks by Cognition (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
@@ -10,6 +12,7 @@
   },
   "formula": {
    "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
+   "provider_blended": "meme formule appliquee aux prix propres de chaque fournisseur",
    "perf_per_dollar": "aa_intelligence / blended_per_m",
    "self_host_vram": "q4 = total_b*0.58+1.5, q8 = total_b*1.10+1.5, fp16 = total_b*2.0+2.5 (GB, poids seuls, KV cache non inclus)"
   }
@@ -47,7 +50,59 @@
     "blended_per_m": 16.0,
     "perf_per_dollar": 4.05
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 89.0,
+     "first_token_s": 6.54,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 82.0,
+     "first_token_s": 4.18,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 78.0,
+     "first_token_s": 1.81,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 76.0,
+     "first_token_s": 4.31,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 124.0,
+     "first_token_s": 3.16,
+     "in_per_m": 16.0,
+     "out_per_m": 80.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 32.0
+    }
+   ]
   },
   {
    "id": "openai/gpt-6.2-astra",
@@ -81,7 +136,79 @@
     "blended_per_m": 16.0,
     "perf_per_dollar": 3.8875
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 69.0,
+     "first_token_s": 1.76,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 50.0,
+     "first_token_s": 3.23,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 37.0,
+     "first_token_s": 2.69,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 36.0,
+     "first_token_s": 4.51,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 50.0,
+     "first_token_s": 6.0,
+     "in_per_m": 8.8,
+     "out_per_m": 44.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 17.6
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 37.0,
+     "first_token_s": 6.54,
+     "in_per_m": 9.6,
+     "out_per_m": 48.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 19.2
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 60.0,
+     "first_token_s": 1.51,
+     "in_per_m": 16.0,
+     "out_per_m": 80.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 32.0
+    }
+   ]
   },
   {
    "id": "google/gemini-4-neon",
@@ -115,7 +242,69 @@
     "blended_per_m": 6.0,
     "perf_per_dollar": 10.25
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 74.0,
+     "first_token_s": 5.65,
+     "in_per_m": 1.5,
+     "out_per_m": 7.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.0
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 68.0,
+     "first_token_s": 5.51,
+     "in_per_m": 3.0,
+     "out_per_m": 15.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 6.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 67.0,
+     "first_token_s": 4.75,
+     "in_per_m": 3.0,
+     "out_per_m": 15.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 6.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 80.0,
+     "first_token_s": 5.52,
+     "in_per_m": 3.3,
+     "out_per_m": 16.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 6.6
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 63.0,
+     "first_token_s": 4.86,
+     "in_per_m": 3.3,
+     "out_per_m": 16.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 6.6
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 44.0,
+     "first_token_s": 5.25,
+     "in_per_m": 5.4,
+     "out_per_m": 27.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 10.8
+    }
+   ]
   },
   {
    "id": "google/gemini-4-carbon",
@@ -149,7 +338,79 @@
     "blended_per_m": 4.0,
     "perf_per_dollar": 15.025
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 40.0,
+     "first_token_s": 11.0,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.0
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 27.0,
+     "first_token_s": 13.0,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 26.0,
+     "first_token_s": 9.35,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 72.0,
+     "first_token_s": 14.0,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 27.0,
+     "first_token_s": 11.0,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 26.0,
+     "first_token_s": 5.79,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 7.2
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 21.0,
+     "first_token_s": 21.0,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 7.2
+    }
+   ]
   },
   {
    "id": "anthropic/claude-opus-5.5",
@@ -183,7 +444,109 @@
     "blended_per_m": 8.0,
     "perf_per_dollar": 7.3875
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Azure",
+     "speed_tok_s": 95.0,
+     "first_token_s": 2.24,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 87.0,
+     "first_token_s": 2.36,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 84.0,
+     "first_token_s": 2.88,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "Claude Platform on AWS",
+     "speed_tok_s": 80.0,
+     "first_token_s": 2.8,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 75.0,
+     "first_token_s": 4.24,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 93.0,
+     "first_token_s": 2.38,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.8
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 84.0,
+     "first_token_s": 3.86,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.8
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.27,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.8
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 36.0,
+     "first_token_s": 1.69,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 8.8
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 198.0,
+     "first_token_s": 1.47,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 16.0
+    }
+   ]
   },
   {
    "id": "openai/gpt-6.2-sol",
@@ -213,7 +576,79 @@
     "blended_per_m": 4.0,
     "perf_per_dollar": 14.325
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 92.0,
+     "first_token_s": 1.87,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 64.0,
+     "first_token_s": 2.41,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 61.0,
+     "first_token_s": 2.37,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 44.0,
+     "first_token_s": 1.5,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 83.0,
+     "first_token_s": 3.85,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 55.0,
+     "first_token_s": 5.05,
+     "in_per_m": 2.4,
+     "out_per_m": 12.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.8
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 105.0,
+     "first_token_s": 1.58,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 8.0
+    }
+   ]
   },
   {
    "id": "openai/gpt-6-astra",
@@ -247,7 +682,59 @@
     "blended_per_m": 20.0,
     "perf_per_dollar": 2.845
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 78.0,
+     "first_token_s": 1.94,
+     "in_per_m": 5.0,
+     "out_per_m": 25.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 10.0
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 48.0,
+     "first_token_s": 1.74,
+     "in_per_m": 10.0,
+     "out_per_m": 50.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 20.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 41.0,
+     "first_token_s": 9.02,
+     "in_per_m": 10.0,
+     "out_per_m": 50.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 20.0
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 40.0,
+     "first_token_s": 2.8,
+     "in_per_m": 10.0,
+     "out_per_m": 50.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 20.0
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 55.0,
+     "first_token_s": 1.26,
+     "in_per_m": 20.0,
+     "out_per_m": 100.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 40.0
+    }
+   ]
   },
   {
    "id": "anthropic/claude-sonnet-5.5",
@@ -281,7 +768,109 @@
     "blended_per_m": 4.0,
     "perf_per_dollar": 14.0
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Azure",
+     "speed_tok_s": 132.0,
+     "first_token_s": 0.95,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Claude Platform on AWS",
+     "speed_tok_s": 109.0,
+     "first_token_s": 1.61,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 108.0,
+     "first_token_s": 1.78,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 106.0,
+     "first_token_s": 1.64,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.56,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 123.0,
+     "first_token_s": 0.78,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 112.0,
+     "first_token_s": 2.66,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 110.0,
+     "first_token_s": 1.47,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 101.0,
+     "first_token_s": 1.13,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 96.0,
+     "first_token_s": 2.11,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 4.4
+    }
+   ]
   },
   {
    "id": "openai/gpt-6.1-terra",
@@ -315,7 +904,89 @@
     "blended_per_m": 2.0,
     "perf_per_dollar": 25.7
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 16.0,
+     "first_token_s": 13.0,
+     "in_per_m": 0.5,
+     "out_per_m": 2.5,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 1.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 80.0,
+     "first_token_s": 1.06,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 2.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 51.0,
+     "first_token_s": 2.42,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 2.0
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 30.0,
+     "first_token_s": 4.63,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 2.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 72.0,
+     "first_token_s": 3.19,
+     "in_per_m": 1.1,
+     "out_per_m": 5.5,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 2.2
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 61.0,
+     "first_token_s": 1.88,
+     "in_per_m": 1.1,
+     "out_per_m": 5.5,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 2.2
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 72.0,
+     "first_token_s": 2.97,
+     "in_per_m": 1.2,
+     "out_per_m": 6.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 2.4
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 86.0,
+     "first_token_s": 1.18,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    }
+   ]
   },
   {
    "id": "openai/gpt-6.1-sol",
@@ -349,7 +1020,89 @@
     "blended_per_m": 4.0,
     "perf_per_dollar": 13.675
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 35.0,
+     "first_token_s": 2.29,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 2.0
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 43.0,
+     "first_token_s": 2.94,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 38.0,
+     "first_token_s": 2.98,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 37.0,
+     "first_token_s": 4.48,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 29.0,
+     "first_token_s": 2.15,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 32.0,
+     "first_token_s": 2.72,
+     "in_per_m": 2.4,
+     "out_per_m": 12.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 4.8
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 47.0,
+     "first_token_s": 0.93,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 238.0,
+     "first_token_s": 0.84,
+     "in_per_m": 12.0,
+     "out_per_m": 60.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 24.0
+    }
+   ]
   },
   {
    "id": "google/gemini-4-hydrogen",
@@ -383,7 +1136,79 @@
     "blended_per_m": 3.0,
     "perf_per_dollar": 18.0333
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 137.0,
+     "first_token_s": 2.09,
+     "in_per_m": 0.75,
+     "out_per_m": 3.75,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 1.5
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 108.0,
+     "first_token_s": 9.19,
+     "in_per_m": 1.5,
+     "out_per_m": 7.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 107.0,
+     "first_token_s": 8.03,
+     "in_per_m": 1.5,
+     "out_per_m": 7.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 135.0,
+     "first_token_s": 1.92,
+     "in_per_m": 1.65,
+     "out_per_m": 8.25,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.3
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 135.0,
+     "first_token_s": 2.2,
+     "in_per_m": 1.65,
+     "out_per_m": 8.25,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.3
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 108.0,
+     "first_token_s": 2.21,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 5.4
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 104.0,
+     "first_token_s": 2.05,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 5.4
+    }
+   ]
   },
   {
    "id": "google/gemini-4-argon",
@@ -417,7 +1242,69 @@
     "blended_per_m": 4.0,
     "perf_per_dollar": 13.15
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 42.0,
+     "first_token_s": 5.97,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.0
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 36.0,
+     "first_token_s": 12.0,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 33.0,
+     "first_token_s": 8.09,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 42.0,
+     "first_token_s": 6.87,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.4
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 36.0,
+     "first_token_s": 7.17,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 7.2
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 17.0,
+     "first_token_s": 4.44,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 7.2
+    }
+   ]
   },
   {
    "id": "moonshotai/kimi-k3.1-pro",
@@ -451,7 +1338,299 @@
     "blended_per_m": 2.2808,
     "perf_per_dollar": 24.1582
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Relace",
+     "speed_tok_s": 61.0,
+     "first_token_s": 1.75,
+     "in_per_m": 0.24,
+     "out_per_m": 8.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 2.28
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 81.0,
+     "first_token_s": 0.59,
+     "in_per_m": 0.253,
+     "out_per_m": 8.8,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 2.38975
+    },
+    {
+     "provider": "Decart",
+     "speed_tok_s": 50.0,
+     "first_token_s": 1.9,
+     "in_per_m": 1.24,
+     "out_per_m": 6.2,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 2.48
+    },
+    {
+     "provider": "Pareto Inference",
+     "speed_tok_s": 66.0,
+     "first_token_s": 1.01,
+     "in_per_m": 1.4,
+     "out_per_m": 7.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 2.8
+    },
+    {
+     "provider": "Morph",
+     "speed_tok_s": 80.0,
+     "first_token_s": 2.01,
+     "in_per_m": 1.31,
+     "out_per_m": 8.55,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 3.12
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 119.0,
+     "first_token_s": 0.91,
+     "in_per_m": 1.8,
+     "out_per_m": 9.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 3.6
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 101.0,
+     "first_token_s": 0.6,
+     "in_per_m": 1.8,
+     "out_per_m": 9.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 3.6
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 100.0,
+     "first_token_s": 0.6,
+     "in_per_m": 1.8,
+     "out_per_m": 9.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 3.6
+    },
+    {
+     "provider": "DigitalOcean",
+     "speed_tok_s": 77.0,
+     "first_token_s": 1.32,
+     "in_per_m": 1.9,
+     "out_per_m": 9.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.8
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 36.0,
+     "first_token_s": 0.73,
+     "in_per_m": 1.9,
+     "out_per_m": 9.5,
+     "context": "1.0M",
+     "quant": "bf16",
+     "blended_per_m": 3.8
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 83.0,
+     "first_token_s": 0.93,
+     "in_per_m": 1.75,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 3.8125
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 59.0,
+     "first_token_s": 1.45,
+     "in_per_m": 2.0,
+     "out_per_m": 9.49,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.8725
+    },
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 153.0,
+     "first_token_s": 0.79,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 103.0,
+     "first_token_s": 1.04,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 99.0,
+     "first_token_s": 0.55,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "PrimaLabs",
+     "speed_tok_s": 87.0,
+     "first_token_s": 1.3,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "River",
+     "speed_tok_s": 79.0,
+     "first_token_s": 0.68,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 44.0,
+     "first_token_s": 1.79,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 36.0,
+     "first_token_s": 1.78,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Moonshot AI",
+     "speed_tok_s": 28.0,
+     "first_token_s": 3.0,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 4.0
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 30.0,
+     "first_token_s": 2.63,
+     "in_per_m": 2.3,
+     "out_per_m": 11.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 4.6
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 31.0,
+     "first_token_s": 3.27,
+     "in_per_m": 2.5,
+     "out_per_m": 12.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 5.0
+    },
+    {
+     "provider": "io.net",
+     "speed_tok_s": 96.0,
+     "first_token_s": 1.33,
+     "in_per_m": 2.8,
+     "out_per_m": 12.0,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 5.1
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 117.0,
+     "first_token_s": 0.57,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 5.4
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 111.0,
+     "first_token_s": 0.6,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 5.4
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 101.0,
+     "first_token_s": 2.24,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "Moonshot AI",
+     "speed_tok_s": 45.0,
+     "first_token_s": 5.38,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 8.0
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 86.0,
+     "first_token_s": 1.32,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 8.8
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 51.0,
+     "first_token_s": 2.43,
+     "in_per_m": 4.6,
+     "out_per_m": 23.0,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 9.2
+    }
+   ]
   },
   {
    "id": "qwen/qwen4-max",
@@ -485,7 +1664,19 @@
     "blended_per_m": 2.1375,
     "perf_per_dollar": 20.0234
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 63.0,
+     "first_token_s": 1.75,
+     "in_per_m": 1.43,
+     "out_per_m": 4.28,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 2.1425
+    }
+   ]
   },
   {
    "id": "x-ai/grok-4.7",
@@ -519,7 +1710,69 @@
     "blended_per_m": 3.0,
     "perf_per_dollar": 15.5
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 109.0,
+     "first_token_s": 2.25,
+     "in_per_m": 2.0,
+     "out_per_m": 6.0,
+     "context": "500k",
+     "quant": null,
+     "blended_per_m": 3.0
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 68.0,
+     "first_token_s": 1.34,
+     "in_per_m": 2.0,
+     "out_per_m": 6.0,
+     "context": "500k",
+     "quant": null,
+     "blended_per_m": 3.0
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 68.0,
+     "first_token_s": 1.62,
+     "in_per_m": 2.0,
+     "out_per_m": 6.0,
+     "context": "500k",
+     "quant": null,
+     "blended_per_m": 3.0
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 79.0,
+     "first_token_s": 5.78,
+     "in_per_m": 2.2,
+     "out_per_m": 6.6,
+     "context": "500k",
+     "quant": null,
+     "blended_per_m": 3.3
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.39,
+     "in_per_m": 4.0,
+     "out_per_m": 12.0,
+     "context": "500k",
+     "quant": null,
+     "blended_per_m": 6.0
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 81.0,
+     "first_token_s": 1.57,
+     "in_per_m": 4.0,
+     "out_per_m": 12.0,
+     "context": "500k",
+     "quant": null,
+     "blended_per_m": 6.0
+    }
+   ]
   },
   {
    "id": "anthropic/claude-haiku-5.5",
@@ -553,7 +1806,99 @@
     "blended_per_m": 0.2,
     "perf_per_dollar": 217.0
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Claude Platform on AWS",
+     "speed_tok_s": 172.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 161.0,
+     "first_token_s": 1.32,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 150.0,
+     "first_token_s": 1.43,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 150.0,
+     "first_token_s": 1.36,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 140.0,
+     "first_token_s": 1.93,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 170.0,
+     "first_token_s": 0.71,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.22
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 154.0,
+     "first_token_s": 0.8,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.22
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 119.0,
+     "first_token_s": 1.86,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.22
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 85.0,
+     "first_token_s": 0.55,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.22
+    }
+   ]
   },
   {
    "id": "openai/gpt-6-luna",
@@ -587,7 +1932,109 @@
     "blended_per_m": 0.2,
     "perf_per_dollar": 190.5
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 18.0,
+     "first_token_s": 14.0,
+     "in_per_m": 0.05,
+     "out_per_m": 0.25,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.1
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 114.0,
+     "first_token_s": 1.39,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 92.0,
+     "first_token_s": 1.65,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 89.0,
+     "first_token_s": 1.8,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 60.0,
+     "first_token_s": 3.25,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 120.0,
+     "first_token_s": 1.35,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.22
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 112.0,
+     "first_token_s": 1.08,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.22
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 59.0,
+     "first_token_s": 4.71,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.22
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 63.0,
+     "first_token_s": 1.35,
+     "in_per_m": 0.12,
+     "out_per_m": 0.6,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.24
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 123.0,
+     "first_token_s": 0.95,
+     "in_per_m": 0.2,
+     "out_per_m": 1.0,
+     "context": "1.1M",
+     "quant": null,
+     "blended_per_m": 0.4
+    }
+   ]
   },
   {
    "id": "mistralai/mistral-large-4-0",
@@ -621,7 +2068,29 @@
     "blended_per_m": 1.05,
     "perf_per_dollar": 36.5714
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 51.0,
+     "first_token_s": 1.27,
+     "in_per_m": 0.7,
+     "out_per_m": 2.1,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 1.05
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 51.0,
+     "first_token_s": 1.09,
+     "in_per_m": 0.77,
+     "out_per_m": 2.31,
+     "context": "524k",
+     "quant": null,
+     "blended_per_m": 1.155
+    }
+   ]
   },
   {
    "id": "deepseek/deepseek-v4.1-flash",
@@ -646,12 +2115,404 @@
     }
    },
    "pricing": {
-    "in_per_m": 0.14,
-    "out_per_m": 0.42,
-    "blended_per_m": 0.21,
-    "perf_per_dollar": 188.0952
+    "in_per_m": 0.0507,
+    "out_per_m": 0.2028,
+    "blended_per_m": 0.088725,
+    "perf_per_dollar": 445.1958
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Baidu Qianfan",
+     "speed_tok_s": 108.0,
+     "first_token_s": 1.04,
+     "in_per_m": 0.051,
+     "out_per_m": 0.203,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.089
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 137.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.09,
+     "out_per_m": 0.36,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.1575
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 95.0,
+     "first_token_s": 1.55,
+     "in_per_m": 0.112,
+     "out_per_m": 0.336,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.168
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 140.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.051,
+     "out_per_m": 0.567,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 0.18
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 118.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.14,
+     "out_per_m": 0.42,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.21
+    },
+    {
+     "provider": "River",
+     "speed_tok_s": 114.0,
+     "first_token_s": 0.63,
+     "in_per_m": 0.12,
+     "out_per_m": 0.48,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.21
+    },
+    {
+     "provider": "Relace",
+     "speed_tok_s": 84.0,
+     "first_token_s": 0.68,
+     "in_per_m": 0.12,
+     "out_per_m": 0.5,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.215
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 94.0,
+     "first_token_s": 0.33,
+     "in_per_m": 0.103,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.22725
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 73.0,
+     "first_token_s": 0.34,
+     "in_per_m": 0.103,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.22725
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 176.0,
+     "first_token_s": 0.6,
+     "in_per_m": 0.13,
+     "out_per_m": 0.59,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.245
+    },
+    {
+     "provider": "Reka AI",
+     "speed_tok_s": 107.0,
+     "first_token_s": 0.22,
+     "in_per_m": 0.12,
+     "out_per_m": 0.64,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.25
+    },
+    {
+     "provider": "StreamLake",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.34,
+     "in_per_m": 0.147,
+     "out_per_m": 0.588,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.25725
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 102.0,
+     "first_token_s": 1.24,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.2625
+    },
+    {
+     "provider": "Fireworks Spot",
+     "speed_tok_s": 87.0,
+     "first_token_s": 0.89,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.2625
+    },
+    {
+     "provider": "Open Inference",
+     "speed_tok_s": 156.0,
+     "first_token_s": 0.81,
+     "in_per_m": 0.052,
+     "out_per_m": 0.95,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.2765
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 68.0,
+     "first_token_s": 1.65,
+     "in_per_m": 0.1,
+     "out_per_m": 0.9,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.3
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 142.0,
+     "first_token_s": 0.35,
+     "in_per_m": 0.19,
+     "out_per_m": 0.65,
+     "context": "1.0M",
+     "quant": "mxfp4",
+     "blended_per_m": 0.305
+    },
+    {
+     "provider": "Cohere",
+     "speed_tok_s": 135.0,
+     "first_token_s": 0.44,
+     "in_per_m": 0.195,
+     "out_per_m": 0.66,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.31125
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 97.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.21,
+     "out_per_m": 0.63,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.315
+    },
+    {
+     "provider": "Ionstream",
+     "speed_tok_s": 129.0,
+     "first_token_s": 0.42,
+     "in_per_m": 0.2,
+     "out_per_m": 0.7,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.325
+    },
+    {
+     "provider": "Crusoe",
+     "speed_tok_s": 191.0,
+     "first_token_s": 0.47,
+     "in_per_m": 0.189,
+     "out_per_m": 0.78,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.33675
+    },
+    {
+     "provider": "Mancer",
+     "speed_tok_s": 76.0,
+     "first_token_s": 0.84,
+     "in_per_m": 0.212,
+     "out_per_m": 0.75,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.3465
+    },
+    {
+     "provider": "DigitalOcean",
+     "speed_tok_s": 151.0,
+     "first_token_s": 0.65,
+     "in_per_m": 0.225,
+     "out_per_m": 0.9,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.39375
+    },
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 144.0,
+     "first_token_s": 0.69,
+     "in_per_m": 0.24,
+     "out_per_m": 0.96,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.42
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 166.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.26,
+     "out_per_m": 1.17,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.4875
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 225.0,
+     "first_token_s": 0.24,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Baseten",
+     "speed_tok_s": 184.0,
+     "first_token_s": 0.55,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 182.0,
+     "first_token_s": 0.59,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Baseten",
+     "speed_tok_s": 172.0,
+     "first_token_s": 0.33,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 161.0,
+     "first_token_s": 0.95,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1M",
+     "quant": "fp8",
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 147.0,
+     "first_token_s": 0.39,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 125.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 120.0,
+     "first_token_s": 1.54,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 102.0,
+     "first_token_s": 1.25,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 79.0,
+     "first_token_s": 0.72,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.525
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 221.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.375,
+     "out_per_m": 1.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.65625
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 190.0,
+     "first_token_s": 0.37,
+     "in_per_m": 0.45,
+     "out_per_m": 1.8,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.7875
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 180.0,
+     "first_token_s": 0.53,
+     "in_per_m": 0.45,
+     "out_per_m": 1.8,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.7875
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 275.0,
+     "first_token_s": 0.48,
+     "in_per_m": 1.5,
+     "out_per_m": 6.0,
+     "context": "1M",
+     "quant": "fp8",
+     "blended_per_m": 2.625
+    }
+   ]
   },
   {
    "id": "qwen/qwen3.5-9b",
@@ -676,16 +2537,78 @@
     }
    },
    "pricing": {
-    "in_per_m": 0.1,
+    "in_per_m": 0.17,
     "out_per_m": 0.25,
-    "blended_per_m": 0.1375,
-    "perf_per_dollar": 96.7273
+    "blended_per_m": 0.19,
+    "perf_per_dollar": 70.0
    },
    "self_host": {
     "vram_q4_gb": 6.7,
     "vram_q8_gb": 11.4,
     "vram_fp16_gb": 20.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 59.0,
+     "first_token_s": 1.32,
+     "in_per_m": 0.08,
+     "out_per_m": 0.13,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.0925
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 39.0,
+     "first_token_s": 0.73,
+     "in_per_m": 0.1,
+     "out_per_m": 0.15,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.1125
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 83.0,
+     "first_token_s": 0.42,
+     "in_per_m": 0.1,
+     "out_per_m": 0.25,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.1375
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 8.0,
+     "first_token_s": 1.38,
+     "in_per_m": 0.15,
+     "out_per_m": 0.225,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.16875
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 73.0,
+     "first_token_s": 0.35,
+     "in_per_m": 0.17,
+     "out_per_m": 0.25,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.19
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 24.0,
+     "first_token_s": 1.28,
+     "in_per_m": 0.17,
+     "out_per_m": 0.25,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.19
+    }
+   ]
   },
   {
    "id": "qwen/qwen3.8-27b",
@@ -719,7 +2642,229 @@
     "vram_q4_gb": 17.2,
     "vram_q8_gb": 31.2,
     "vram_fp16_gb": 56.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "Chutes",
+     "speed_tok_s": 25.0,
+     "first_token_s": 5.43,
+     "in_per_m": 0.039,
+     "out_per_m": 1.25,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.34175
+    },
+    {
+     "provider": "NEAR AI",
+     "speed_tok_s": 44.0,
+     "first_token_s": 2.36,
+     "in_per_m": 0.04,
+     "out_per_m": 1.35,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.3675
+    },
+    {
+     "provider": "StreamLake",
+     "speed_tok_s": 69.0,
+     "first_token_s": 0.94,
+     "in_per_m": 0.175,
+     "out_per_m": 1.05,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.39375
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 27.0,
+     "first_token_s": 1.52,
+     "in_per_m": 0.035,
+     "out_per_m": 1.5,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.40125
+    },
+    {
+     "provider": "Mancer",
+     "speed_tok_s": 33.0,
+     "first_token_s": 2.01,
+     "in_per_m": 0.125,
+     "out_per_m": 1.5,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.46875
+    },
+    {
+     "provider": "Tenstorrent",
+     "speed_tok_s": 103.0,
+     "first_token_s": 0.47,
+     "in_per_m": 0.15,
+     "out_per_m": 1.6,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.5125
+    },
+    {
+     "provider": "Ionstream",
+     "speed_tok_s": 9.0,
+     "first_token_s": 12.0,
+     "in_per_m": 0.04,
+     "out_per_m": 1.95,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.5175
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 245.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.06,
+     "out_per_m": 1.96,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.535
+    },
+    {
+     "provider": "Pearl Research",
+     "speed_tok_s": 74.0,
+     "first_token_s": 1.33,
+     "in_per_m": 0.1,
+     "out_per_m": 2.0,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.575
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 37.0,
+     "first_token_s": 0.58,
+     "in_per_m": 0.15,
+     "out_per_m": 1.88,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.5825
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 75.0,
+     "first_token_s": 0.53,
+     "in_per_m": 0.04,
+     "out_per_m": 2.3,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.605
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 8.0,
+     "first_token_s": 1.88,
+     "in_per_m": 0.225,
+     "out_per_m": 1.98,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.66375
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 49.0,
+     "first_token_s": 0.58,
+     "in_per_m": 0.24,
+     "out_per_m": 2.2,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.73
+    },
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 166.0,
+     "first_token_s": 0.2,
+     "in_per_m": 0.2,
+     "out_per_m": 2.5,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.775
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 59.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.425,
+     "out_per_m": 2.55,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 0.95625
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 59.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.425,
+     "out_per_m": 2.55,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.95625
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 112.0,
+     "first_token_s": 0.28,
+     "in_per_m": 0.4,
+     "out_per_m": 3.0,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 1.05
+    },
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 284.0,
+     "first_token_s": 0.65,
+     "in_per_m": 0.45,
+     "out_per_m": 3.0,
+     "context": "1M",
+     "quant": "fp4",
+     "blended_per_m": 1.0875
+    },
+    {
+     "provider": "Cerebras",
+     "speed_tok_s": 632.0,
+     "first_token_s": 0.3,
+     "in_per_m": 0.99,
+     "out_per_m": 1.49,
+     "context": "66k",
+     "quant": "fp16",
+     "blended_per_m": 1.115
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 164.0,
+     "first_token_s": 0.25,
+     "in_per_m": 0.45,
+     "out_per_m": 3.2,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 1.1375
+    },
+    {
+     "provider": "Reka AI",
+     "speed_tok_s": 32.0,
+     "first_token_s": 0.81,
+     "in_per_m": 0.45,
+     "out_per_m": 3.2,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 1.1375
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 31.0,
+     "first_token_s": 0.4,
+     "in_per_m": 0.45,
+     "out_per_m": 3.2,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 1.1375
+    }
+   ]
   },
   {
    "id": "qwen/qwen3.5-35b-a3b",
@@ -753,7 +2898,79 @@
     "vram_q4_gb": 21.8,
     "vram_q8_gb": 40.0,
     "vram_fp16_gb": 72.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 66.0,
+     "first_token_s": 0.42,
+     "in_per_m": 0.065,
+     "out_per_m": 0.75,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.23625
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 38.0,
+     "first_token_s": 1.22,
+     "in_per_m": 0.112,
+     "out_per_m": 0.8,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.284
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 36.0,
+     "first_token_s": 0.45,
+     "in_per_m": 0.14,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.355
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 154.0,
+     "first_token_s": 0.52,
+     "in_per_m": 0.15,
+     "out_per_m": 1.0,
+     "context": "256k",
+     "quant": null,
+     "blended_per_m": 0.3625
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 116.0,
+     "first_token_s": 0.29,
+     "in_per_m": 0.15,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.3625
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 146.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.163,
+     "out_per_m": 1.3,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.44725
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 47.0,
+     "first_token_s": 0.99,
+     "in_per_m": 0.24,
+     "out_per_m": 1.8,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.63
+    }
+   ]
   },
   {
    "id": "qwen/qwen3.5-122b-a10b",
@@ -783,7 +3000,29 @@
     "vram_q4_gb": 72.3,
     "vram_q8_gb": 135.7,
     "vram_fp16_gb": 246.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 104.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.26,
+     "out_per_m": 2.08,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.715
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 85.0,
+     "first_token_s": 0.91,
+     "in_per_m": 0.26,
+     "out_per_m": 2.08,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.715
+    }
+   ]
   },
   {
    "id": "google/gemma-4-31b-it",
@@ -821,7 +3060,189 @@
     "vram_q4_gb": 19.3,
     "vram_q8_gb": 35.3,
     "vram_fp16_gb": 63.9
-   }
+   },
+   "providers": [
+    {
+     "provider": "KT",
+     "speed_tok_s": 126.0,
+     "first_token_s": 0.72,
+     "in_per_m": 0.1,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.16
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 81.0,
+     "first_token_s": 2.69,
+     "in_per_m": 0.1,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.16
+    },
+    {
+     "provider": "Nextbit",
+     "speed_tok_s": 114.0,
+     "first_token_s": 0.52,
+     "in_per_m": 0.125,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.17875
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 35.0,
+     "first_token_s": 0.69,
+     "in_per_m": 0.12,
+     "out_per_m": 0.36,
+     "context": "256k",
+     "quant": "fp4",
+     "blended_per_m": 0.18
+    },
+    {
+     "provider": "Chutes",
+     "speed_tok_s": 22.0,
+     "first_token_s": 3.69,
+     "in_per_m": 0.12,
+     "out_per_m": 0.37,
+     "context": "131k",
+     "quant": "fp4",
+     "blended_per_m": 0.1825
+    },
+    {
+     "provider": "DeepInfra (fp8)",
+     "speed_tok_s": 18.0,
+     "first_token_s": 1.25,
+     "in_per_m": 0.16,
+     "out_per_m": 0.32,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Friendli",
+     "speed_tok_s": 97.0,
+     "first_token_s": 0.5,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.205
+    },
+    {
+     "provider": "Crusoe",
+     "speed_tok_s": 36.0,
+     "first_token_s": 0.66,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "260k",
+     "quant": "bf16",
+     "blended_per_m": 0.205
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 34.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.205
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 22.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.15,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.2125
+    },
+    {
+     "provider": "DeepInfra (fp4)",
+     "speed_tok_s": 39.0,
+     "first_token_s": 0.4,
+     "in_per_m": 0.135,
+     "out_per_m": 0.51,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.22875
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 45.0,
+     "first_token_s": 1.67,
+     "in_per_m": 0.2,
+     "out_per_m": 0.335,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.23375
+    },
+    {
+     "provider": "DeepInfra (fp8)",
+     "speed_tok_s": 16.0,
+     "first_token_s": 0.76,
+     "in_per_m": 0.2,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.25
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 161.0,
+     "first_token_s": 0.3,
+     "in_per_m": 0.34,
+     "out_per_m": 0.1,
+     "context": "131k",
+     "quant": null,
+     "blended_per_m": 0.28
+    },
+    {
+     "provider": "DeepInfra (fp8)",
+     "speed_tok_s": 16.0,
+     "first_token_s": 0.63,
+     "in_per_m": 0.3,
+     "out_per_m": 0.6,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.375
+    },
+    {
+     "provider": "SambaNova",
+     "speed_tok_s": 137.0,
+     "first_token_s": 2.24,
+     "in_per_m": 0.38,
+     "out_per_m": 1.15,
+     "context": "131k",
+     "quant": null,
+     "blended_per_m": 0.5725
+    },
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 209.0,
+     "first_token_s": 0.16,
+     "in_per_m": 0.75,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.8125
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 35.0,
+     "first_token_s": 0.75,
+     "in_per_m": 0.75,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.8125
+    }
+   ]
   },
   {
    "id": "google/gemma-4-26b-a4b-it",
@@ -859,7 +3280,169 @@
     "vram_q4_gb": 16.1,
     "vram_q8_gb": 29.2,
     "vram_fp16_gb": 52.9
-   }
+   },
+   "providers": [
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 175.0,
+     "first_token_s": 0.37,
+     "in_per_m": 0.05,
+     "out_per_m": 0.18,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.0825
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 64.0,
+     "first_token_s": 0.47,
+     "in_per_m": 0.05,
+     "out_per_m": 0.19,
+     "context": "262k",
+     "quant": "int4",
+     "blended_per_m": 0.085
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 34.0,
+     "first_token_s": 0.73,
+     "in_per_m": 0.07,
+     "out_per_m": 0.24,
+     "context": "131k",
+     "quant": "fp4",
+     "blended_per_m": 0.1125
+    },
+    {
+     "provider": "io.net",
+     "speed_tok_s": 33.0,
+     "first_token_s": 0.84,
+     "in_per_m": 0.067,
+     "out_per_m": 0.29,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.12275
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 68.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.09,
+     "out_per_m": 0.28,
+     "context": "256k",
+     "quant": null,
+     "blended_per_m": 0.1375
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 43.0,
+     "first_token_s": 0.39,
+     "in_per_m": 0.07,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.1375
+    },
+    {
+     "provider": "Nextbit",
+     "speed_tok_s": 111.0,
+     "first_token_s": 0.35,
+     "in_per_m": 0.09,
+     "out_per_m": 0.3,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.1425
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 46.0,
+     "first_token_s": 0.75,
+     "in_per_m": 0.1,
+     "out_per_m": 0.3,
+     "context": "256k",
+     "quant": null,
+     "blended_per_m": 0.15
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 33.0,
+     "first_token_s": 0.31,
+     "in_per_m": 0.1,
+     "out_per_m": 0.3,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.15
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 19.0,
+     "first_token_s": 0.92,
+     "in_per_m": 0.1,
+     "out_per_m": 0.36,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.165
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 77.0,
+     "first_token_s": 0.8,
+     "in_per_m": 0.13,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.1975
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 75.0,
+     "first_token_s": 0.56,
+     "in_per_m": 0.13,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.1975
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 57.0,
+     "first_token_s": 1.65,
+     "in_per_m": 0.13,
+     "out_per_m": 0.4,
+     "context": "256k",
+     "quant": "bf16",
+     "blended_per_m": 0.1975
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 56.0,
+     "first_token_s": 0.68,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.205
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 33.0,
+     "first_token_s": 0.94,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.2625
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 27.0,
+     "first_token_s": 0.62,
+     "in_per_m": 0.2,
+     "out_per_m": 0.72,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.33
+    }
+   ]
   },
   {
    "id": "ibm-granite/granite-4.2-8b",
@@ -889,7 +3472,29 @@
     "vram_q4_gb": 6.1,
     "vram_q8_gb": 10.3,
     "vram_fp16_gb": 18.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 64.0,
+     "first_token_s": 0.14,
+     "in_per_m": 0.06,
+     "out_per_m": 0.15,
+     "context": "131k",
+     "quant": "bf16",
+     "blended_per_m": 0.0825
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 106.0,
+     "first_token_s": 0.37,
+     "in_per_m": 0.06,
+     "out_per_m": 0.25,
+     "context": "131k",
+     "quant": "bf16",
+     "blended_per_m": 0.1075
+    }
+   ]
   },
   {
    "id": "inclusionai/ling-3.0-tiny",
@@ -919,7 +3524,19 @@
     "vram_q4_gb": 6.1,
     "vram_q8_gb": 10.2,
     "vram_fp16_gb": 18.3
-   }
+   },
+   "providers": [
+    {
+     "provider": "Ant Digital",
+     "speed_tok_s": 82.0,
+     "first_token_s": 0.4,
+     "in_per_m": 0.015,
+     "out_per_m": 0.045,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.0225
+    }
+   ]
   },
   {
    "id": "inclusionai/ling-3.0-flash",
@@ -949,7 +3566,29 @@
     "vram_q4_gb": 73.4,
     "vram_q8_gb": 137.9,
     "vram_fp16_gb": 250.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "Ant Digital",
+     "speed_tok_s": 100.0,
+     "first_token_s": 1.01,
+     "in_per_m": 0.021,
+     "out_per_m": 0.063,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.0315
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 91.0,
+     "first_token_s": 0.46,
+     "in_per_m": 0.06,
+     "out_per_m": 0.18,
+     "context": "131k",
+     "quant": "fp4",
+     "blended_per_m": 0.09
+    }
+   ]
   },
   {
    "id": "cohere/command-a",
@@ -979,7 +3618,8 @@
     "vram_q4_gb": 65.9,
     "vram_q8_gb": 123.6,
     "vram_fp16_gb": 224.5
-   }
+   },
+   "providers": []
   },
   {
    "id": "xiaomi/mimo-v2.6-flash",
@@ -1013,7 +3653,89 @@
     "vram_q4_gb": 180.7,
     "vram_q8_gb": 341.4,
     "vram_fp16_gb": 620.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 21.0,
+     "first_token_s": 4.06,
+     "in_per_m": 0.1,
+     "out_per_m": 0.28,
+     "context": "66k",
+     "quant": "fp4",
+     "blended_per_m": 0.145
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 96.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.175
+    },
+    {
+     "provider": "Cohere",
+     "speed_tok_s": 79.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.175
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 64.0,
+     "first_token_s": 2.26,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.175
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 63.0,
+     "first_token_s": 2.36,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1M",
+     "quant": "fp8",
+     "blended_per_m": 0.175
+    },
+    {
+     "provider": "Xiaomi",
+     "speed_tok_s": 29.0,
+     "first_token_s": 2.7,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.175
+    },
+    {
+     "provider": "Tenstorrent",
+     "speed_tok_s": 32.0,
+     "first_token_s": 0.39,
+     "in_per_m": 0.165,
+     "out_per_m": 0.33,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.20625
+    },
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 110.0,
+     "first_token_s": 1.44,
+     "in_per_m": 0.25,
+     "out_per_m": 0.8,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.3875
+    }
+   ]
   },
   {
    "id": "stepfun/step-5-preview",
@@ -1042,7 +3764,29 @@
     "vram_q4_gb": 349.5,
     "vram_q8_gb": 661.5,
     "vram_fp16_gb": 1202.5
-   }
+   },
+   "providers": [
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 27.0,
+     "first_token_s": 3.0,
+     "in_per_m": 1.0,
+     "out_per_m": 2.7,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 1.425
+    },
+    {
+     "provider": "StepFun",
+     "speed_tok_s": 17.0,
+     "first_token_s": 40.0,
+     "in_per_m": 1.0,
+     "out_per_m": 2.7,
+     "context": "1M",
+     "quant": "fp8",
+     "blended_per_m": 1.425
+    }
+   ]
   },
   {
    "id": "z-ai/glm-5.3",
@@ -1076,7 +3820,980 @@
     "blended_per_m": 0.402425,
     "perf_per_dollar": 111.3251
    },
-   "self_host": null
+   "self_host": null,
+   "providers": [
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 91.0,
+     "first_token_s": 0.53,
+     "in_per_m": 0.07,
+     "out_per_m": 1.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.4025
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 94.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.179,
+     "out_per_m": 1.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.48425
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 29.0,
+     "first_token_s": 1.4,
+     "in_per_m": 0.45,
+     "out_per_m": 2.0,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.8375
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 80.0,
+     "first_token_s": 1.72,
+     "in_per_m": 0.56,
+     "out_per_m": 1.76,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 0.86
+    },
+    {
+     "provider": "Decart",
+     "speed_tok_s": 203.0,
+     "first_token_s": 0.43,
+     "in_per_m": 0.56,
+     "out_per_m": 1.81,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.8725
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 87.0,
+     "first_token_s": 0.45,
+     "in_per_m": 0.084,
+     "out_per_m": 3.6,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.963
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 85.0,
+     "first_token_s": 0.41,
+     "in_per_m": 0.084,
+     "out_per_m": 3.6,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.963
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 44.0,
+     "first_token_s": 1.9,
+     "in_per_m": 0.63,
+     "out_per_m": 1.98,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 0.9675
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 54.0,
+     "first_token_s": 1.76,
+     "in_per_m": 0.7,
+     "out_per_m": 1.9,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 1.0
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 56.0,
+     "first_token_s": 1.0,
+     "in_per_m": 0.563,
+     "out_per_m": 2.5,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 1.04725
+    },
+    {
+     "provider": "Doubleword",
+     "speed_tok_s": 55.0,
+     "first_token_s": 0.69,
+     "in_per_m": 0.6,
+     "out_per_m": 2.4,
+     "context": "1.0M",
+     "quant": "nvfp4",
+     "blended_per_m": 1.05
+    },
+    {
+     "provider": "Tenstorrent",
+     "speed_tok_s": 105.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.6,
+     "out_per_m": 2.5,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 1.075
+    },
+    {
+     "provider": "Fireworks Spot",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.32,
+     "in_per_m": 0.7,
+     "out_per_m": 2.2,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 1.075
+    },
+    {
+     "provider": "Relace",
+     "speed_tok_s": 62.0,
+     "first_token_s": 1.44,
+     "in_per_m": 0.07,
+     "out_per_m": 4.38,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 1.1475
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 71.0,
+     "first_token_s": 1.28,
+     "in_per_m": 0.19,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 1.2425
+    },
+    {
+     "provider": "Cohere",
+     "speed_tok_s": 90.0,
+     "first_token_s": 0.85,
+     "in_per_m": 0.5,
+     "out_per_m": 3.5,
+     "context": "1.0M",
+     "quant": "nvfp4",
+     "blended_per_m": 1.25
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 87.0,
+     "first_token_s": 0.74,
+     "in_per_m": 0.75,
+     "out_per_m": 3.0,
+     "context": "1.0M",
+     "quant": "nvfp4",
+     "blended_per_m": 1.3125
+    },
+    {
+     "provider": "Sail Research",
+     "speed_tok_s": 12.0,
+     "first_token_s": 55.0,
+     "in_per_m": 0.75,
+     "out_per_m": 3.0,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 1.3125
+    },
+    {
+     "provider": "DigitalOcean",
+     "speed_tok_s": 82.0,
+     "first_token_s": 0.66,
+     "in_per_m": 0.91,
+     "out_per_m": 2.86,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 1.3975
+    },
+    {
+     "provider": "Inceptron",
+     "speed_tok_s": 77.0,
+     "first_token_s": 0.58,
+     "in_per_m": 1.0,
+     "out_per_m": 3.5,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 1.625
+    },
+    {
+     "provider": "River",
+     "speed_tok_s": 83.0,
+     "first_token_s": 0.8,
+     "in_per_m": 1.12,
+     "out_per_m": 3.52,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 1.72
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 39.0,
+     "first_token_s": 0.95,
+     "in_per_m": 1.19,
+     "out_per_m": 3.74,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 1.8275
+    },
+    {
+     "provider": "Sail Research",
+     "speed_tok_s": 40.0,
+     "first_token_s": 6.0,
+     "in_per_m": 1.05,
+     "out_per_m": 4.2,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 1.8375
+    },
+    {
+     "provider": "Friendli",
+     "speed_tok_s": 80.0,
+     "first_token_s": 0.36,
+     "in_per_m": 1.26,
+     "out_per_m": 3.96,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 1.935
+    },
+    {
+     "provider": "Morph",
+     "speed_tok_s": 73.0,
+     "first_token_s": 0.83,
+     "in_per_m": 1.07,
+     "out_per_m": 5.0,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 2.0525
+    },
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 126.0,
+     "first_token_s": 0.44,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 123.0,
+     "first_token_s": 0.72,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 121.0,
+     "first_token_s": 0.42,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 107.0,
+     "first_token_s": 0.41,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Baseten (fp4)",
+     "speed_tok_s": 101.0,
+     "first_token_s": 0.72,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Baseten (fp4)",
+     "speed_tok_s": 97.0,
+     "first_token_s": 0.95,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 92.0,
+     "first_token_s": 0.77,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 78.0,
+     "first_token_s": 1.83,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Crusoe",
+     "speed_tok_s": 78.0,
+     "first_token_s": 0.56,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "786k",
+     "quant": "fp4",
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "SambaNova",
+     "speed_tok_s": 77.0,
+     "first_token_s": 2.4,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 75.0,
+     "first_token_s": 1.4,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "nvfp4",
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Z.ai",
+     "speed_tok_s": 65.0,
+     "first_token_s": 1.21,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 64.0,
+     "first_token_s": 0.89,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 2.15
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 90.0,
+     "first_token_s": 0.3,
+     "in_per_m": 1.5,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 2.225
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.25,
+     "in_per_m": 1.54,
+     "out_per_m": 4.84,
+     "context": "1.0M",
+     "quant": "nvfp4",
+     "blended_per_m": 2.365
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 120.0,
+     "first_token_s": 0.64,
+     "in_per_m": 1.68,
+     "out_per_m": 5.28,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.58
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 113.0,
+     "first_token_s": 0.81,
+     "in_per_m": 1.68,
+     "out_per_m": 5.28,
+     "context": "1M",
+     "quant": null,
+     "blended_per_m": 2.58
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 116.0,
+     "first_token_s": 0.4,
+     "in_per_m": 1.75,
+     "out_per_m": 5.5,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 2.6875
+    },
+    {
+     "provider": "Baseten (fp8)",
+     "speed_tok_s": 253.0,
+     "first_token_s": 0.4,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 3.225
+    },
+    {
+     "provider": "Baseten (fp8)",
+     "speed_tok_s": 179.0,
+     "first_token_s": 0.61,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp8",
+     "blended_per_m": 3.225
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 167.0,
+     "first_token_s": 0.72,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": null,
+     "blended_per_m": 3.225
+    },
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 141.0,
+     "first_token_s": 0.29,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 3.225
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 112.0,
+     "first_token_s": 0.97,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 3.225
+    }
+   ]
+  },
+  {
+   "id": "mistralai/ministral-3b-2512",
+   "name": "Ministral 3 3B",
+   "lab": "Mistral AI",
+   "lab_color": "#ff7000",
+   "open_weights": true,
+   "params_total_b": 3,
+   "params_active_b": null,
+   "context_tokens": 131072,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 4.8,
+     "setting": "not stated",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 35.8,
+     "setting": "not stated",
+     "date": null,
+     "source": "aa"
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.1,
+    "out_per_m": 0.1,
+    "blended_per_m": 0.1,
+    "perf_per_dollar": 48.0
+   },
+   "self_host": {
+    "vram_q4_gb": 3.2,
+    "vram_q8_gb": 4.8,
+    "vram_fp16_gb": 8.5
+   },
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 165.0,
+     "first_token_s": 0.31,
+     "in_per_m": 0.1,
+     "out_per_m": 0.1,
+     "context": "131k",
+     "quant": null,
+     "blended_per_m": 0.1
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 161.0,
+     "first_token_s": 0.34,
+     "in_per_m": 0.11,
+     "out_per_m": 0.11,
+     "context": "131k",
+     "quant": null,
+     "blended_per_m": 0.11
+    }
+   ]
+  },
+  {
+   "id": "mistralai/ministral-8b-2512",
+   "name": "Ministral 3 8B",
+   "lab": "Mistral AI",
+   "lab_color": "#ff7000",
+   "open_weights": true,
+   "params_total_b": 8,
+   "params_active_b": null,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 5.5,
+     "setting": "not stated",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 47.1,
+     "setting": "not stated",
+     "date": null,
+     "source": "aa"
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.15,
+    "out_per_m": 0.15,
+    "blended_per_m": 0.15,
+    "perf_per_dollar": 36.6667
+   },
+   "self_host": {
+    "vram_q4_gb": 6.1,
+    "vram_q8_gb": 10.3,
+    "vram_fp16_gb": 18.5
+   },
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 88.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.15,
+     "out_per_m": 0.15,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.15
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 72.0,
+     "first_token_s": 0.44,
+     "in_per_m": 0.165,
+     "out_per_m": 0.165,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.165
+    }
+   ]
+  },
+  {
+   "id": "mistralai/ministral-14b-2512",
+   "name": "Ministral 3 14B",
+   "lab": "Mistral AI",
+   "lab_color": "#ff7000",
+   "open_weights": true,
+   "params_total_b": 14,
+   "params_active_b": null,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 6.0,
+     "setting": "not stated",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 57.2,
+     "setting": "not stated",
+     "date": null,
+     "source": "aa"
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.2,
+    "out_per_m": 0.2,
+    "blended_per_m": 0.2,
+    "perf_per_dollar": 30.0
+   },
+   "self_host": {
+    "vram_q4_gb": 9.6,
+    "vram_q8_gb": 16.9,
+    "vram_fp16_gb": 30.5
+   },
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 109.0,
+     "first_token_s": 0.43,
+     "in_per_m": 0.2,
+     "out_per_m": 0.2,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.2
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 82.0,
+     "first_token_s": 0.38,
+     "in_per_m": 0.22,
+     "out_per_m": 0.22,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.22
+    }
+   ]
+  },
+  {
+   "id": "nvidia/nemotron-3.5-lightning",
+   "name": "Nemotron 3.5 Lightning",
+   "lab": "NVIDIA",
+   "lab_color": "#76b900",
+   "open_weights": true,
+   "params_total_b": 30,
+   "params_active_b": 3,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 5.5,
+     "setting": "not stated",
+     "date": null,
+     "version": "v5.0.1"
+    },
+    "frontiercode2": {
+     "value": 0.0,
+     "setting": "not stated",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 74.3,
+     "setting": "not stated",
+     "date": null,
+     "source": "aa"
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.07,
+    "out_per_m": 0.2,
+    "blended_per_m": 0.1025,
+    "perf_per_dollar": 53.6585
+   },
+   "self_host": {
+    "vram_q4_gb": 18.9,
+    "vram_q8_gb": 34.5,
+    "vram_fp16_gb": 62.5
+   },
+   "providers": [
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 74.0,
+     "first_token_s": 1.13,
+     "in_per_m": 0.02,
+     "out_per_m": 0.096,
+     "context": "262k",
+     "quant": "int4",
+     "blended_per_m": 0.039
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 211.0,
+     "first_token_s": 0.26,
+     "in_per_m": 0.06,
+     "out_per_m": 0.16,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.085
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 353.0,
+     "first_token_s": 0.28,
+     "in_per_m": 0.05,
+     "out_per_m": 0.2,
+     "context": "262k",
+     "quant": null,
+     "blended_per_m": 0.0875
+    },
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 777.0,
+     "first_token_s": 0.06,
+     "in_per_m": 0.07,
+     "out_per_m": 0.2,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.1025
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 152.0,
+     "first_token_s": 0.21,
+     "in_per_m": 0.07,
+     "out_per_m": 0.2,
+     "context": "262k",
+     "quant": "bf16",
+     "blended_per_m": 0.1025
+    }
+   ]
+  },
+  {
+   "id": "thinkingmachines/inkling-2-mini",
+   "name": "Inkling 2 Mini",
+   "lab": "Thinking Machines",
+   "lab_color": "#f472b6",
+   "open_weights": true,
+   "params_total_b": 26.4,
+   "params_active_b": 3.4,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 20.1,
+     "setting": "not stated",
+     "date": null,
+     "version": "v5.0.1"
+    },
+    "frontiercode2": {
+     "value": 15.1,
+     "setting": "not stated",
+     "date": null
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.075,
+    "out_per_m": 0.3,
+    "blended_per_m": 0.13125,
+    "perf_per_dollar": 153.1429
+   },
+   "self_host": {
+    "vram_q4_gb": 16.8,
+    "vram_q8_gb": 30.5,
+    "vram_fp16_gb": 55.3
+   },
+   "providers": [
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 248.0,
+     "first_token_s": 0.32,
+     "in_per_m": 0.037,
+     "out_per_m": 0.15,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.06525
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 189.0,
+     "first_token_s": 0.32,
+     "in_per_m": 0.075,
+     "out_per_m": 0.3,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.13125
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 121.0,
+     "first_token_s": 0.59,
+     "in_per_m": 0.075,
+     "out_per_m": 0.3,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.13125
+    },
+    {
+     "provider": "io.net",
+     "speed_tok_s": 108.0,
+     "first_token_s": 9.69,
+     "in_per_m": 0.12,
+     "out_per_m": 0.5,
+     "context": "262k",
+     "quant": "nvfp4",
+     "blended_per_m": 0.215
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 177.0,
+     "first_token_s": 0.66,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp4",
+     "blended_per_m": 0.2625
+    }
+   ]
+  },
+  {
+   "id": "qwen/qwen3.6-35b-a3b",
+   "name": "Qwen3.6 35B A3B",
+   "lab": "Alibaba",
+   "lab_color": "#e6a23c",
+   "open_weights": true,
+   "params_total_b": 35,
+   "params_active_b": 3,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 18.2,
+     "setting": "thinking",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 84.8,
+     "setting": "no reasoning",
+     "date": null,
+     "source": "epoch"
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.1,
+    "out_per_m": 0.89,
+    "blended_per_m": 0.2975,
+    "perf_per_dollar": 61.1765
+   },
+   "self_host": {
+    "vram_q4_gb": 21.8,
+    "vram_q8_gb": 40.0,
+    "vram_fp16_gb": 72.5
+   },
+   "providers": [
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 66.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.05,
+     "out_per_m": 0.7,
+     "context": "262k",
+     "quant": "fp4",
+     "blended_per_m": 0.2125
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 28.0,
+     "first_token_s": 1.55,
+     "in_per_m": 0.08,
+     "out_per_m": 0.76,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.25
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 80.0,
+     "first_token_s": 0.48,
+     "in_per_m": 0.1,
+     "out_per_m": 0.89,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.2975
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 30.0,
+     "first_token_s": 0.89,
+     "in_per_m": 0.1,
+     "out_per_m": 0.9,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.3
+    },
+    {
+     "provider": "Ambient",
+     "speed_tok_s": 19.0,
+     "first_token_s": 1.0,
+     "in_per_m": 0.1,
+     "out_per_m": 0.9,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.3
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 30.0,
+     "first_token_s": 0.88,
+     "in_per_m": 0.1,
+     "out_per_m": 0.95,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.3125
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 19.0,
+     "first_token_s": 2.84,
+     "in_per_m": 0.1,
+     "out_per_m": 1.0,
+     "context": "256k",
+     "quant": "fp8",
+     "blended_per_m": 0.325
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 10.0,
+     "first_token_s": 12.0,
+     "in_per_m": 0.15,
+     "out_per_m": 1.43,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.47
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 175.0,
+     "first_token_s": 0.48,
+     "in_per_m": 0.19,
+     "out_per_m": 1.7,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.5675
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 34.0,
+     "first_token_s": 0.83,
+     "in_per_m": 0.24,
+     "out_per_m": 1.8,
+     "context": "262k",
+     "quant": "fp8",
+     "blended_per_m": 0.63
+    }
+   ]
   }
  ]
 }

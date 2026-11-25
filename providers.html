@@ -27,17 +27,44 @@
 
 	<section class="page-head">
 		<h1>fournisseurs</h1>
-		<p>Vue agrégée par laboratoire. Prix via OpenRouter (agrégateur) ; v1 : comparaison des fournisseurs d'inférence par modèle.</p>
+		<p>Choisissez un modèle, la page liste chaque fournisseur qui le sert, avec son prix, sa vitesse et sa latence. Les mêmes tokens n'ont pas le même prix selon qui les vend, surprise.</p>
 	</section>
 
-	<section>
-		<div class="provider-grid" id="providers"></div>
+	<div class="filters">
+		<label class="legend" for="provider-model">modèle</label>
+		<select id="provider-model"></select>
+		<span class="legend" id="offer-count"></span>
+	</div>
+
+	<section class="panel" style="overflow-x:auto">
+		<table class="grid" id="providers-table">
+			<thead>
+				<tr>
+					<th>Fournisseur</th>
+					<th>Offre</th>
+					<th class="num">$ IN /M</th>
+					<th class="num">$ OUT /M</th>
+					<th class="num">$ mélangé /M</th>
+					<th class="num">tok/s</th>
+					<th class="num">1er token</th>
+					<th class="num">Ctx</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</section>
+
+	<section class="panel">
+		<div class="panel-title">synthèse du modèle</div>
+		<div class="panel-body" id="provider-summary"></div>
 	</section>
 
 	<p class="footer-note">
-		En v0, « fournisseur » = le labo qui publie le modèle, prix observés via l'agrégateur OpenRouter.
-		La v1 croisera plusieurs fournisseurs d'inférence (APIs natives, DeepInfra, Together, Fireworks…)
-		pour montrer, modèle par modèle, qui sert le moins cher, le plus rapide, le plus disponible.
+		Offres = fournisseurs routant le modèle via OpenRouter, prix propres de chacun, mesurés et publiés par BenchLeader
+		(fetch du <span id="providers-at">--</span>). Une ligne par offre : le même fournisseur peut servir plusieurs quantisations
+		(fp4, fp8, bf16…), le prix suit. Vitesse et latence premier token = trafic live 30 min, informatif, pas un engagement.
+		Ligne « OpenRouter (routage) » = prix du routeur, pas toujours la moins chère, sinon ça ne serait pas drôle.
+		Badge « API du labo » = le modèle est servi par le labo qui l'a publié.
 	</p>
 
 </main>

@@ -1,0 +1,3314 @@
+{
+ "_meta": {
+  "updated": "2026-11-25T14:48:53Z",
+  "source": "BenchLeader pages modeles, section 'API pricing: where to run it' : prix propres de chaque fournisseur routant le modele via OpenRouter",
+  "note": "Vitesse et latence premier token mesurees par BenchLeader sur trafic live 30 min : indicatif, pas un engagement. Une ligne par offre (quantisation incluse). Les offres echouees gardent les donnees du fetch precedent (fetched_at par entree)."
+ },
+ "by_model": {
+  "anthropic/claude-fable-5.2": {
+   "slug": "claude-fable-5-2",
+   "fetched_at": "2026-11-25T14:48:47Z",
+   "providers": [
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 124.0,
+     "first_token_s": 3.16,
+     "in_per_m": 16.0,
+     "out_per_m": 80.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 89.0,
+     "first_token_s": 6.54,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 82.0,
+     "first_token_s": 4.18,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 78.0,
+     "first_token_s": 1.81,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 76.0,
+     "first_token_s": 4.31,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null
+    }
+   ]
+  },
+  "anthropic/claude-haiku-5.5": {
+   "slug": "claude-haiku-5-5",
+   "fetched_at": "2026-11-25T14:48:50Z",
+   "providers": [
+    {
+     "provider": "Claude Platform on AWS",
+     "speed_tok_s": 172.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 170.0,
+     "first_token_s": 0.71,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 161.0,
+     "first_token_s": 1.32,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 154.0,
+     "first_token_s": 0.8,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 150.0,
+     "first_token_s": 1.43,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 150.0,
+     "first_token_s": 1.36,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 140.0,
+     "first_token_s": 1.93,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 119.0,
+     "first_token_s": 1.86,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 85.0,
+     "first_token_s": 0.55,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1M",
+     "quant": null
+    }
+   ]
+  },
+  "anthropic/claude-opus-5.5": {
+   "slug": "claude-opus-5-5",
+   "fetched_at": "2026-11-25T14:48:48Z",
+   "providers": [
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 198.0,
+     "first_token_s": 1.47,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 95.0,
+     "first_token_s": 2.24,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 93.0,
+     "first_token_s": 2.38,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 87.0,
+     "first_token_s": 2.36,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 84.0,
+     "first_token_s": 2.88,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 84.0,
+     "first_token_s": 3.86,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.27,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Claude Platform on AWS",
+     "speed_tok_s": 80.0,
+     "first_token_s": 2.8,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 75.0,
+     "first_token_s": 4.24,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 36.0,
+     "first_token_s": 1.69,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1M",
+     "quant": null
+    }
+   ]
+  },
+  "anthropic/claude-sonnet-5.5": {
+   "slug": "claude-sonnet-5-5",
+   "fetched_at": "2026-11-25T14:48:49Z",
+   "providers": [
+    {
+     "provider": "Azure",
+     "speed_tok_s": 132.0,
+     "first_token_s": 0.95,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 123.0,
+     "first_token_s": 0.78,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 112.0,
+     "first_token_s": 2.66,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 110.0,
+     "first_token_s": 1.47,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Claude Platform on AWS",
+     "speed_tok_s": 109.0,
+     "first_token_s": 1.61,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Anthropic",
+     "speed_tok_s": 108.0,
+     "first_token_s": 1.78,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 106.0,
+     "first_token_s": 1.64,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 101.0,
+     "first_token_s": 1.13,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 96.0,
+     "first_token_s": 2.11,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.56,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1M",
+     "quant": null
+    }
+   ]
+  },
+  "cohere/command-a": {
+   "slug": "command-a",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": []
+  },
+  "deepseek/deepseek-v4.1-flash": {
+   "slug": "deepseek-v4-1-flash",
+   "fetched_at": "2026-11-25T14:48:51Z",
+   "providers": [
+    {
+     "provider": "Venice",
+     "speed_tok_s": 275.0,
+     "first_token_s": 0.48,
+     "in_per_m": 1.5,
+     "out_per_m": 6.0,
+     "context": "1M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 225.0,
+     "first_token_s": 0.24,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 221.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.375,
+     "out_per_m": 1.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Crusoe",
+     "speed_tok_s": 191.0,
+     "first_token_s": 0.47,
+     "in_per_m": 0.189,
+     "out_per_m": 0.78,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 190.0,
+     "first_token_s": 0.37,
+     "in_per_m": 0.45,
+     "out_per_m": 1.8,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Baseten",
+     "speed_tok_s": 184.0,
+     "first_token_s": 0.55,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 182.0,
+     "first_token_s": 0.59,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 180.0,
+     "first_token_s": 0.53,
+     "in_per_m": 0.45,
+     "out_per_m": 1.8,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 176.0,
+     "first_token_s": 0.6,
+     "in_per_m": 0.13,
+     "out_per_m": 0.59,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Baseten",
+     "speed_tok_s": 172.0,
+     "first_token_s": 0.33,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 166.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.26,
+     "out_per_m": 1.17,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 161.0,
+     "first_token_s": 0.95,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Open Inference",
+     "speed_tok_s": 156.0,
+     "first_token_s": 0.81,
+     "in_per_m": 0.052,
+     "out_per_m": 0.95,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "DigitalOcean",
+     "speed_tok_s": 151.0,
+     "first_token_s": 0.65,
+     "in_per_m": 0.225,
+     "out_per_m": 0.9,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 147.0,
+     "first_token_s": 0.39,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 144.0,
+     "first_token_s": 0.69,
+     "in_per_m": 0.24,
+     "out_per_m": 0.96,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 142.0,
+     "first_token_s": 0.35,
+     "in_per_m": 0.19,
+     "out_per_m": 0.65,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 140.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.051,
+     "out_per_m": 0.567,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 137.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.09,
+     "out_per_m": 0.36,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Cohere",
+     "speed_tok_s": 135.0,
+     "first_token_s": 0.44,
+     "in_per_m": 0.195,
+     "out_per_m": 0.66,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Ionstream",
+     "speed_tok_s": 129.0,
+     "first_token_s": 0.42,
+     "in_per_m": 0.2,
+     "out_per_m": 0.7,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 125.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 120.0,
+     "first_token_s": 1.54,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 118.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.14,
+     "out_per_m": 0.42,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "River",
+     "speed_tok_s": 114.0,
+     "first_token_s": 0.63,
+     "in_per_m": 0.12,
+     "out_per_m": 0.48,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Baidu Qianfan",
+     "speed_tok_s": 108.0,
+     "first_token_s": 1.04,
+     "in_per_m": 0.051,
+     "out_per_m": 0.203,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Reka AI",
+     "speed_tok_s": 107.0,
+     "first_token_s": 0.22,
+     "in_per_m": 0.12,
+     "out_per_m": 0.64,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 102.0,
+     "first_token_s": 1.24,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 102.0,
+     "first_token_s": 1.25,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 97.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.21,
+     "out_per_m": 0.63,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 95.0,
+     "first_token_s": 1.55,
+     "in_per_m": 0.112,
+     "out_per_m": 0.336,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 94.0,
+     "first_token_s": 0.33,
+     "in_per_m": 0.103,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Fireworks Spot",
+     "speed_tok_s": 87.0,
+     "first_token_s": 0.89,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Relace",
+     "speed_tok_s": 84.0,
+     "first_token_s": 0.68,
+     "in_per_m": 0.12,
+     "out_per_m": 0.5,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "StreamLake",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.34,
+     "in_per_m": 0.147,
+     "out_per_m": 0.588,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 79.0,
+     "first_token_s": 0.72,
+     "in_per_m": 0.3,
+     "out_per_m": 1.2,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Mancer",
+     "speed_tok_s": 76.0,
+     "first_token_s": 0.84,
+     "in_per_m": 0.212,
+     "out_per_m": 0.75,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 73.0,
+     "first_token_s": 0.34,
+     "in_per_m": 0.103,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 68.0,
+     "first_token_s": 1.65,
+     "in_per_m": 0.1,
+     "out_per_m": 0.9,
+     "context": "1.0M",
+     "quant": null
+    }
+   ]
+  },
+  "google/gemini-4-argon": {
+   "slug": "gemini-4-argon",
+   "fetched_at": "2026-11-25T14:48:50Z",
+   "providers": [
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 42.0,
+     "first_token_s": 5.97,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 42.0,
+     "first_token_s": 6.87,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 36.0,
+     "first_token_s": 12.0,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 36.0,
+     "first_token_s": 7.17,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 33.0,
+     "first_token_s": 8.09,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 17.0,
+     "first_token_s": 4.44,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null
+    }
+   ]
+  },
+  "google/gemini-4-carbon": {
+   "slug": "gemini-4-carbon",
+   "fetched_at": "2026-11-25T14:48:48Z",
+   "providers": [
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 72.0,
+     "first_token_s": 14.0,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 40.0,
+     "first_token_s": 11.0,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 27.0,
+     "first_token_s": 13.0,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 27.0,
+     "first_token_s": 11.0,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 26.0,
+     "first_token_s": 9.35,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 26.0,
+     "first_token_s": 5.79,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 21.0,
+     "first_token_s": 21.0,
+     "in_per_m": 3.6,
+     "out_per_m": 18.0,
+     "context": "1.0M",
+     "quant": null
+    }
+   ]
+  },
+  "google/gemini-4-hydrogen": {
+   "slug": "gemini-4-hydrogen",
+   "fetched_at": "2026-11-25T14:48:49Z",
+   "providers": [
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 137.0,
+     "first_token_s": 2.09,
+     "in_per_m": 0.75,
+     "out_per_m": 3.75,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 135.0,
+     "first_token_s": 1.92,
+     "in_per_m": 1.65,
+     "out_per_m": 8.25,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 135.0,
+     "first_token_s": 2.2,
+     "in_per_m": 1.65,
+     "out_per_m": 8.25,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 108.0,
+     "first_token_s": 9.19,
+     "in_per_m": 1.5,
+     "out_per_m": 7.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 108.0,
+     "first_token_s": 2.21,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 107.0,
+     "first_token_s": 8.03,
+     "in_per_m": 1.5,
+     "out_per_m": 7.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 104.0,
+     "first_token_s": 2.05,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": null
+    }
+   ]
+  },
+  "google/gemini-4-neon": {
+   "slug": "gemini-4-neon",
+   "fetched_at": "2026-11-25T14:48:48Z",
+   "providers": [
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 80.0,
+     "first_token_s": 5.52,
+     "in_per_m": 3.3,
+     "out_per_m": 16.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 74.0,
+     "first_token_s": 5.65,
+     "in_per_m": 1.5,
+     "out_per_m": 7.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google AI Studio",
+     "speed_tok_s": 68.0,
+     "first_token_s": 5.51,
+     "in_per_m": 3.0,
+     "out_per_m": 15.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 67.0,
+     "first_token_s": 4.75,
+     "in_per_m": 3.0,
+     "out_per_m": 15.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 63.0,
+     "first_token_s": 4.86,
+     "in_per_m": 3.3,
+     "out_per_m": 16.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 44.0,
+     "first_token_s": 5.25,
+     "in_per_m": 5.4,
+     "out_per_m": 27.0,
+     "context": "1.0M",
+     "quant": null
+    }
+   ]
+  },
+  "google/gemma-4-26b-a4b-it": {
+   "slug": "gemma-4-26b-a4b",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 175.0,
+     "first_token_s": 0.37,
+     "in_per_m": 0.05,
+     "out_per_m": 0.18,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Nextbit",
+     "speed_tok_s": 111.0,
+     "first_token_s": 0.35,
+     "in_per_m": 0.09,
+     "out_per_m": 0.3,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 77.0,
+     "first_token_s": 0.8,
+     "in_per_m": 0.13,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 75.0,
+     "first_token_s": 0.56,
+     "in_per_m": 0.13,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 68.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.09,
+     "out_per_m": 0.28,
+     "context": "256k",
+     "quant": null
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 64.0,
+     "first_token_s": 0.47,
+     "in_per_m": 0.05,
+     "out_per_m": 0.19,
+     "context": "262k",
+     "quant": "int4"
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 57.0,
+     "first_token_s": 1.65,
+     "in_per_m": 0.13,
+     "out_per_m": 0.4,
+     "context": "256k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 56.0,
+     "first_token_s": 0.68,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 46.0,
+     "first_token_s": 0.75,
+     "in_per_m": 0.1,
+     "out_per_m": 0.3,
+     "context": "256k",
+     "quant": null
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 43.0,
+     "first_token_s": 0.39,
+     "in_per_m": 0.07,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 34.0,
+     "first_token_s": 0.73,
+     "in_per_m": 0.07,
+     "out_per_m": 0.24,
+     "context": "131k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 33.0,
+     "first_token_s": 0.31,
+     "in_per_m": 0.1,
+     "out_per_m": 0.3,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "io.net",
+     "speed_tok_s": 33.0,
+     "first_token_s": 0.84,
+     "in_per_m": 0.067,
+     "out_per_m": 0.29,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 33.0,
+     "first_token_s": 0.94,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 27.0,
+     "first_token_s": 0.62,
+     "in_per_m": 0.2,
+     "out_per_m": 0.72,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 19.0,
+     "first_token_s": 0.92,
+     "in_per_m": 0.1,
+     "out_per_m": 0.36,
+     "context": "262k",
+     "quant": "bf16"
+    }
+   ]
+  },
+  "google/gemma-4-31b-it": {
+   "slug": "gemma-4-31b",
+   "fetched_at": "2026-11-25T14:48:51Z",
+   "providers": [
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 209.0,
+     "first_token_s": 0.16,
+     "in_per_m": 0.75,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 161.0,
+     "first_token_s": 0.3,
+     "in_per_m": 0.34,
+     "out_per_m": 0.1,
+     "context": "131k",
+     "quant": null
+    },
+    {
+     "provider": "SambaNova",
+     "speed_tok_s": 137.0,
+     "first_token_s": 2.24,
+     "in_per_m": 0.38,
+     "out_per_m": 1.15,
+     "context": "131k",
+     "quant": null
+    },
+    {
+     "provider": "KT",
+     "speed_tok_s": 126.0,
+     "first_token_s": 0.72,
+     "in_per_m": 0.1,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Nextbit",
+     "speed_tok_s": 114.0,
+     "first_token_s": 0.52,
+     "in_per_m": 0.125,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Friendli",
+     "speed_tok_s": 97.0,
+     "first_token_s": 0.5,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 81.0,
+     "first_token_s": 2.69,
+     "in_per_m": 0.1,
+     "out_per_m": 0.34,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 45.0,
+     "first_token_s": 1.67,
+     "in_per_m": 0.2,
+     "out_per_m": 0.335,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra (fp4)",
+     "speed_tok_s": 39.0,
+     "first_token_s": 0.4,
+     "in_per_m": 0.135,
+     "out_per_m": 0.51,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Crusoe",
+     "speed_tok_s": 36.0,
+     "first_token_s": 0.66,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "260k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 35.0,
+     "first_token_s": 0.69,
+     "in_per_m": 0.12,
+     "out_per_m": 0.36,
+     "context": "256k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 35.0,
+     "first_token_s": 0.75,
+     "in_per_m": 0.75,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 34.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.14,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 22.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.15,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Chutes",
+     "speed_tok_s": 22.0,
+     "first_token_s": 3.69,
+     "in_per_m": 0.12,
+     "out_per_m": 0.37,
+     "context": "131k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "DeepInfra (fp8)",
+     "speed_tok_s": 18.0,
+     "first_token_s": 1.25,
+     "in_per_m": 0.16,
+     "out_per_m": 0.32,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra (fp8)",
+     "speed_tok_s": 16.0,
+     "first_token_s": 0.76,
+     "in_per_m": 0.2,
+     "out_per_m": 0.4,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra (fp8)",
+     "speed_tok_s": 16.0,
+     "first_token_s": 0.63,
+     "in_per_m": 0.3,
+     "out_per_m": 0.6,
+     "context": "262k",
+     "quant": "fp8"
+    }
+   ]
+  },
+  "ibm-granite/granite-4.2-8b": {
+   "slug": "granite-4-2-8b",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 106.0,
+     "first_token_s": 0.37,
+     "in_per_m": 0.06,
+     "out_per_m": 0.25,
+     "context": "131k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 64.0,
+     "first_token_s": 0.14,
+     "in_per_m": 0.06,
+     "out_per_m": 0.15,
+     "context": "131k",
+     "quant": "bf16"
+    }
+   ]
+  },
+  "inclusionai/ling-3.0-flash": {
+   "slug": "ling-3-0-flash",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "Ant Digital",
+     "speed_tok_s": 100.0,
+     "first_token_s": 1.01,
+     "in_per_m": 0.021,
+     "out_per_m": 0.063,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 91.0,
+     "first_token_s": 0.46,
+     "in_per_m": 0.06,
+     "out_per_m": 0.18,
+     "context": "131k",
+     "quant": "fp4"
+    }
+   ]
+  },
+  "inclusionai/ling-3.0-tiny": {
+   "slug": "ling-3-0-tiny",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "Ant Digital",
+     "speed_tok_s": 82.0,
+     "first_token_s": 0.4,
+     "in_per_m": 0.015,
+     "out_per_m": 0.045,
+     "context": "262k",
+     "quant": "fp8"
+    }
+   ]
+  },
+  "mistralai/ministral-14b-2512": {
+   "slug": "ministral-3-14b",
+   "fetched_at": "2026-11-25T14:48:53Z",
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 109.0,
+     "first_token_s": 0.43,
+     "in_per_m": 0.2,
+     "out_per_m": 0.2,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 82.0,
+     "first_token_s": 0.38,
+     "in_per_m": 0.22,
+     "out_per_m": 0.22,
+     "context": "262k",
+     "quant": null
+    }
+   ]
+  },
+  "mistralai/ministral-3b-2512": {
+   "slug": "ministral-3-3b",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 165.0,
+     "first_token_s": 0.31,
+     "in_per_m": 0.1,
+     "out_per_m": 0.1,
+     "context": "131k",
+     "quant": null
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 161.0,
+     "first_token_s": 0.34,
+     "in_per_m": 0.11,
+     "out_per_m": 0.11,
+     "context": "131k",
+     "quant": null
+    }
+   ]
+  },
+  "mistralai/ministral-8b-2512": {
+   "slug": "ministral-3-8b",
+   "fetched_at": "2026-11-25T14:48:53Z",
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 88.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.15,
+     "out_per_m": 0.15,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 72.0,
+     "first_token_s": 0.44,
+     "in_per_m": 0.165,
+     "out_per_m": 0.165,
+     "context": "262k",
+     "quant": null
+    }
+   ]
+  },
+  "mistralai/mistral-large-4-0": {
+   "slug": "mistral-large-4",
+   "fetched_at": "2026-11-25T14:48:51Z",
+   "providers": [
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 51.0,
+     "first_token_s": 1.27,
+     "in_per_m": 0.7,
+     "out_per_m": 2.1,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 51.0,
+     "first_token_s": 1.09,
+     "in_per_m": 0.77,
+     "out_per_m": 2.31,
+     "context": "524k",
+     "quant": null
+    }
+   ]
+  },
+  "moonshotai/kimi-k3.1-pro": {
+   "slug": "kimi-k3-1-pro",
+   "fetched_at": "2026-11-25T14:48:50Z",
+   "providers": [
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 153.0,
+     "first_token_s": 0.79,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 119.0,
+     "first_token_s": 0.91,
+     "in_per_m": 1.8,
+     "out_per_m": 9.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 117.0,
+     "first_token_s": 0.57,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 111.0,
+     "first_token_s": 0.6,
+     "in_per_m": 2.7,
+     "out_per_m": 13.5,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 103.0,
+     "first_token_s": 1.04,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 101.0,
+     "first_token_s": 0.6,
+     "in_per_m": 1.8,
+     "out_per_m": 9.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 101.0,
+     "first_token_s": 2.24,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 100.0,
+     "first_token_s": 0.6,
+     "in_per_m": 1.8,
+     "out_per_m": 9.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 99.0,
+     "first_token_s": 0.55,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "io.net",
+     "speed_tok_s": 96.0,
+     "first_token_s": 1.33,
+     "in_per_m": 2.8,
+     "out_per_m": 12.0,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "PrimaLabs",
+     "speed_tok_s": 87.0,
+     "first_token_s": 1.3,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 86.0,
+     "first_token_s": 1.32,
+     "in_per_m": 4.4,
+     "out_per_m": 22.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 83.0,
+     "first_token_s": 0.93,
+     "in_per_m": 1.75,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 81.0,
+     "first_token_s": 0.59,
+     "in_per_m": 0.253,
+     "out_per_m": 8.8,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Morph",
+     "speed_tok_s": 80.0,
+     "first_token_s": 2.01,
+     "in_per_m": 1.31,
+     "out_per_m": 8.55,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "River",
+     "speed_tok_s": 79.0,
+     "first_token_s": 0.68,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "DigitalOcean",
+     "speed_tok_s": 77.0,
+     "first_token_s": 1.32,
+     "in_per_m": 1.9,
+     "out_per_m": 9.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Pareto Inference",
+     "speed_tok_s": 66.0,
+     "first_token_s": 1.01,
+     "in_per_m": 1.4,
+     "out_per_m": 7.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Relace",
+     "speed_tok_s": 61.0,
+     "first_token_s": 1.75,
+     "in_per_m": 0.24,
+     "out_per_m": 8.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 59.0,
+     "first_token_s": 1.45,
+     "in_per_m": 2.0,
+     "out_per_m": 9.49,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 51.0,
+     "first_token_s": 2.43,
+     "in_per_m": 4.6,
+     "out_per_m": 23.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Decart",
+     "speed_tok_s": 50.0,
+     "first_token_s": 1.9,
+     "in_per_m": 1.24,
+     "out_per_m": 6.2,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Moonshot AI",
+     "speed_tok_s": 45.0,
+     "first_token_s": 5.38,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 44.0,
+     "first_token_s": 1.79,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 36.0,
+     "first_token_s": 0.73,
+     "in_per_m": 1.9,
+     "out_per_m": 9.5,
+     "context": "1.0M",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 36.0,
+     "first_token_s": 1.78,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 31.0,
+     "first_token_s": 3.27,
+     "in_per_m": 2.5,
+     "out_per_m": 12.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 30.0,
+     "first_token_s": 2.63,
+     "in_per_m": 2.3,
+     "out_per_m": 11.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Moonshot AI",
+     "speed_tok_s": 28.0,
+     "first_token_s": 3.0,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.0M",
+     "quant": "mxfp4"
+    }
+   ]
+  },
+  "nvidia/nemotron-3.5-lightning": {
+   "slug": "nemotron-3-5-lightning",
+   "fetched_at": "2026-11-25T14:48:53Z",
+   "providers": [
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 777.0,
+     "first_token_s": 0.06,
+     "in_per_m": 0.07,
+     "out_per_m": 0.2,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 353.0,
+     "first_token_s": 0.28,
+     "in_per_m": 0.05,
+     "out_per_m": 0.2,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 211.0,
+     "first_token_s": 0.26,
+     "in_per_m": 0.06,
+     "out_per_m": 0.16,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 152.0,
+     "first_token_s": 0.21,
+     "in_per_m": 0.07,
+     "out_per_m": 0.2,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 74.0,
+     "first_token_s": 1.13,
+     "in_per_m": 0.02,
+     "out_per_m": 0.096,
+     "context": "262k",
+     "quant": "int4"
+    }
+   ]
+  },
+  "openai/gpt-6-astra": {
+   "slug": "gpt-6-astra",
+   "fetched_at": "2026-11-25T14:48:49Z",
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 78.0,
+     "first_token_s": 1.94,
+     "in_per_m": 5.0,
+     "out_per_m": 25.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 55.0,
+     "first_token_s": 1.26,
+     "in_per_m": 20.0,
+     "out_per_m": 100.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 48.0,
+     "first_token_s": 1.74,
+     "in_per_m": 10.0,
+     "out_per_m": 50.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 41.0,
+     "first_token_s": 9.02,
+     "in_per_m": 10.0,
+     "out_per_m": 50.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 40.0,
+     "first_token_s": 2.8,
+     "in_per_m": 10.0,
+     "out_per_m": 50.0,
+     "context": "1.1M",
+     "quant": null
+    }
+   ]
+  },
+  "openai/gpt-6-luna": {
+   "slug": "gpt-6-luna",
+   "fetched_at": "2026-11-25T14:48:50Z",
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 123.0,
+     "first_token_s": 0.95,
+     "in_per_m": 0.2,
+     "out_per_m": 1.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 120.0,
+     "first_token_s": 1.35,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 114.0,
+     "first_token_s": 1.39,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 112.0,
+     "first_token_s": 1.08,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 92.0,
+     "first_token_s": 1.65,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 89.0,
+     "first_token_s": 1.8,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 63.0,
+     "first_token_s": 1.35,
+     "in_per_m": 0.12,
+     "out_per_m": 0.6,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 60.0,
+     "first_token_s": 3.25,
+     "in_per_m": 0.1,
+     "out_per_m": 0.5,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 59.0,
+     "first_token_s": 4.71,
+     "in_per_m": 0.11,
+     "out_per_m": 0.55,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 18.0,
+     "first_token_s": 14.0,
+     "in_per_m": 0.05,
+     "out_per_m": 0.25,
+     "context": "1.1M",
+     "quant": null
+    }
+   ]
+  },
+  "openai/gpt-6.1-sol": {
+   "slug": "gpt-6-1-sol",
+   "fetched_at": "2026-11-25T14:48:49Z",
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 238.0,
+     "first_token_s": 0.84,
+     "in_per_m": 12.0,
+     "out_per_m": 60.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 47.0,
+     "first_token_s": 0.93,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 43.0,
+     "first_token_s": 2.94,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 38.0,
+     "first_token_s": 2.98,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 37.0,
+     "first_token_s": 4.48,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 35.0,
+     "first_token_s": 2.29,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 32.0,
+     "first_token_s": 2.72,
+     "in_per_m": 2.4,
+     "out_per_m": 12.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 29.0,
+     "first_token_s": 2.15,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.1M",
+     "quant": null
+    }
+   ]
+  },
+  "openai/gpt-6.1-terra": {
+   "slug": "gpt-6-1-terra",
+   "fetched_at": "2026-11-25T14:48:49Z",
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 86.0,
+     "first_token_s": 1.18,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 80.0,
+     "first_token_s": 1.06,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 72.0,
+     "first_token_s": 2.97,
+     "in_per_m": 1.2,
+     "out_per_m": 6.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 72.0,
+     "first_token_s": 3.19,
+     "in_per_m": 1.1,
+     "out_per_m": 5.5,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 61.0,
+     "first_token_s": 1.88,
+     "in_per_m": 1.1,
+     "out_per_m": 5.5,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 51.0,
+     "first_token_s": 2.42,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 30.0,
+     "first_token_s": 4.63,
+     "in_per_m": 1.0,
+     "out_per_m": 5.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 16.0,
+     "first_token_s": 13.0,
+     "in_per_m": 0.5,
+     "out_per_m": 2.5,
+     "context": "1.1M",
+     "quant": null
+    }
+   ]
+  },
+  "openai/gpt-6.2-astra": {
+   "slug": "gpt-6-2-astra",
+   "fetched_at": "2026-11-25T14:48:48Z",
+   "providers": [
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 69.0,
+     "first_token_s": 1.76,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 60.0,
+     "first_token_s": 1.51,
+     "in_per_m": 16.0,
+     "out_per_m": 80.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 50.0,
+     "first_token_s": 3.23,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 50.0,
+     "first_token_s": 6.0,
+     "in_per_m": 8.8,
+     "out_per_m": 44.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 37.0,
+     "first_token_s": 2.69,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 37.0,
+     "first_token_s": 6.54,
+     "in_per_m": 9.6,
+     "out_per_m": 48.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 36.0,
+     "first_token_s": 4.51,
+     "in_per_m": 8.0,
+     "out_per_m": 40.0,
+     "context": "1.1M",
+     "quant": null
+    }
+   ]
+  },
+  "openai/gpt-6.2-sol": {
+   "slug": "gpt-6-2-sol",
+   "fetched_at": "2026-11-25T14:48:49Z",
+   "providers": [
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 105.0,
+     "first_token_s": 1.58,
+     "in_per_m": 4.0,
+     "out_per_m": 20.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Google Vertex",
+     "speed_tok_s": 92.0,
+     "first_token_s": 1.87,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 83.0,
+     "first_token_s": 3.85,
+     "in_per_m": 2.2,
+     "out_per_m": 11.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 64.0,
+     "first_token_s": 2.41,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 61.0,
+     "first_token_s": 2.37,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "Azure",
+     "speed_tok_s": 55.0,
+     "first_token_s": 5.05,
+     "in_per_m": 2.4,
+     "out_per_m": 12.0,
+     "context": "1.1M",
+     "quant": null
+    },
+    {
+     "provider": "OpenAI",
+     "speed_tok_s": 44.0,
+     "first_token_s": 1.5,
+     "in_per_m": 2.0,
+     "out_per_m": 10.0,
+     "context": "1.1M",
+     "quant": null
+    }
+   ]
+  },
+  "qwen/qwen3.5-122b-a10b": {
+   "slug": "qwen3-5-122b-a10b",
+   "fetched_at": "2026-11-25T14:48:51Z",
+   "providers": [
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 104.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.26,
+     "out_per_m": 2.08,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 85.0,
+     "first_token_s": 0.91,
+     "in_per_m": 0.26,
+     "out_per_m": 2.08,
+     "context": "262k",
+     "quant": "fp8"
+    }
+   ]
+  },
+  "qwen/qwen3.5-35b-a3b": {
+   "slug": "qwen3-5-35b-a3b",
+   "fetched_at": "2026-11-25T14:48:51Z",
+   "providers": [
+    {
+     "provider": "Venice",
+     "speed_tok_s": 154.0,
+     "first_token_s": 0.52,
+     "in_per_m": 0.15,
+     "out_per_m": 1.0,
+     "context": "256k",
+     "quant": null
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 146.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.163,
+     "out_per_m": 1.3,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 116.0,
+     "first_token_s": 0.29,
+     "in_per_m": 0.15,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 66.0,
+     "first_token_s": 0.42,
+     "in_per_m": 0.065,
+     "out_per_m": 0.75,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 47.0,
+     "first_token_s": 0.99,
+     "in_per_m": 0.24,
+     "out_per_m": 1.8,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 38.0,
+     "first_token_s": 1.22,
+     "in_per_m": 0.112,
+     "out_per_m": 0.8,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 36.0,
+     "first_token_s": 0.45,
+     "in_per_m": 0.14,
+     "out_per_m": 1.0,
+     "context": "262k",
+     "quant": "fp8"
+    }
+   ]
+  },
+  "qwen/qwen3.5-9b": {
+   "slug": "qwen3-5-9b",
+   "fetched_at": "2026-11-25T14:48:51Z",
+   "providers": [
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 83.0,
+     "first_token_s": 0.42,
+     "in_per_m": 0.1,
+     "out_per_m": 0.25,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 73.0,
+     "first_token_s": 0.35,
+     "in_per_m": 0.17,
+     "out_per_m": 0.25,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 59.0,
+     "first_token_s": 1.32,
+     "in_per_m": 0.08,
+     "out_per_m": 0.13,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 39.0,
+     "first_token_s": 0.73,
+     "in_per_m": 0.1,
+     "out_per_m": 0.15,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 24.0,
+     "first_token_s": 1.28,
+     "in_per_m": 0.17,
+     "out_per_m": 0.25,
+     "context": "262k",
+     "quant": "bf16"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 8.0,
+     "first_token_s": 1.38,
+     "in_per_m": 0.15,
+     "out_per_m": 0.225,
+     "context": "262k",
+     "quant": "bf16"
+    }
+   ]
+  },
+  "qwen/qwen3.6-35b-a3b": {
+   "slug": "qwen3-6-35b-a3b",
+   "fetched_at": "2026-11-25T14:48:53Z",
+   "providers": [
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 175.0,
+     "first_token_s": 0.48,
+     "in_per_m": 0.19,
+     "out_per_m": 1.7,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 80.0,
+     "first_token_s": 0.48,
+     "in_per_m": 0.1,
+     "out_per_m": 0.89,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 66.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.05,
+     "out_per_m": 0.7,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 34.0,
+     "first_token_s": 0.83,
+     "in_per_m": 0.24,
+     "out_per_m": 1.8,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 30.0,
+     "first_token_s": 0.88,
+     "in_per_m": 0.1,
+     "out_per_m": 0.95,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 30.0,
+     "first_token_s": 0.89,
+     "in_per_m": 0.1,
+     "out_per_m": 0.9,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 28.0,
+     "first_token_s": 1.55,
+     "in_per_m": 0.08,
+     "out_per_m": 0.76,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Ambient",
+     "speed_tok_s": 19.0,
+     "first_token_s": 1.0,
+     "in_per_m": 0.1,
+     "out_per_m": 0.9,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 19.0,
+     "first_token_s": 2.84,
+     "in_per_m": 0.1,
+     "out_per_m": 1.0,
+     "context": "256k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 10.0,
+     "first_token_s": 12.0,
+     "in_per_m": 0.15,
+     "out_per_m": 1.43,
+     "context": "262k",
+     "quant": "fp8"
+    }
+   ]
+  },
+  "qwen/qwen3.8-27b": {
+   "slug": "qwen3-8-27b",
+   "fetched_at": "2026-11-25T14:48:51Z",
+   "providers": [
+    {
+     "provider": "Cerebras",
+     "speed_tok_s": 632.0,
+     "first_token_s": 0.3,
+     "in_per_m": 0.99,
+     "out_per_m": 1.49,
+     "context": "66k",
+     "quant": "fp16"
+    },
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 284.0,
+     "first_token_s": 0.65,
+     "in_per_m": 0.45,
+     "out_per_m": 3.0,
+     "context": "1M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 245.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.06,
+     "out_per_m": 1.96,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 166.0,
+     "first_token_s": 0.2,
+     "in_per_m": 0.2,
+     "out_per_m": 2.5,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 164.0,
+     "first_token_s": 0.25,
+     "in_per_m": 0.45,
+     "out_per_m": 3.2,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 112.0,
+     "first_token_s": 0.28,
+     "in_per_m": 0.4,
+     "out_per_m": 3.0,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Tenstorrent",
+     "speed_tok_s": 103.0,
+     "first_token_s": 0.47,
+     "in_per_m": 0.15,
+     "out_per_m": 1.6,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 75.0,
+     "first_token_s": 0.53,
+     "in_per_m": 0.04,
+     "out_per_m": 2.3,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Pearl Research",
+     "speed_tok_s": 74.0,
+     "first_token_s": 1.33,
+     "in_per_m": 0.1,
+     "out_per_m": 2.0,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "StreamLake",
+     "speed_tok_s": 69.0,
+     "first_token_s": 0.94,
+     "in_per_m": 0.175,
+     "out_per_m": 1.05,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 59.0,
+     "first_token_s": 0.67,
+     "in_per_m": 0.425,
+     "out_per_m": 2.55,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 59.0,
+     "first_token_s": 0.77,
+     "in_per_m": 0.425,
+     "out_per_m": 2.55,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 49.0,
+     "first_token_s": 0.58,
+     "in_per_m": 0.24,
+     "out_per_m": 2.2,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "NEAR AI",
+     "speed_tok_s": 44.0,
+     "first_token_s": 2.36,
+     "in_per_m": 0.04,
+     "out_per_m": 1.35,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 37.0,
+     "first_token_s": 0.58,
+     "in_per_m": 0.15,
+     "out_per_m": 1.88,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Mancer",
+     "speed_tok_s": 33.0,
+     "first_token_s": 2.01,
+     "in_per_m": 0.125,
+     "out_per_m": 1.5,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Reka AI",
+     "speed_tok_s": 32.0,
+     "first_token_s": 0.81,
+     "in_per_m": 0.45,
+     "out_per_m": 3.2,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 31.0,
+     "first_token_s": 0.4,
+     "in_per_m": 0.45,
+     "out_per_m": 3.2,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 27.0,
+     "first_token_s": 1.52,
+     "in_per_m": 0.035,
+     "out_per_m": 1.5,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Chutes",
+     "speed_tok_s": 25.0,
+     "first_token_s": 5.43,
+     "in_per_m": 0.039,
+     "out_per_m": 1.25,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Ionstream",
+     "speed_tok_s": 9.0,
+     "first_token_s": 12.0,
+     "in_per_m": 0.04,
+     "out_per_m": 1.95,
+     "context": "262k",
+     "quant": "fp8"
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 8.0,
+     "first_token_s": 1.88,
+     "in_per_m": 0.225,
+     "out_per_m": 1.98,
+     "context": "262k",
+     "quant": "fp8"
+    }
+   ]
+  },
+  "qwen/qwen4-max": {
+   "slug": "qwen4-max",
+   "fetched_at": "2026-11-25T14:48:50Z",
+   "providers": [
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 63.0,
+     "first_token_s": 1.75,
+     "in_per_m": 1.43,
+     "out_per_m": 4.28,
+     "context": "1M",
+     "quant": null
+    }
+   ]
+  },
+  "stepfun/step-5-preview": {
+   "slug": "step-5",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 27.0,
+     "first_token_s": 3.0,
+     "in_per_m": 1.0,
+     "out_per_m": 2.7,
+     "context": "262k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "StepFun",
+     "speed_tok_s": 17.0,
+     "first_token_s": 40.0,
+     "in_per_m": 1.0,
+     "out_per_m": 2.7,
+     "context": "1M",
+     "quant": "fp8"
+    }
+   ]
+  },
+  "thinkingmachines/inkling-2-mini": {
+   "slug": "inkling-2-mini",
+   "fetched_at": "2026-11-25T14:48:53Z",
+   "providers": [
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 248.0,
+     "first_token_s": 0.32,
+     "in_per_m": 0.037,
+     "out_per_m": 0.15,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 189.0,
+     "first_token_s": 0.32,
+     "in_per_m": 0.075,
+     "out_per_m": 0.3,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 177.0,
+     "first_token_s": 0.66,
+     "in_per_m": 0.15,
+     "out_per_m": 0.6,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Prime Intellect",
+     "speed_tok_s": 121.0,
+     "first_token_s": 0.59,
+     "in_per_m": 0.075,
+     "out_per_m": 0.3,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "io.net",
+     "speed_tok_s": 108.0,
+     "first_token_s": 9.69,
+     "in_per_m": 0.12,
+     "out_per_m": 0.5,
+     "context": "262k",
+     "quant": "nvfp4"
+    }
+   ]
+  },
+  "x-ai/grok-4.7": {
+   "slug": "grok-4-7",
+   "fetched_at": "2026-11-25T14:48:50Z",
+   "providers": [
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 109.0,
+     "first_token_s": 2.25,
+     "in_per_m": 2.0,
+     "out_per_m": 6.0,
+     "context": "500k",
+     "quant": null
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.39,
+     "in_per_m": 4.0,
+     "out_per_m": 12.0,
+     "context": "500k",
+     "quant": null
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 81.0,
+     "first_token_s": 1.57,
+     "in_per_m": 4.0,
+     "out_per_m": 12.0,
+     "context": "500k",
+     "quant": null
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 79.0,
+     "first_token_s": 5.78,
+     "in_per_m": 2.2,
+     "out_per_m": 6.6,
+     "context": "500k",
+     "quant": null
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 68.0,
+     "first_token_s": 1.34,
+     "in_per_m": 2.0,
+     "out_per_m": 6.0,
+     "context": "500k",
+     "quant": null
+    },
+    {
+     "provider": "SpaceXAI",
+     "speed_tok_s": 68.0,
+     "first_token_s": 1.62,
+     "in_per_m": 2.0,
+     "out_per_m": 6.0,
+     "context": "500k",
+     "quant": null
+    }
+   ]
+  },
+  "xiaomi/mimo-v2.6-flash": {
+   "slug": "mimo-v2-6-flash",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 110.0,
+     "first_token_s": 1.44,
+     "in_per_m": 0.25,
+     "out_per_m": 0.8,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 96.0,
+     "first_token_s": 0.54,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Cohere",
+     "speed_tok_s": 79.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 64.0,
+     "first_token_s": 2.26,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 63.0,
+     "first_token_s": 2.36,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Tenstorrent",
+     "speed_tok_s": 32.0,
+     "first_token_s": 0.39,
+     "in_per_m": 0.165,
+     "out_per_m": 0.33,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Xiaomi",
+     "speed_tok_s": 29.0,
+     "first_token_s": 2.7,
+     "in_per_m": 0.14,
+     "out_per_m": 0.28,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Darkbloom",
+     "speed_tok_s": 21.0,
+     "first_token_s": 4.06,
+     "in_per_m": 0.1,
+     "out_per_m": 0.28,
+     "context": "66k",
+     "quant": "fp4"
+    }
+   ]
+  },
+  "z-ai/glm-5.3": {
+   "slug": "glm-5-3",
+   "fetched_at": "2026-11-25T14:48:52Z",
+   "providers": [
+    {
+     "provider": "Baseten (fp8)",
+     "speed_tok_s": 253.0,
+     "first_token_s": 0.4,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Decart",
+     "speed_tok_s": 203.0,
+     "first_token_s": 0.43,
+     "in_per_m": 0.56,
+     "out_per_m": 1.81,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Baseten (fp8)",
+     "speed_tok_s": 179.0,
+     "first_token_s": 0.61,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 167.0,
+     "first_token_s": 0.72,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "ModelRun [by Modular]",
+     "speed_tok_s": 141.0,
+     "first_token_s": 0.29,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Nebius Token Factory",
+     "speed_tok_s": 126.0,
+     "first_token_s": 0.44,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 123.0,
+     "first_token_s": 0.72,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 121.0,
+     "first_token_s": 0.42,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Amazon Bedrock",
+     "speed_tok_s": 120.0,
+     "first_token_s": 0.64,
+     "in_per_m": 1.68,
+     "out_per_m": 5.28,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Together",
+     "speed_tok_s": 116.0,
+     "first_token_s": 0.4,
+     "in_per_m": 1.75,
+     "out_per_m": 5.5,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 113.0,
+     "first_token_s": 0.81,
+     "in_per_m": 1.68,
+     "out_per_m": 5.28,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Parasail",
+     "speed_tok_s": 112.0,
+     "first_token_s": 0.97,
+     "in_per_m": 2.1,
+     "out_per_m": 6.6,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Modal",
+     "speed_tok_s": 107.0,
+     "first_token_s": 0.41,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Tenstorrent",
+     "speed_tok_s": 105.0,
+     "first_token_s": 0.49,
+     "in_per_m": 0.6,
+     "out_per_m": 2.5,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Baseten (fp4)",
+     "speed_tok_s": 101.0,
+     "first_token_s": 0.72,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Baseten (fp4)",
+     "speed_tok_s": 97.0,
+     "first_token_s": 0.95,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 94.0,
+     "first_token_s": 0.36,
+     "in_per_m": 0.179,
+     "out_per_m": 1.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Venice",
+     "speed_tok_s": 92.0,
+     "first_token_s": 0.77,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "Wafer",
+     "speed_tok_s": 91.0,
+     "first_token_s": 0.53,
+     "in_per_m": 0.07,
+     "out_per_m": 1.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Cohere",
+     "speed_tok_s": 90.0,
+     "first_token_s": 0.85,
+     "in_per_m": 0.5,
+     "out_per_m": 3.5,
+     "context": "1.0M",
+     "quant": "nvfp4"
+    },
+    {
+     "provider": "Makora",
+     "speed_tok_s": 90.0,
+     "first_token_s": 0.3,
+     "in_per_m": 1.5,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 87.0,
+     "first_token_s": 0.45,
+     "in_per_m": 0.084,
+     "out_per_m": 3.6,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "CoreWeave",
+     "speed_tok_s": 87.0,
+     "first_token_s": 0.74,
+     "in_per_m": 0.75,
+     "out_per_m": 3.0,
+     "context": "1.0M",
+     "quant": "nvfp4"
+    },
+    {
+     "provider": "inference.net",
+     "speed_tok_s": 85.0,
+     "first_token_s": 0.41,
+     "in_per_m": 0.084,
+     "out_per_m": 3.6,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "River",
+     "speed_tok_s": 83.0,
+     "first_token_s": 0.8,
+     "in_per_m": 1.12,
+     "out_per_m": 3.52,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "DigitalOcean",
+     "speed_tok_s": 82.0,
+     "first_token_s": 0.66,
+     "in_per_m": 0.91,
+     "out_per_m": 2.86,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.25,
+     "in_per_m": 1.54,
+     "out_per_m": 4.84,
+     "context": "1.0M",
+     "quant": "nvfp4"
+    },
+    {
+     "provider": "Fireworks Spot",
+     "speed_tok_s": 82.0,
+     "first_token_s": 1.32,
+     "in_per_m": 0.7,
+     "out_per_m": 2.2,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Cloudflare",
+     "speed_tok_s": 80.0,
+     "first_token_s": 1.72,
+     "in_per_m": 0.56,
+     "out_per_m": 1.76,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Friendli",
+     "speed_tok_s": 80.0,
+     "first_token_s": 0.36,
+     "in_per_m": 1.26,
+     "out_per_m": 3.96,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Fireworks",
+     "speed_tok_s": 78.0,
+     "first_token_s": 1.83,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Crusoe",
+     "speed_tok_s": 78.0,
+     "first_token_s": 0.56,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "786k",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Inceptron",
+     "speed_tok_s": 77.0,
+     "first_token_s": 0.58,
+     "in_per_m": 1.0,
+     "out_per_m": 3.5,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "SambaNova",
+     "speed_tok_s": 77.0,
+     "first_token_s": 2.4,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": null
+    },
+    {
+     "provider": "Mistral",
+     "speed_tok_s": 75.0,
+     "first_token_s": 1.4,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "nvfp4"
+    },
+    {
+     "provider": "Morph",
+     "speed_tok_s": 73.0,
+     "first_token_s": 0.83,
+     "in_per_m": 1.07,
+     "out_per_m": 5.0,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "AkashML",
+     "speed_tok_s": 71.0,
+     "first_token_s": 1.28,
+     "in_per_m": 0.19,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Z.ai",
+     "speed_tok_s": 65.0,
+     "first_token_s": 1.21,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Featherless",
+     "speed_tok_s": 64.0,
+     "first_token_s": 0.89,
+     "in_per_m": 1.4,
+     "out_per_m": 4.4,
+     "context": "262k",
+     "quant": null
+    },
+    {
+     "provider": "Relace",
+     "speed_tok_s": 62.0,
+     "first_token_s": 1.44,
+     "in_per_m": 0.07,
+     "out_per_m": 4.38,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 56.0,
+     "first_token_s": 1.0,
+     "in_per_m": 0.563,
+     "out_per_m": 2.5,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Doubleword",
+     "speed_tok_s": 55.0,
+     "first_token_s": 0.69,
+     "in_per_m": 0.6,
+     "out_per_m": 2.4,
+     "context": "1.0M",
+     "quant": "nvfp4"
+    },
+    {
+     "provider": "SiliconFlow",
+     "speed_tok_s": 54.0,
+     "first_token_s": 1.76,
+     "in_per_m": 0.7,
+     "out_per_m": 1.9,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "NovitaAI",
+     "speed_tok_s": 44.0,
+     "first_token_s": 1.9,
+     "in_per_m": 0.63,
+     "out_per_m": 1.98,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Sail Research",
+     "speed_tok_s": 40.0,
+     "first_token_s": 6.0,
+     "in_per_m": 1.05,
+     "out_per_m": 4.2,
+     "context": "1.0M",
+     "quant": "fp8"
+    },
+    {
+     "provider": "Alibaba Cloud Int.",
+     "speed_tok_s": 39.0,
+     "first_token_s": 0.95,
+     "in_per_m": 1.19,
+     "out_per_m": 3.74,
+     "context": "1M",
+     "quant": null
+    },
+    {
+     "provider": "DeepInfra",
+     "speed_tok_s": 29.0,
+     "first_token_s": 1.4,
+     "in_per_m": 0.45,
+     "out_per_m": 2.0,
+     "context": "1.0M",
+     "quant": "fp4"
+    },
+    {
+     "provider": "Sail Research",
+     "speed_tok_s": 12.0,
+     "first_token_s": 55.0,
+     "in_per_m": 0.75,
+     "out_per_m": 3.0,
+     "context": "1.0M",
+     "quant": "fp8"
+    }
+   ]
+  }
+ }
+}

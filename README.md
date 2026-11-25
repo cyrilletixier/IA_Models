@@ -19,7 +19,7 @@
 | `/` (Dashboard) | KPIs, leaders par indice, top perf/prix |
 | `/models.html` | Liste des modèles : contexte, prix, indices Code / Analyse / Global, perf par $ |
 | `/costs.html` | Coûts par scénario de charge (chat, refactoring, analyse de docs) |
-| `/providers.html` | Vue agrégée par laboratoire |
+| `/providers.html` | Comparateur par modèle : prix, vitesse et latence de chaque fournisseur (OpenRouter, DeepInfra, Together, API du labo…) |
 | `/hosting.html` | Auto-hébergement : filtre par VRAM de GPU + quantisation, indique quels modèles ouverts tiennent chez soi |
 
 ## Indices suivis (v0)
@@ -27,8 +27,8 @@
 | Indice | Description | Source |
 |---|---|---|
 | Code | FrontierCode 2.0 (AA) : 132 tâches réelles sur des repos open source, validées par un mainteneur | Artificial Analysis |
-| Analyse | GPQA Diamond : 198 questions sciences de niveau doctorat, "Google-proof" | Epoch AI Benchmarking Hub |
-| Global | AA Intelligence Index v5.0.1 : composite 9 évaluations (knowledge work, coding, science, général) | Artificial Analysis |
+| Analyse | GPQA Diamond : 198 questions sciences de niveau doctorat, "Google-proof" (rerun AA utilisé, source notée, quand Epoch n'a pas publié pour le modèle) | Epoch AI Benchmarking Hub / Artificial Analysis |
+| Global | AA Intelligence Index v5.0.1 : composite 9 évaluations (knowledge work, coding, science, général). Marqueur `v4` quand seule la version 4.x est publiée pour le modèle | Artificial Analysis |
 | Perf/$ | Indice Global / prix mélangé (3:1 input:output) | calcul maison |
 
 Prix en $ / 1M tokens, mélange standard 75 % input / 25 % output : `(3×in + out) / 4`.
@@ -61,6 +61,10 @@ acheter un meuble sans les dimensions.
 ```
 OpenRouter API ──▶ scripts/fetch_pricing.py ──▶ data/raw/openrouter_models.json (ignoré)
                                                       │
+BenchLeader ──────▶ scripts/fetch_providers.py ──▶ data/providers.json
+(pages modèles,   (prix/vitesse par fournisseur,  (committé)
+ prix par offre)    tolère les pages absentes)
+                                                      │
 data/benchmarks.json (curation, sourcée, datée) ──────┤
                                                       ▼
                                         scripts/build_dataset.py
@@ -83,6 +87,10 @@ python3 scripts/build_dataset.py  # fusion + calcul des indices -> data/models.j
   meilleur score publié du modèle, tous réglages de raisonnement confondus.
 - `scripts/fetch_pricing.py` : récupère les prix et contextes en direct sur l'API publique
   OpenRouter (aucune clé requise).
+- `scripts/fetch_providers.py` : parse les pages modèles BenchLeader (slug par entrée dans
+  `benchmarks.json`, champ `benchleader_slug`) et collecte, pour chaque modèle, chaque offre
+  qui le route via OpenRouter : fournisseur, prix propres in/out, vitesse, latence premier
+  token, quantisation. Une page échouée garde les données du fetch précédent.
 - `scripts/build_dataset.py` : fusionne le tout et calcule prix mélangé, perf/$ et
   VRAM d'auto-hébergement à partir de `params_total_b`.
 - `data/raw/` est ignoré par git : le snapshot est régénérable à tout moment via le script
@@ -109,9 +117,8 @@ chaque push sur main déploie automatiquement, sans intervention.
 ## Roadmap
 
 - [ ] Historique des prix (séries temporelles) + graphes
-- [ ] Page Fournisseurs réelle : plusieurs fournisseurs d'inférence par modèle
-      (OpenRouter, DeepInfra, Together, Fireworks, APIs natives)
-- [ ] Benchmarks latence (tokens/s) et débit
+- [ ] Garder les fournisseurs qui disparaissent de OpenRouter sous forme d'historique
+- [ ] Benchmarks latence (tokens/s) et débit, côté modèles
 - [ ] Comparateur de modèles côte à côte
 
 ## Sources
