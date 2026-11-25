@@ -634,6 +634,92 @@ function renderHosting(dataset) {
 	draw();
 }
 
+/* ---------- page hardware ---------- */
+
+const HW_QUANTA = {
+	q4: { key: "vram_q4_gb", bits_per_param: 0.58, label: "Q4" },
+	q8: { key: "vram_q8_gb", bits_per_param: 1.10, label: "Q8" },
+	fp16: { key: "vram_fp16_gb", bits_per_param: 2.0, label: "FP16" },
+};
+
+function renderHardware(dataset) {
+	const host = document.querySelector("#hardware-table");
+	if (!host) return;
+	const hw = dataset.hardware || [];
+	if (!hw.length) return;
+
+	const models = dataset.models.filter((m) => m.open_weights && m.self_host);
+	const meta = dataset._meta.hardware || {};
+	const eff = meta.decode_efficiency || 0.55;
+	const elec = meta.electricity_usd_kwh || 0.35;
+
+	const modelSelect = document.querySelector("#hw-model");
+	const quantSelect = document.querySelector("#hw-quant");
+	const countEl = document.querySelector("#hw-fit-count");
+	const tbody = host.querySelector("tbody");
+
+	modelSelect.innerHTML = models
+		.slice()
+		.sort((a, b) => (bmValue(b, "aa_intelligence") ?? -1) - (bmValue(a, "aa_intelligence") ?? -1))
+		.map((m) => '<option value="' + esc(m.id) + '">' + esc(m.name) + "</option>")
+		.join("");
+
+	function draw() {
+		const m = models.find((x) => x.id === modelSelect.value) || models[0];
+		if (!m) return;
+		const q = HW_QUANTA[quantSelect.value];
+		const need = m.self_host[q.key];
+		const activeB = m.params_active_b != null ? m.params_active_b : m.params_total_b;
+		const activeGB = activeB * q.bits_per_param;
+
+		const rows = hw
+			.map((h) => {
+				const fits = h.vram_gb >= need;
+				const tok = eff * h.bw_gbs / activeGB;
+				return { h, fits, tok };
+			})
+			.sort((a, b) => (b.fits - a.fits) || (b.tok - a.tok));
+
+		tbody.innerHTML = rows
+			.map(({ h, fits, tok }) => {
+				const elecHour = (h.tdp_w / 1000 * elec).toFixed(2);
+				return (
+					"<tr" + (fits ? "" : ' class="row-dim"') + ">" +
+					'<td><span class="cell-main">' + esc(h.name) + "</span>" +
+					' <span class="badge">' + esc(h.brand) + " " + h.year + "</span>" +
+					'<div class="cell-sub">' + esc(h.note) + "</div></td>" +
+					'<td class="num">' + h.vram_gb + " Go</td>" +
+					'<td class="num dim">' + h.bw_gbs + " GB/s</td>" +
+					'<td class="num dim">' + h.tdp_w + " W</td>" +
+					'<td class="num dim">$' + elecHour + "</td>" +
+					'<td class="num">$' + h.price_usd.toLocaleString("en-US") + "</td>" +
+					'<td class="num">' +
+					(fits
+						? '<span class="pos">' + (tok >= 10 ? tok.toFixed(0) : tok.toFixed(1)) + "</span>"
+						: '<span class="na">--</span>') +
+					"</td>" +
+					"<td>" +
+					(fits
+						? '<span class="badge open">TIENT</span>'
+						: '<span class="badge nope">TROP PETIT</span>') +
+					"</td></tr>"
+				);
+			})
+			.join("");
+
+		const nFit = rows.filter((r) => r.fits).length;
+		const best = rows.find((r) => r.fits);
+		countEl.textContent =
+			nFit + " / " + hw.length + " configurations tiennent " + esc(m.name) + " @ " + q.label +
+			" (" + need.toFixed(1) + " Go)" +
+			(best ? " — max ~" + (best.tok >= 10 ? best.tok.toFixed(0) : best.tok.toFixed(1)) + " tok/s (" + esc(best.h.name) + ")" : "");
+	}
+
+	modelSelect.addEventListener("change", draw);
+	quantSelect.addEventListener("change", () => draw());
+	draw();
+}
+
 /* ---------- boot ---------- */
 
 (async function boot() {
@@ -645,6 +731,7 @@ function renderHosting(dataset) {
 		renderCosts(dataset);
 		renderProviders(dataset);
 		renderHosting(dataset);
+		renderHardware(dataset);
 		const stamp = document.querySelector("#generated-at");
 		if (stamp) stamp.textContent = fmt.unixToISO(dataset._meta.generated_at_utc);
 		const pricingStamp = document.querySelector("#pricing-at");

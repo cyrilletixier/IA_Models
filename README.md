@@ -21,6 +21,7 @@
 | `/costs.html` | Coûts par scénario de charge (chat, refactoring, analyse de docs) |
 | `/providers.html` | Comparateur par modèle : prix, vitesse et latence de chaque fournisseur (OpenRouter, DeepInfra, Together, API du labo…) |
 | `/hosting.html` | Auto-hébergement : filtre par VRAM de GPU, VRAM requise aux trois quantisations (Q4/Q8/FP16), option « seulement ce qui tient » |
+| `/hardware.html` | Hardware : le matériel qui fait tourner les poids ouverts — coût initial, consommation, VRAM, bande passante et tok/s estimés par modèle/quantisation |
 
 ## Indices suivis (v0)
 
@@ -32,6 +33,23 @@
 | Perf/$ | Indice Global / prix mélangé (3:1 input:output) | calcul maison |
 
 Prix en $ / 1M tokens, mélange standard 75 % input / 25 % output : `(3×in + out) / 4`.
+
+## Hardware
+
+`data/hardware.json` (curé, committé) liste les composants pertinents pour l'auto-hébergement :
+GPU grand public et occasion, cartes datacenter, Mac à mémoire unifiée, même le CPU pour la
+blague. Champs : VRAM, bande passante mémoire, TDP, prix constaté (USD, marché/occasion).
+
+Performance estimée, batch 1 en décode :
+
+```
+tokens/s = bande passante (GB/s) × 0.55 / poids actifs (Go)
+```
+
+Dense : les poids actifs = la totalité. MoE : un token ne lit que les paramètres actifs —
+c'est toute la valeur du Sparse — mais la totalité réside en VRAM (critère de fit).
+Coût horaire élec = TDP × électricité ($0.35/kWh, paramètre dans le fichier). Ce sont des
+estimations rule-of-thumb type llama.cpp, pas des mesures benchées.
 
 ## Fraîcheur
 

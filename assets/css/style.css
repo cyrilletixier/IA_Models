@@ -353,3 +353,6 @@ a.cell-main:hover { color: var(--green); text-decoration: none; }
 
 .checklist { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; user-select: none; }
 .checklist input { accent-color: var(--green); }
+
+tr.row-dim td { color: var(--text-faint); }
+tr.row-dim td .cell-main { color: var(--text-dim); }

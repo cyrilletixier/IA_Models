@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA_Models — Hardware</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html">IA_Models<span class="cursor"></span></a>
+		<nav class="nav">
+			<a href="index.html">que prendre ?</a>
+			<a href="models.html">modèles</a>
+			<a href="costs.html">coûts</a>
+			<a href="providers.html">fournisseurs</a>
+			<a href="hosting.html">auto-hébergement</a>
+			<a class="active" href="hardware.html">hardware</a>
+		</nav>
+		<div class="top-status" id="data-status"><span class="dot">●</span> chargement…</div>
+	</div>
+</header>
+
+<main class="wrap">
+
+	<section class="page-head">
+		<h1>hardware</h1>
+		<p>Le matériel capable de faire tourner les poids ouverts : coût initial, consommation, VRAM et tokens par seconde. Choisissez un modèle et sa quantisation, la page dit qui tient et à quelle vitesse.</p>
+	</section>
+
+	<div class="filters">
+		<label class="legend" for="hw-model">modèle</label>
+		<select id="hw-model"></select>
+		<label class="legend" for="hw-quant">quantisation</label>
+		<select id="hw-quant">
+			<option value="q4">Q4 (~4.5 bits/poids)</option>
+			<option value="q8">Q8 (~9 bits/poids)</option>
+			<option value="fp16">FP16 (native)</option>
+		</select>
+		<span class="legend" id="hw-fit-count"></span>
+	</div>
+
+	<section class="panel" style="overflow-x:auto">
+		<table class="grid" id="hardware-table">
+			<thead>
+				<tr>
+					<th>Composant</th>
+					<th class="num">VRAM</th>
+					<th class="num">Bande passante</th>
+					<th class="num">Conso</th>
+					<th class="num">$/h élec</th>
+					<th class="num">Prix</th>
+					<th class="num">tok/s estimé</th>
+					<th>Statut</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</section>
+
+	<p class="footer-note">
+		tok/s (batch 1, décode) = <code>bande passante (GB/s) × 0.55 / poids actifs (Go)</code>. Modèle dense : tous les poids sont lus.
+		MoE : un token ne lit que les paramètres actifs, c'est tout l'intérêt — mais la totalité réside en VRAM.
+		Estimation rule-of-thumb type llama.cpp, pas une mesure : KV cache, thermique et drivers fourbus non inclus.
+		$/h élec = TDP × 0.35 $/kWh, sans compter le reste de la tour.
+		Prix = occasion/marché constatés, ordre de grandeur en USD — vérifiez avant d'acheter, le hardware ne se rend pas.
+		Catologue curé dans <code>data/hardware.json</code>, tout le monde peut proposer une ligne.
+	</p>
+
+</main>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

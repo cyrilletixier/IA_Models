@@ -37,6 +37,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BENCH_FILE = ROOT / "data" / "benchmarks.json"
 PRICING_FILE = ROOT / "data" / "raw" / "openrouter_models.json"
 PROVIDERS_FILE = ROOT / "data" / "providers.json"
+HARDWARE_FILE = ROOT / "data" / "hardware.json"
 OUT_FILE = ROOT / "data" / "models.json"
 
 LAB_COLORS = {
@@ -154,6 +155,7 @@ def main() -> int:
     bench = load_json(BENCH_FILE)
     pricing_snapshot = load_json(PRICING_FILE)
     providers_snapshot = load_json(PROVIDERS_FILE) if PROVIDERS_FILE.exists() else None
+    hardware_snapshot = load_json(HARDWARE_FILE) if HARDWARE_FILE.exists() else None
     price_map = {m["id"]: m for m in pricing_snapshot["models"]}
     providers_by_model = (providers_snapshot or {}).get("by_model", {})
 
@@ -168,6 +170,7 @@ def main() -> int:
             "benchmarks_updated": bench["_meta"].get("updated"),
             "providers_fetched_at_utc": (providers_snapshot or {}).get("_meta", {}).get("updated"),
             "providers_source": (providers_snapshot or {}).get("_meta", {}).get("source"),
+            "hardware": (hardware_snapshot or {}).get("_meta", {}),
             "sources": dict(bench["_meta"].get("sources", {})),
             "formula": {
                 "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
@@ -179,6 +182,9 @@ def main() -> int:
         },
         "models": models,
     }
+
+    if hardware_snapshot:
+        dataset["hardware"] = hardware_snapshot["hardware"]
 
     OUT_FILE.write_text(
         json.dumps(dataset, indent=1, ensure_ascii=False) + "\n", encoding="utf-8"
