@@ -375,6 +375,115 @@ function renderProviders(dataset) {
 	host.innerHTML = cards;
 }
 
+
+/* ---------- page auto-hebergement ---------- */
+
+const HOST_QUANTS = {
+	q4: { key: "vram_q4_gb", label: "Q4" },
+	q8: { key: "vram_q8_gb", label: "Q8" },
+	fp16: { key: "vram_fp16_gb", label: "FP16" },
+};
+const VRAM_PRESETS = [6, 8, 12, 16, 24, 32, 48, 64, 96];
+
+function renderHosting(dataset) {
+	const host = document.querySelector("#hosting-table");
+	if (!host) return;
+	const open = dataset.models.filter((m) => m.open_weights);
+
+	let vram = 16;
+	let customMode = false;
+	let quant = "q4";
+
+	const vramSelect = document.querySelector("#vram-select");
+	const vramCustom = document.querySelector("#vram-custom");
+	const quantSelect = document.querySelector("#quant-select");
+	const fitCount = document.querySelector("#fit-count");
+	const headCell = document.querySelector("#vram-col-head");
+
+	vramSelect.innerHTML =
+		VRAM_PRESETS.map((v) => '<option value="' + v + '"' + (v === vram ? " selected" : "") + ">" + v + " Go</option>").join("") +
+		'<option value="custom">autre…</option>';
+	vramCustom.hidden = true;
+
+	function currentVram() {
+		if (!customMode) return vram;
+		const v = parseFloat(vramCustom.value);
+		return isNaN(v) || v <= 0 ? 0 : v;
+	}
+
+	function draw() {
+		const q = HOST_QUANTS[quant];
+		const gpu = currentVram();
+		const rows = [...open].sort((a, b) => {
+			const ra = a.self_host ? a.self_host[q.key] : Infinity;
+			const rb = b.self_host ? b.self_host[q.key] : Infinity;
+			return ra - rb;
+		});
+		tbody.innerHTML = rows
+			.map((m) => {
+				const sh = m.self_host;
+				let vramCell, status;
+				if (sh) {
+					const need = sh[q.key];
+					const fits = gpu > 0 && need <= gpu;
+					vramCell = need.toFixed(1) + " Go";
+					status = fits
+						? '<span class="badge open">OK</span>'
+						: '<span class="badge nope">TROP GRAND</span>';
+				} else {
+					vramCell = '<span class="na">--</span>';
+					status = '<span class="badge">TAILLE NON PUBLIÉE</span>';
+				}
+				const params =
+					m.params_total_b == null
+						? '<span class="na">--</span>'
+						: m.params_total_b + "B" +
+						  (m.params_active_b != null ? ' <span class="cell-sub">A' + m.params_active_b + "B</span>" : "");
+				const p = m.pricing;
+				return (
+					"<tr>" +
+					'<td><span class="cell-main">' + esc(m.name) + "</span>" +
+					'<div class="cell-sub">' + esc(m.id) + "</div></td>" +
+					'<td><span class="lab-dot" style="background:' + m.lab_color + '"></span>' + esc(m.lab) + "</td>" +
+					'<td class="num">' + params + "</td>" +
+					'<td class="num">' + vramCell + "</td>" +
+					"<td>" + status + "</td>" +
+					'<td class="num dim">' + (p ? fmt.price(p.blended_per_m) : '<span class="na">--</span>') + "</td>" +
+					'<td class="num">' + (bmValue(m, "aa_intelligence") != null ? bmValue(m, "aa_intelligence").toFixed(1) : '<span class="na">--</span>') + "</td>" +
+					'<td class="num dim">' + fmt.context(m.context_tokens) + "</td></tr>"
+				);
+			})
+			.join("");
+
+		const nFit = open.filter((m) => m.self_host && m.self_host[q.key] <= gpu).length;
+		const nSized = open.filter((m) => m.self_host).length;
+		fitCount.textContent =
+			gpu > 0
+				? nFit + " / " + nSized + " tiennent en " + gpu + " Go @ " + q.label + " (" + open.length + " poids ouverts)"
+				: "indiquez votre VRAM";
+		if (headCell) headCell.textContent = "VRAM requise @ " + q.label;
+	}
+
+	const tbody = host.querySelector("tbody");
+
+	vramSelect.addEventListener("change", () => {
+		if (vramSelect.value === "custom") {
+			customMode = true;
+			vramCustom.hidden = false;
+			vramCustom.focus();
+		} else {
+			customMode = false;
+			vramCustom.hidden = true;
+			vram = parseInt(vramSelect.value, 10);
+		}
+		draw();
+	});
+	vramCustom.addEventListener("input", draw);
+	quantSelect.addEventListener("change", () => { quant = quantSelect.value; draw(); });
+
+	draw();
+}
+
 /* ---------- boot ---------- */
 
 (async function boot() {
@@ -385,6 +494,7 @@ function renderProviders(dataset) {
 		renderModelsTable(dataset);
 		renderCosts(dataset);
 		renderProviders(dataset);
+		renderHosting(dataset);
 		const stamp = document.querySelector("#generated-at");
 		if (stamp) stamp.textContent = fmt.unixToISO(dataset._meta.generated_at_utc);
 		const pricingStamp = document.querySelector("#pricing-at");

@@ -1,7 +1,7 @@
 {
  "_meta": {
-  "generated_at_utc": "2026-11-25T10:19:55Z",
-  "pricing_fetched_at_utc": "2026-11-25T10:19:55Z",
+  "generated_at_utc": "2026-11-25T11:19:29Z",
+  "pricing_fetched_at_utc": "2026-11-25T11:19:29Z",
   "benchmarks_updated": "2026-11-25",
   "sources": {
    "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
@@ -10,7 +10,8 @@
   },
   "formula": {
    "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
-   "perf_per_dollar": "aa_intelligence / blended_per_m"
+   "perf_per_dollar": "aa_intelligence / blended_per_m",
+   "self_host_vram": "q4 = total_b*0.58+1.5, q8 = total_b*1.10+1.5, fp16 = total_b*2.0+2.5 (GB, poids seuls, KV cache non inclus)"
   }
  },
  "models": [
@@ -20,6 +21,8 @@
    "lab": "Anthropic",
    "lab_color": "#d97757",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1000000,
    "benchmarks": {
     "aa_intelligence": {
@@ -43,7 +46,8 @@
     "out_per_m": 40.0,
     "blended_per_m": 16.0,
     "perf_per_dollar": 4.05
-   }
+   },
+   "self_host": null
   },
   {
    "id": "openai/gpt-6.2-astra",
@@ -51,6 +55,8 @@
    "lab": "OpenAI",
    "lab_color": "#74aa9c",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1050000,
    "benchmarks": {
     "aa_intelligence": {
@@ -74,7 +80,8 @@
     "out_per_m": 40.0,
     "blended_per_m": 16.0,
     "perf_per_dollar": 3.8875
-   }
+   },
+   "self_host": null
   },
   {
    "id": "google/gemini-4-neon",
@@ -82,6 +89,8 @@
    "lab": "Google",
    "lab_color": "#5b9bd5",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1048576,
    "benchmarks": {
     "aa_intelligence": {
@@ -105,7 +114,8 @@
     "out_per_m": 15.0,
     "blended_per_m": 6.0,
     "perf_per_dollar": 10.25
-   }
+   },
+   "self_host": null
   },
   {
    "id": "google/gemini-4-carbon",
@@ -113,6 +123,8 @@
    "lab": "Google",
    "lab_color": "#5b9bd5",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1048576,
    "benchmarks": {
     "aa_intelligence": {
@@ -136,7 +148,8 @@
     "out_per_m": 10.0,
     "blended_per_m": 4.0,
     "perf_per_dollar": 15.025
-   }
+   },
+   "self_host": null
   },
   {
    "id": "anthropic/claude-opus-5.5",
@@ -144,6 +157,8 @@
    "lab": "Anthropic",
    "lab_color": "#d97757",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1000000,
    "benchmarks": {
     "aa_intelligence": {
@@ -167,7 +182,8 @@
     "out_per_m": 20.0,
     "blended_per_m": 8.0,
     "perf_per_dollar": 7.3875
-   }
+   },
+   "self_host": null
   },
   {
    "id": "openai/gpt-6.2-sol",
@@ -175,6 +191,8 @@
    "lab": "OpenAI",
    "lab_color": "#74aa9c",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1050000,
    "benchmarks": {
     "aa_intelligence": {
@@ -194,7 +212,8 @@
     "out_per_m": 10.0,
     "blended_per_m": 4.0,
     "perf_per_dollar": 14.325
-   }
+   },
+   "self_host": null
   },
   {
    "id": "openai/gpt-6-astra",
@@ -202,6 +221,8 @@
    "lab": "OpenAI",
    "lab_color": "#74aa9c",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1050000,
    "benchmarks": {
     "aa_intelligence": {
@@ -225,7 +246,8 @@
     "out_per_m": 50.0,
     "blended_per_m": 20.0,
     "perf_per_dollar": 2.845
-   }
+   },
+   "self_host": null
   },
   {
    "id": "anthropic/claude-sonnet-5.5",
@@ -233,6 +255,8 @@
    "lab": "Anthropic",
    "lab_color": "#d97757",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1000000,
    "benchmarks": {
     "aa_intelligence": {
@@ -256,7 +280,8 @@
     "out_per_m": 10.0,
     "blended_per_m": 4.0,
     "perf_per_dollar": 14.0
-   }
+   },
+   "self_host": null
   },
   {
    "id": "openai/gpt-6.1-terra",
@@ -264,6 +289,8 @@
    "lab": "OpenAI",
    "lab_color": "#74aa9c",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1050000,
    "benchmarks": {
     "aa_intelligence": {
@@ -287,7 +314,8 @@
     "out_per_m": 5.0,
     "blended_per_m": 2.0,
     "perf_per_dollar": 25.7
-   }
+   },
+   "self_host": null
   },
   {
    "id": "openai/gpt-6.1-sol",
@@ -295,6 +323,8 @@
    "lab": "OpenAI",
    "lab_color": "#74aa9c",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1050000,
    "benchmarks": {
     "aa_intelligence": {
@@ -318,7 +348,8 @@
     "out_per_m": 10.0,
     "blended_per_m": 4.0,
     "perf_per_dollar": 13.675
-   }
+   },
+   "self_host": null
   },
   {
    "id": "google/gemini-4-hydrogen",
@@ -326,6 +357,8 @@
    "lab": "Google",
    "lab_color": "#5b9bd5",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1048576,
    "benchmarks": {
     "aa_intelligence": {
@@ -349,7 +382,8 @@
     "out_per_m": 7.5,
     "blended_per_m": 3.0,
     "perf_per_dollar": 18.0333
-   }
+   },
+   "self_host": null
   },
   {
    "id": "google/gemini-4-argon",
@@ -357,6 +391,8 @@
    "lab": "Google",
    "lab_color": "#5b9bd5",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1048576,
    "benchmarks": {
     "aa_intelligence": {
@@ -380,7 +416,8 @@
     "out_per_m": 10.0,
     "blended_per_m": 4.0,
     "perf_per_dollar": 13.15
-   }
+   },
+   "self_host": null
   },
   {
    "id": "moonshotai/kimi-k3.1-pro",
@@ -388,6 +425,8 @@
    "lab": "Moonshot AI",
    "lab_color": "#a32cdf",
    "open_weights": true,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1048576,
    "benchmarks": {
     "aa_intelligence": {
@@ -411,7 +450,8 @@
     "out_per_m": 8.4023,
     "blended_per_m": 2.2808,
     "perf_per_dollar": 24.1582
-   }
+   },
+   "self_host": null
   },
   {
    "id": "qwen/qwen4-max",
@@ -419,6 +459,8 @@
    "lab": "Alibaba",
    "lab_color": "#e6a23c",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1000000,
    "benchmarks": {
     "aa_intelligence": {
@@ -442,7 +484,8 @@
     "out_per_m": 4.275,
     "blended_per_m": 2.1375,
     "perf_per_dollar": 20.0234
-   }
+   },
+   "self_host": null
   },
   {
    "id": "x-ai/grok-4.7",
@@ -450,6 +493,8 @@
    "lab": "SpaceXAI",
    "lab_color": "#9aa0a6",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 500000,
    "benchmarks": {
     "aa_intelligence": {
@@ -473,7 +518,8 @@
     "out_per_m": 6.0,
     "blended_per_m": 3.0,
     "perf_per_dollar": 15.5
-   }
+   },
+   "self_host": null
   },
   {
    "id": "anthropic/claude-haiku-5.5",
@@ -481,6 +527,8 @@
    "lab": "Anthropic",
    "lab_color": "#d97757",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1000000,
    "benchmarks": {
     "aa_intelligence": {
@@ -504,7 +552,8 @@
     "out_per_m": 0.5,
     "blended_per_m": 0.2,
     "perf_per_dollar": 217.0
-   }
+   },
+   "self_host": null
   },
   {
    "id": "openai/gpt-6-luna",
@@ -512,6 +561,8 @@
    "lab": "OpenAI",
    "lab_color": "#74aa9c",
    "open_weights": false,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1050000,
    "benchmarks": {
     "aa_intelligence": {
@@ -535,7 +586,8 @@
     "out_per_m": 0.5,
     "blended_per_m": 0.2,
     "perf_per_dollar": 190.5
-   }
+   },
+   "self_host": null
   },
   {
    "id": "mistralai/mistral-large-4-0",
@@ -543,6 +595,8 @@
    "lab": "Mistral AI",
    "lab_color": "#ff7000",
    "open_weights": true,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1048576,
    "benchmarks": {
     "aa_intelligence": {
@@ -566,7 +620,8 @@
     "out_per_m": 2.1,
     "blended_per_m": 1.05,
     "perf_per_dollar": 36.5714
-   }
+   },
+   "self_host": null
   },
   {
    "id": "deepseek/deepseek-v4.1-flash",
@@ -574,6 +629,8 @@
    "lab": "DeepSeek",
    "lab_color": "#4d6bfe",
    "open_weights": true,
+   "params_total_b": null,
+   "params_active_b": null,
    "context_tokens": 1048576,
    "benchmarks": {
     "aa_intelligence": {
@@ -593,7 +650,433 @@
     "out_per_m": 0.42,
     "blended_per_m": 0.21,
     "perf_per_dollar": 188.0952
+   },
+   "self_host": null
+  },
+  {
+   "id": "qwen/qwen3.5-9b",
+   "name": "Qwen3.5 9B",
+   "lab": "Alibaba",
+   "lab_color": "#e6a23c",
+   "open_weights": true,
+   "params_total_b": 9,
+   "params_active_b": null,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 13.3,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 79.0,
+     "setting": "medium",
+     "date": null
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.1,
+    "out_per_m": 0.25,
+    "blended_per_m": 0.1375,
+    "perf_per_dollar": 96.7273
+   },
+   "self_host": {
+    "vram_q4_gb": 6.7,
+    "vram_q8_gb": 11.4,
+    "vram_fp16_gb": 20.5
    }
+  },
+  {
+   "id": "qwen/qwen3.8-27b",
+   "name": "Qwen3.8 27B",
+   "lab": "Alibaba",
+   "lab_color": "#e6a23c",
+   "open_weights": true,
+   "params_total_b": 27,
+   "params_active_b": null,
+   "context_tokens": 1024000,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 33.7,
+     "setting": "high",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 14.9,
+     "setting": "high",
+     "date": null
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.035,
+    "out_per_m": 1.5,
+    "blended_per_m": 0.40125,
+    "perf_per_dollar": 83.9875
+   },
+   "self_host": {
+    "vram_q4_gb": 17.2,
+    "vram_q8_gb": 31.2,
+    "vram_fp16_gb": 56.5
+   }
+  },
+  {
+   "id": "qwen/qwen3.5-35b-a3b",
+   "name": "Qwen3.5 35B A3B",
+   "lab": "Alibaba",
+   "lab_color": "#e6a23c",
+   "open_weights": true,
+   "params_total_b": 35,
+   "params_active_b": 3,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 19.3,
+     "setting": "low",
+     "date": null
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 83.5,
+     "setting": "medium",
+     "date": null
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.14,
+    "out_per_m": 1.0,
+    "blended_per_m": 0.355,
+    "perf_per_dollar": 54.3662
+   },
+   "self_host": {
+    "vram_q4_gb": 21.8,
+    "vram_q8_gb": 40.0,
+    "vram_fp16_gb": 72.5
+   }
+  },
+  {
+   "id": "qwen/qwen3.5-122b-a10b",
+   "name": "Qwen3.5 122B A10B",
+   "lab": "Alibaba",
+   "lab_color": "#e6a23c",
+   "open_weights": true,
+   "params_total_b": 122,
+   "params_active_b": 10,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 17.8,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.26,
+    "out_per_m": 2.08,
+    "blended_per_m": 0.715,
+    "perf_per_dollar": 24.8951
+   },
+   "self_host": {
+    "vram_q4_gb": 72.3,
+    "vram_q8_gb": 135.7,
+    "vram_fp16_gb": 246.5
+   }
+  },
+  {
+   "id": "google/gemma-4-31b-it",
+   "name": "Gemma 4 31B",
+   "lab": "Google",
+   "lab_color": "#5b9bd5",
+   "open_weights": true,
+   "params_total_b": 30.7,
+   "params_active_b": null,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 14.7,
+     "setting": "medium",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 0.0,
+     "setting": "medium",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 75.8,
+     "setting": "low",
+     "date": null
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.2,
+    "out_per_m": 0.4,
+    "blended_per_m": 0.25,
+    "perf_per_dollar": 58.8
+   },
+   "self_host": {
+    "vram_q4_gb": 19.3,
+    "vram_q8_gb": 35.3,
+    "vram_fp16_gb": 63.9
+   }
+  },
+  {
+   "id": "google/gemma-4-26b-a4b-it",
+   "name": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "lab_color": "#5b9bd5",
+   "open_weights": true,
+   "params_total_b": 25.2,
+   "params_active_b": 3.8,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 16.7,
+     "setting": "low",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 0.0,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 73.2,
+     "setting": "low",
+     "date": null
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.09,
+    "out_per_m": 0.3,
+    "blended_per_m": 0.1425,
+    "perf_per_dollar": 117.193
+   },
+   "self_host": {
+    "vram_q4_gb": 16.1,
+    "vram_q8_gb": 29.2,
+    "vram_fp16_gb": 52.9
+   }
+  },
+  {
+   "id": "ibm-granite/granite-4.2-8b",
+   "name": "Granite 4.2 8B",
+   "lab": "IBM",
+   "lab_color": "#4076d4",
+   "open_weights": true,
+   "params_total_b": 8,
+   "params_active_b": null,
+   "context_tokens": 131072,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 11.1,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.06,
+    "out_per_m": 0.15,
+    "blended_per_m": 0.0825,
+    "perf_per_dollar": 134.5455
+   },
+   "self_host": {
+    "vram_q4_gb": 6.1,
+    "vram_q8_gb": 10.3,
+    "vram_fp16_gb": 18.5
+   }
+  },
+  {
+   "id": "inclusionai/ling-3.0-tiny",
+   "name": "Ling 3.0 Tiny",
+   "lab": "inclusionAI",
+   "lab_color": "#5fc9a2",
+   "open_weights": true,
+   "params_total_b": 7.9,
+   "params_active_b": 1.3,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 11.1,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.015,
+    "out_per_m": 0.045,
+    "blended_per_m": 0.0225,
+    "perf_per_dollar": 493.3333
+   },
+   "self_host": {
+    "vram_q4_gb": 6.1,
+    "vram_q8_gb": 10.2,
+    "vram_fp16_gb": 18.3
+   }
+  },
+  {
+   "id": "inclusionai/ling-3.0-flash",
+   "name": "Ling 3.0 Flash",
+   "lab": "inclusionAI",
+   "lab_color": "#5fc9a2",
+   "open_weights": true,
+   "params_total_b": 124,
+   "params_active_b": 5.1,
+   "context_tokens": 262144,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 20.1,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.021,
+    "out_per_m": 0.063,
+    "blended_per_m": 0.0315,
+    "perf_per_dollar": 638.0952
+   },
+   "self_host": {
+    "vram_q4_gb": 73.4,
+    "vram_q8_gb": 137.9,
+    "vram_fp16_gb": 250.5
+   }
+  },
+  {
+   "id": "cohere/command-a",
+   "name": "Command A",
+   "lab": "Cohere",
+   "lab_color": "#b18cff",
+   "open_weights": true,
+   "params_total_b": 111,
+   "params_active_b": null,
+   "context_tokens": 256000,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 7.0,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 2.5,
+    "out_per_m": 10.0,
+    "blended_per_m": 4.375,
+    "perf_per_dollar": 1.6
+   },
+   "self_host": {
+    "vram_q4_gb": 65.9,
+    "vram_q8_gb": 123.6,
+    "vram_fp16_gb": 224.5
+   }
+  },
+  {
+   "id": "xiaomi/mimo-v2.6-flash",
+   "name": "MiMo V2.6 Flash",
+   "lab": "Xiaomi",
+   "lab_color": "#ff6900",
+   "open_weights": true,
+   "params_total_b": 309,
+   "params_active_b": 15,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 37.9,
+     "setting": "no reasoning",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 21.6,
+     "setting": "low",
+     "date": null
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 0.14,
+    "out_per_m": 0.28,
+    "blended_per_m": 0.175,
+    "perf_per_dollar": 216.5714
+   },
+   "self_host": {
+    "vram_q4_gb": 180.7,
+    "vram_q8_gb": 341.4,
+    "vram_fp16_gb": 620.5
+   }
+  },
+  {
+   "id": "stepfun/step-5-preview",
+   "name": "Step 5 Preview",
+   "lab": "StepFun",
+   "lab_color": "#4dabf7",
+   "open_weights": true,
+   "params_total_b": 600,
+   "params_active_b": 27,
+   "context_tokens": 1000000,
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": {
+     "value": 12.0,
+     "setting": "not stated",
+     "date": "2026-09-18"
+    },
+    "gpqa_diamond": null
+   },
+   "pricing": {
+    "in_per_m": 1.0,
+    "out_per_m": 2.7,
+    "blended_per_m": 1.425
+   },
+   "self_host": {
+    "vram_q4_gb": 349.5,
+    "vram_q8_gb": 661.5,
+    "vram_fp16_gb": 1202.5
+   }
+  },
+  {
+   "id": "z-ai/glm-5.3",
+   "name": "GLM 5.3",
+   "lab": "Z.ai",
+   "lab_color": "#3fc1ff",
+   "open_weights": true,
+   "params_total_b": null,
+   "params_active_b": null,
+   "context_tokens": 1048576,
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 44.8,
+     "setting": "low",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 21.6,
+     "setting": "medium",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 90.9,
+     "setting": "low",
+     "date": null
+    }
+   },
+   "pricing": {
+    "in_per_m": 0.0699,
+    "out_per_m": 1.4,
+    "blended_per_m": 0.402425,
+    "perf_per_dollar": 111.3251
+   },
+   "self_host": null
   }
  ]
 }

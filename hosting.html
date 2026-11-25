@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA_Models — Auto-hébergement</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html">IA_Models<span class="cursor"></span></a>
+		<nav class="nav">
+			<a href="index.html">dashboard</a>
+			<a href="models.html">modèles</a>
+			<a href="costs.html">coûts</a>
+			<a href="providers.html">fournisseurs</a>
+			<a class="active" href="hosting.html">auto-hébergement</a>
+		</nav>
+		<div class="top-status" id="data-status"><span class="dot">●</span> chargement…</div>
+	</div>
+</header>
+
+<main class="wrap">
+
+	<section class="page-head">
+		<h1>auto-hébergement</h1>
+		<p>Les modèles à poids ouverts qu'on peut faire tourner chez soi. Choisissez votre VRAM, la page dit qui tient et qui fait pleurer l'alimentation.</p>
+	</section>
+
+	<div class="filters">
+		<label class="legend" for="vram-select">VRAM</label>
+		<select id="vram-select"></select>
+		<input type="number" id="vram-custom" min="1" max="2048" step="1" placeholder="Go" size="4" hidden>
+		<label class="legend" for="quant-select">quantisation</label>
+		<select id="quant-select">
+			<option value="q4">Q4 (~4.5 bits/poids)</option>
+			<option value="q8">Q8 (~9 bits/poids)</option>
+			<option value="fp16">FP16 (native)</option>
+		</select>
+		<span class="legend" id="fit-count"></span>
+	</div>
+
+	<section class="panel" style="overflow-x:auto">
+		<table class="grid" id="hosting-table">
+			<thead>
+				<tr>
+					<th>Modèle</th>
+					<th>Labo</th>
+					<th class="num">Params</th>
+					<th class="num" id="vram-col-head">VRAM requise</th>
+					<th>Statut</th>
+					<th class="num">$ API mélangé /M</th>
+					<th class="num">Global (AA)</th>
+					<th class="num">Ctx</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</section>
+
+	<p class="footer-note">
+		VRAM = poids seuls : Q4 = <code>params_B × 0.58 + 1.5</code>, Q8 = <code>params_B × 1.10 + 1.5</code>, FP16 = <code>params_B × 2.0 + 2.5</code> (Go).
+		KV cache et overhead moteur non inclus : prévoyez de la marge, surtout avec un long contexte.
+		MoE : la totalité des poids réside en VRAM, seuls les paramètres actifs comptent au compute.
+		« taille non publiée » = poids ouverts mais architecture gardée secrète, dominos communistes du marketing.
+		$ API mélangé = <code>(3·in + out)/4</code> sur OpenRouter, juste pour comparer l'abonnement au hardware.
+	</p>
+
+</main>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

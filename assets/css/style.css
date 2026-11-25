@@ -299,3 +299,16 @@ table.grid td.faint { color: var(--text-faint); }
 	.topbar-inner { flex-wrap: wrap; height: auto; padding: 8px 12px; }
 	.bar { width: 48px; }
 }
+
+.badge.nope { color: var(--red); border-color: rgba(255, 92, 92, 0.4); }
+
+.filters input[type="number"] {
+	background: var(--bg-panel);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	color: var(--text);
+	font-family: var(--mono);
+	font-size: 12px;
+	padding: 4px 8px;
+}
+.filters input[type="number"]:focus { border-color: var(--green); outline: none; }

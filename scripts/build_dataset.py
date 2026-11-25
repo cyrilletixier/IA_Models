@@ -13,6 +13,13 @@ Indices calculés :
     price_blended     (3*in + out) / 4   -- mélange 75/25 standard
     perf_per_dollar   aa_intelligence / price_blended (perf globale par $)
 
+Auto-hebergement (modeles open_weights avec params_total_b connus) :
+    vram_q4_gb    total_b * 0.58 + 1.5   (quantisation ~4.5 bits/poids)
+    vram_q8_gb    total_b * 1.10 + 1.5    (~9 bits/poids)
+    vram_fp16_gb  total_b * 2.0  + 2.5   (precision native)
+    Poids seuls, KV cache et overhead moteur NON inclus. MoE : la totalite
+    des poids reside en VRAM, seuls les parametres actifs comptent au compute.
+
 Le site affiche :
     idx_code      FrontierCode 2.0 (%)
     idx_analyse   GPQA Diamond (%)
@@ -40,6 +47,12 @@ LAB_COLORS = {
     "Moonshot AI": "#a32cdf",
     "Alibaba": "#e6a23c",
     "SpaceXAI": "#9aa0a6",
+    "IBM": "#4076d4",
+    "Cohere": "#b18cff",
+    "Xiaomi": "#ff6900",
+    "inclusionAI": "#5fc9a2",
+    "StepFun": "#4dabf7",
+    "Z.ai": "#3fc1ff",
 }
 DEFAULT_LAB_COLOR = "#7aa2f7"
 
@@ -68,11 +81,22 @@ def merge_model(bench_entry: dict, price_map: dict) -> dict:
         "name": bench_entry.get("name") or (price_info or {}).get("name") or or_id,
         "lab": bench_entry.get("lab", "?"),
         "lab_color": LAB_COLORS.get(bench_entry.get("lab", ""), DEFAULT_LAB_COLOR),
-        "open_weights": bool(price_info and price_info.get("open_weights")),
+        "open_weights": bool(bench_entry.get("open_weights")),
+        "params_total_b": bench_entry.get("params_total_b"),
+        "params_active_b": bench_entry.get("params_active_b"),
         "context_tokens": (price_info or {}).get("context_length"),
         "benchmarks": {"aa_intelligence": aa, "frontiercode2": fc, "gpqa_diamond": gpqa},
         "pricing": None,
+        "self_host": None,
     }
+
+    params_total = model["params_total_b"]
+    if model["open_weights"] and params_total:
+        # poids seuls ; MoE = la totalite des poids reside en VRAM, KV cache non inclus
+        q4 = round(params_total * 0.58 + 1.5, 1)   # ~4.5 bits/poids + overhead
+        q8 = round(params_total * 1.10 + 1.5, 1)  # ~9 bits/poids + overhead
+        fp16 = round(params_total * 2.0 + 2.5, 1) # ~16 bits/poids + overhead
+        model["self_host"] = {"vram_q4_gb": q4, "vram_q8_gb": q8, "vram_fp16_gb": fp16}
 
     if price_info:
         price_in = price_info["pricing"]["prompt"] * 1_000_000
@@ -105,6 +129,7 @@ def main() -> int:
             "formula": {
                 "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
                 "perf_per_dollar": "aa_intelligence / blended_per_m",
+                "self_host_vram": "q4 = total_b*0.58+1.5, q8 = total_b*1.10+1.5, fp16 = total_b*2.0+2.5 (GB, poids seuls, KV cache non inclus)",
             },
         },
         "models": models,
@@ -116,8 +141,11 @@ def main() -> int:
 
     n_priced = sum(1 for m in models if m["pricing"])
     n_benched = sum(1 for m in models if m["benchmarks"]["aa_intelligence"])
+    n_open = sum(1 for m in models if m["open_weights"])
+    n_hostable = sum(1 for m in models if m["self_host"])
     print(f"[done] {len(models)} modeles, {n_priced} prix OpenRouter, "
-          f"{n_benched} avec indice global -> {OUT_FILE}")
+          f"{n_benched} avec indice global, {n_open} open weights, "
+          f"{n_hostable} avec VRAM calculee -> {OUT_FILE}")
     return 0
 
 
