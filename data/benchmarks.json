@@ -868,6 +868,191 @@
      "source": "epoch"
     }
    }
+  },
+  {
+   "openrouter_id": "openai/gpt-oss-20b",
+   "name": "GPT-OSS 20B",
+   "lab": "OpenAI",
+   "open_weights": true,
+   "params_total_b": 21,
+   "params_active_b": 3.6,
+   "benchleader_slug": "gpt-oss-20b",
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 9.9,
+     "setting": "not stated",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 60.8,
+     "setting": "not stated",
+     "date": null,
+     "source": "epoch"
+    }
+   }
+  },
+  {
+   "openrouter_id": "nvidia/nemotron-3-nano-30b-a3b",
+   "name": "Nemotron 3 Nano 30B A3B",
+   "lab": "NVIDIA",
+   "open_weights": true,
+   "params_total_b": 30,
+   "params_active_b": 3,
+   "benchleader_slug": "nemotron-3-nano-30b-a3b",
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 8.9,
+     "setting": "thinking",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 75.7,
+     "setting": "thinking",
+     "date": null,
+     "source": "aa"
+    }
+   }
+  },
+  {
+   "openrouter_id": "liquid/lfm-2.5-24b-a2b",
+   "name": "LFM 2.5 24B A2B",
+   "lab": "Liquid AI",
+   "open_weights": true,
+   "params_total_b": 24,
+   "params_active_b": 2.45,
+   "benchleader_slug": "lfm2-5-24b-a2b",
+   "benchmarks": {
+    "aa_intelligence": null,
+    "frontiercode2": null,
+    "gpqa_diamond": null
+   }
+  },
+  {
+   "openrouter_id": "meta/muse-glimmer-30b",
+   "name": "Muse Glimmer 30B",
+   "lab": "Meta",
+   "open_weights": true,
+   "params_total_b": 30,
+   "params_active_b": null,
+   "benchleader_slug": "muse-glimmer-30b",
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 6.3,
+     "setting": "not stated",
+     "date": null,
+     "version": "v5.0.1"
+    },
+    "frontiercode2": {
+     "value": 1.3,
+     "setting": "not stated",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 83.5,
+     "setting": "not stated",
+     "date": null,
+     "source": "aa"
+    }
+   }
+  },
+  {
+   "openrouter_id": "mistralai/devstral-2512",
+   "name": "Devstral 2",
+   "lab": "Mistral AI",
+   "open_weights": true,
+   "params_total_b": 123,
+   "params_active_b": null,
+   "benchleader_slug": "devstral-2",
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 8.6,
+     "setting": "not stated",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 59.4,
+     "setting": "not stated",
+     "date": null,
+     "source": "aa"
+    }
+   }
+  },
+  {
+   "openrouter_id": "qwen/qwen3.5-27b",
+   "name": "Qwen3.5 27B",
+   "lab": "Alibaba",
+   "open_weights": true,
+   "params_total_b": 27,
+   "params_active_b": null,
+   "benchleader_slug": "qwen3-5-27b",
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 22.9,
+     "setting": "thinking",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 85.8,
+     "setting": "thinking",
+     "date": null,
+     "source": "aa"
+    }
+   }
+  },
+  {
+   "openrouter_id": "inclusionai/ling-3.1-flash",
+   "name": "Ling 3.1 Flash",
+   "lab": "inclusionAI",
+   "open_weights": true,
+   "params_total_b": 560,
+   "params_active_b": 25,
+   "benchleader_slug": "ling-3-1-flash",
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 29.6,
+     "setting": "not stated",
+     "date": null,
+     "version": "v5.0.1"
+    },
+    "frontiercode2": {
+     "value": 17.2,
+     "setting": "not stated",
+     "date": null
+    },
+    "gpqa_diamond": null
+   }
+  },
+  {
+   "openrouter_id": "nvidia/nemotron-3-super-120b-a12b",
+   "name": "Nemotron 3 Super 120B A12B",
+   "lab": "NVIDIA",
+   "open_weights": true,
+   "params_total_b": 120,
+   "params_active_b": 12,
+   "benchleader_slug": "nemotron-3-super-120b-a12b",
+   "benchmarks": {
+    "aa_intelligence": {
+     "value": 12.8,
+     "setting": "thinking",
+     "date": null,
+     "version": "v4.3.2"
+    },
+    "frontiercode2": null,
+    "gpqa_diamond": {
+     "value": 80.0,
+     "setting": "thinking",
+     "date": null,
+     "source": "aa"
+    }
+   }
   }
  ]
 }

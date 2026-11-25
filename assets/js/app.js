@@ -43,6 +43,21 @@ function bmValue(m, key) {
 	return b && b.value != null ? b.value : null;
 }
 
+function freshDots(m) {
+	if (!m.freshness) return '<span class="na">--</span>';
+	let out = '<span class="dots" title="sorti le ' + (m.released_at || "?") + ", " +
+		m.freshness.age_months + ' mois">';
+	for (let i = 1; i <= 5; i++) {
+		out += '<span class="dot-f' + (i <= m.freshness.score ? " on" : "") + '">●</span>';
+	}
+	return out + "</span>";
+}
+
+function modelLink(m) {
+	return '<a class="cell-main" href="providers.html#model=' + encodeURIComponent(m.id) + '">' +
+		esc(m.name) + "</a>";
+}
+
 function barCell(value, max, cssClass) {
 	if (value == null) return '<td class="num"><span class="na">--</span></td>';
 	const pct = max > 0 ? Math.round((value / max) * 100) : 0;
@@ -65,72 +80,87 @@ function renderStatusBar(dataset) {
 		esc(dataset._meta.generated_at_utc.slice(0, 10));
 }
 
-/* ---------- page dashboard ---------- */
+/* ---------- page dashboard : que prendre ? ---------- */
 
 function renderDashboard(dataset) {
-	const host = document.querySelector("#dashboard");
+	const host = document.querySelector("#dispatch");
 	if (!host) return;
 	const models = dataset.models;
 	const priced = models.filter((m) => m.pricing && m.pricing.blended_per_m > 0);
 
-	const bestBy = (get, filter) => {
-		const pool = (filter ? priced.filter(filter) : priced).filter((m) => get(m) != null);
-		if (!pool.length) return null;
-		return pool.reduce((a, b) => (get(b) > get(a) ? b : a));
-	};
+	const sortedBy = (key) =>
+		models
+			.filter((m) => bmValue(m, key) != null)
+			.sort((a, b) => bmValue(b, key) - bmValue(a, key));
 
-	const topCode = bestBy((m) => bmValue(m, "frontiercode2"));
-	const topAnalysis = bestBy((m) => bmValue(m, "gpqa_diamond"));
-	const topGlobal = bestBy((m) => bmValue(m, "aa_intelligence"));
-	const topPerfDollar = bestBy((m) => m.pricing.perf_per_dollar);
-	const cheapest = priced.length
-		? priced.reduce((a, b) =>
-				b.pricing.blended_per_m < a.pricing.blended_per_m ? b : a
-			)
-		: null;
-	const maxCtx = models.reduce(
-		(a, b) => Math.max(a, b.context_tokens || 0), 0);
+	const aaDesc = (pool) =>
+		[...pool].sort((a, b) => (bmValue(b, "aa_intelligence") ?? -1) - (bmValue(a, "aa_intelligence") ?? -1));
 
-	function kpi(id, model, getValue, unit) {
-		const cell = document.querySelector("#" + id);
-		if (!cell) return;
-		if (!model) {
-			cell.innerHTML = '<div class="k-value"><span class="na">--</span></div>';
-			return;
-		}
-		cell.innerHTML =
-			'<div class="k-value">' + (getValue(model) ?? "--") +
-			'<span class="accent">' + unit + "</span></div>" +
-			'<div class="k-sub">' + esc(model.name) + "</div>";
+	const money = (m) =>
+		m.pricing ? fmt.price(m.pricing.blended_per_m) + " /M mélangé" : "prix inconnu";
+
+	function card(question, pick, key, alts, extra, altKey) {
+		if (!pick) return "";
+		const shownKey = altKey || key;
+		const shownVal = (m) => {
+			const v = key === "__extra" ? null : bmValue(m, key);
+			return v != null ? v.toFixed(1) : "?";
+		};
+		const badges =
+			(pick.open_weights ? '<span class="badge open">OPEN</span>' : "") +
+			(pick.freshness ? ' <span class="dots">' + freshDots(pick).replace(/^<span[^>]*>|<\/span>$/g, "") + "</span>" : "");
+		const altLine = alts.length
+			? '<div class="pick-alt">sinon : ' +
+			  alts
+					.map((m) => '<a href="providers.html#model=' + encodeURIComponent(m.id) + '">' +
+						esc(m.name) + "</a>")
+					.join(" · ") + "</div>"
+			: "";
+		return (
+			'<div class="kpi"><div class="k-label">' + question + "</div>" +
+			'<div class="k-name">' + modelLink(pick) + badges + "</div>" +
+			'<div class="k-value">' + (extra.num ?? shownVal(pick)) +
+			'<span class="accent">' + extra.unit + "</span></div>" +
+			'<div class="k-sub">' + extra.sub + "</div>" + altLine + "</div>"
+		);
 	}
 
-	kpi("kpi-code", topCode, (m) => bmValue(m, "frontiercode2").toFixed(1), "%");
-	kpi("kpi-analyse", topAnalysis, (m) => bmValue(m, "gpqa_diamond").toFixed(1), "%");
-	kpi("kpi-global", topGlobal, (m) => bmValue(m, "aa_intelligence").toFixed(1), "");
-	kpi("kpi-value", topPerfDollar, (m) => m.pricing.perf_per_dollar.toFixed(1), "/$");
-	kpi("kpi-cheap", cheapest, (m) => "$" + m.pricing.blended_per_m.toFixed(2), "/M");
+	/* pools */
+	const codeTop = sortedBy("frontiercode2");
+	const analysisTop = sortedBy("gpqa_diamond");
+	const valueTop = priced
+		.filter((m) => m.pricing.perf_per_dollar)
+		.sort((a, b) => b.pricing.perf_per_dollar - a.pricing.perf_per_dollar);
+	const hostable = models.filter((m) => m.self_host);
+	const host16 = aaDesc(hostable.filter((m) => m.self_host.vram_q4_gb <= 16));
+	const openAny = aaDesc(hostable);
+	const longCtx = aaDesc(models.filter((m) => m.context_tokens >= 1_000_000));
 
-	const ctxCell = document.querySelector("#kpi-ctx");
-	if (ctxCell) {
-		ctxCell.innerHTML =
-			'<div class="k-value">' + fmt.context(maxCtx) +
-			'<span class="accent"> tok</span></div>' +
-			'<div class="k-sub">plus grande fenêtre</div>';
-	}
+	host.innerHTML =
+		card("écrire du code", codeTop[0], "frontiercode2", codeTop.slice(1, 3), {
+			unit: "%", sub: "FrontierCode 2.0 · " + money(codeTop[0])}) +
+		card("analyser dur (GPQA)", analysisTop[0], "gpqa_diamond", analysisTop.slice(1, 3), {
+			unit: "%", sub: "GPQA Diamond · " + money(analysisTop[0])}) +
+		card("le meilleur rapport qualité/prix", valueTop[0], "aa_intelligence", valueTop.slice(1, 3), {
+			unit: "/$", num: valueTop[0].pricing.perf_per_dollar.toFixed(0),
+			sub: "indice global par dollar · " + money(valueTop[0])}) +
+		card("le faire tourner chez soi · 16 Go @ Q4", host16[0], "aa_intelligence", host16.slice(1, 3), {
+			unit: "", sub: "indice global · tient en " + host16[0].self_host.vram_q4_gb.toFixed(1) + " Go @ Q4"}) +
+		card("l'open weights le plus costaud, RAM intendante", openAny[0], "aa_intelligence", openAny.slice(1, 3), {
+			unit: "", sub: "indice global · prévoir " + openAny[0].self_host.vram_q4_gb.toFixed(1) + " Go @ Q4"}) +
+		card("tronquer le moins · 1M de contexte", longCtx[0], "aa_intelligence", longCtx.slice(1, 3), {
+			unit: "", sub: fmt.context(longCtx[0].context_tokens) + " tokens · " + money(longCtx[0])});
 
 	/* top perf/$ */
-	const valueRank = priced
-		.filter((m) => m.pricing.perf_per_dollar)
-		.sort((a, b) => b.pricing.perf_per_dollar - a.pricing.perf_per_dollar)
-		.slice(0, 8);
+	const valueRank = valueTop.slice(0, 8);
 	const tbody = document.querySelector("#top-value tbody");
 	if (tbody) {
 		tbody.innerHTML = valueRank
 			.map(
 				(m, i) =>
-					"<tr><td class=\"faint\">" + (i + 1) + '</td><td><span class="lab-dot" style="background:' +
-					m.lab_color + '"></span><span class="cell-main">' + esc(m.name) +
-					'</span><span class="badge">' + esc(m.lab) + "</span></td>" +
+					'<tr><td class="faint">' + (i + 1) + "</td><td>" +
+					'<span class="lab-dot" style="background:' + m.lab_color + '"></span>' + modelLink(m) +
+					'<span class="badge">' + esc(m.lab) + "</span></td>" +
 					'<td class="num">' + fmt.num(bmValue(m, "aa_intelligence")) + "</td>" +
 					'<td class="num">' + fmt.price(m.pricing.blended_per_m) + "</td>" +
 					'<td class="num pos">' + m.pricing.perf_per_dollar.toFixed(2) + "</td></tr>"
@@ -152,6 +182,7 @@ const COLUMNS = [
 	{ key: "gpqa_diamond", label: "Analyse (GPQA)", sortable: true, num: true },
 	{ key: "aa_intelligence", label: "Global (AA)", sortable: true, num: true },
 	{ key: "perf_per_dollar", label: "Perf / $", sortable: true, num: true },
+	{ key: "freshness", label: "Fraîcheur", sortable: true },
 ];
 
 function sortValue(m, key) {
@@ -166,6 +197,7 @@ function sortValue(m, key) {
 		case "gpqa_diamond": return bmValue(m, "gpqa_diamond") ?? -1;
 		case "aa_intelligence": return bmValue(m, "aa_intelligence") ?? -1;
 		case "perf_per_dollar": return m.pricing && m.pricing.perf_per_dollar ? m.pricing.perf_per_dollar : -1;
+		case "freshness": return m.freshness ? m.freshness.score : -1;
 		default: return 0;
 	}
 }
@@ -223,7 +255,7 @@ function renderModelsTable(dataset) {
 				const p = m.pricing;
 				return (
 					"<tr>" +
-					'<td><span class="cell-main">' + esc(m.name) + "</span>" +
+					"<td>" + modelLink(m) +
 					(m.open_weights ? '<span class="badge open">OPEN</span>' : "") +
 					'<div class="cell-sub">' + esc(m.id) + "</div></td>" +
 					'<td><span class="lab-dot" style="background:' + m.lab_color + '"></span>' + esc(m.lab) + "</td>" +
@@ -244,7 +276,8 @@ function renderModelsTable(dataset) {
 					(p && p.perf_per_dollar
 						? '<span class="pos">' + p.perf_per_dollar.toFixed(2) + "</span>"
 						: '<span class="na">--</span>') +
-					"</td></tr>"
+					"</td>" +
+					'<td class="num">' + freshDots(m) + "</td></tr>"
 				);
 			})
 			.join("");
@@ -372,6 +405,20 @@ function renderProviders(dataset) {
 		.map((m) => '<option value="' + esc(m.id) + '">' + esc(m.name) + " — " + esc(m.lab) + "</option>")
 		.join("");
 
+	function hashTarget() {
+		const match = (location.hash || "").match(/model=([^&]+)/);
+		return match ? decodeURIComponent(match[1]) : null;
+	}
+	const initial = hashTarget();
+	if (initial && models.some((m) => m.id === initial)) select.value = initial;
+	window.addEventListener("hashchange", () => {
+		const target = hashTarget();
+		if (target && models.some((m) => m.id === target)) {
+			select.value = target;
+			draw();
+		}
+	});
+
 	const tbody = host.querySelector("tbody");
 	const countEl = document.querySelector("#offer-count");
 	const summaryEl = document.querySelector("#provider-summary");
@@ -388,6 +435,12 @@ function renderProviders(dataset) {
 		const parts = [];
 		parts.push('<div class="stat-row"><span>Modèle</span><b>' + esc(m.name) + "</b></div>");
 		parts.push('<div class="stat-row"><span>Labo</span><b>' + esc(m.lab) + "</b></div>");
+		if (m.released_at) {
+			parts.push(
+				'<div class="stat-row"><span>Sorti le</span><b>' + esc(m.released_at) +
+				" (" + m.freshness.age_months + " mois)</b> " + freshDots(m) + "</div>"
+			);
+		}
 		parts.push(
 			'<div class="stat-row"><span>Offres publiées</span><b>' + offers.length +
 			(offers.length ? " dont " + labOffers.length + " via l'API du labo" : "") + "</b></div>"
@@ -475,12 +528,12 @@ function renderProviders(dataset) {
 
 /* ---------- page auto-hebergement ---------- */
 
-const HOST_QUANTS = {
-	q4: { key: "vram_q4_gb", label: "Q4" },
-	q8: { key: "vram_q8_gb", label: "Q8" },
-	fp16: { key: "vram_fp16_gb", label: "FP16" },
-};
 const VRAM_PRESETS = [6, 8, 12, 16, 24, 32, 48, 64, 96];
+const HOST_QUANTA = [
+	{ key: "vram_q4_gb", label: "VRAM Q4" },
+	{ key: "vram_q8_gb", label: "VRAM Q8" },
+	{ key: "vram_fp16_gb", label: "VRAM FP16" },
+];
 
 function renderHosting(dataset) {
 	const host = document.querySelector("#hosting-table");
@@ -489,13 +542,13 @@ function renderHosting(dataset) {
 
 	let vram = 16;
 	let customMode = false;
-	let quant = "q4";
+	let fitOnly = false;
 
 	const vramSelect = document.querySelector("#vram-select");
 	const vramCustom = document.querySelector("#vram-custom");
-	const quantSelect = document.querySelector("#quant-select");
-	const fitCount = document.querySelector("#fit-count");
-	const headCell = document.querySelector("#vram-col-head");
+	const fitOnlyBox = document.querySelector("#fit-only");
+	const countEl = document.querySelector("#fit-count");
+	const tbody = host.querySelector("tbody");
 
 	vramSelect.innerHTML =
 		VRAM_PRESETS.map((v) => '<option value="' + v + '"' + (v === vram ? " selected" : "") + ">" + v + " Go</option>").join("") +
@@ -509,42 +562,44 @@ function renderHosting(dataset) {
 	}
 
 	function draw() {
-		const q = HOST_QUANTS[quant];
 		const gpu = currentVram();
-		const rows = [...open].sort((a, b) => {
-			const ra = a.self_host ? a.self_host[q.key] : Infinity;
-			const rb = b.self_host ? b.self_host[q.key] : Infinity;
-			return ra - rb;
-		});
+		const rows = [...open].sort(
+			(a, b) =>
+				(a.self_host ? a.self_host.vram_q4_gb : Infinity) -
+				(b.self_host ? b.self_host.vram_q4_gb : Infinity)
+		);
 		tbody.innerHTML = rows
 			.map((m) => {
 				const sh = m.self_host;
-				let vramCell, status;
+				let vramCells = "";
+				let bestFit = null;
 				if (sh) {
-					const need = sh[q.key];
-					const fits = gpu > 0 && need <= gpu;
-					vramCell = need.toFixed(1) + " Go";
-					status = fits
-						? '<span class="badge open">OK</span>'
-						: '<span class="badge nope">TROP GRAND</span>';
+					for (const q of HOST_QUANTA) {
+						const need = sh[q.key];
+						const fits = gpu > 0 && need <= gpu;
+						if (fits && (!bestFit || need > bestFit.need)) bestFit = { quant: q, need };
+						vramCells +=
+							'<td class="num ' + (fits ? "fit-ok" : "fit-no") + '">' +
+							(fits ? "<b>" : "") + need.toFixed(1) + (fits ? "</b>" : "") + " Go</td>";
+					}
 				} else {
-					vramCell = '<span class="na">--</span>';
-					status = '<span class="badge">TAILLE NON PUBLIÉE</span>';
+					vramCells = '<td class="num" colspan="3"><span class="na">taille non publiée</span></td>';
 				}
 				const params =
 					m.params_total_b == null
 						? '<span class="na">--</span>'
 						: m.params_total_b + "B" +
 						  (m.params_active_b != null ? ' <span class="cell-sub">A' + m.params_active_b + "B</span>" : "");
+				if (fitOnly && sh && !(gpu > 0 && sh.vram_q4_gb <= gpu)) return "";
+				if (fitOnly && !sh) return "";
 				const p = m.pricing;
 				return (
 					"<tr>" +
-					'<td><span class="cell-main">' + esc(m.name) + "</span>" +
+					"<td>" + modelLink(m) +
 					'<div class="cell-sub">' + esc(m.id) + "</div></td>" +
 					'<td><span class="lab-dot" style="background:' + m.lab_color + '"></span>' + esc(m.lab) + "</td>" +
 					'<td class="num">' + params + "</td>" +
-					'<td class="num">' + vramCell + "</td>" +
-					"<td>" + status + "</td>" +
+					vramCells +
 					'<td class="num dim">' + (p ? fmt.price(p.blended_per_m) : '<span class="na">--</span>') + "</td>" +
 					'<td class="num">' + (bmValue(m, "aa_intelligence") != null ? bmValue(m, "aa_intelligence").toFixed(1) : '<span class="na">--</span>') + "</td>" +
 					'<td class="num dim">' + fmt.context(m.context_tokens) + "</td></tr>"
@@ -552,16 +607,14 @@ function renderHosting(dataset) {
 			})
 			.join("");
 
-		const nFit = open.filter((m) => m.self_host && m.self_host[q.key] <= gpu).length;
+		const nFit = (key) => open.filter((m) => m.self_host && m.self_host[key] <= gpu).length;
 		const nSized = open.filter((m) => m.self_host).length;
-		fitCount.textContent =
+		countEl.textContent =
 			gpu > 0
-				? nFit + " / " + nSized + " tiennent en " + gpu + " Go @ " + q.label + " (" + open.length + " poids ouverts)"
+				? nFit("vram_q4_gb") + " / " + nSized + " tiennent en " + gpu + " Go @ Q4 · " +
+				  nFit("vram_q8_gb") + " @ Q8 · " + nFit("vram_fp16_gb") + " @ FP16"
 				: "indiquez votre VRAM";
-		if (headCell) headCell.textContent = "VRAM requise @ " + q.label;
 	}
-
-	const tbody = host.querySelector("tbody");
 
 	vramSelect.addEventListener("change", () => {
 		if (vramSelect.value === "custom") {
@@ -576,7 +629,7 @@ function renderHosting(dataset) {
 		draw();
 	});
 	vramCustom.addEventListener("input", draw);
-	quantSelect.addEventListener("change", () => { quant = quantSelect.value; draw(); });
+	if (fitOnlyBox) fitOnlyBox.addEventListener("change", () => { fitOnly = fitOnlyBox.checked; draw(); });
 
 	draw();
 }

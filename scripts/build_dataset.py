@@ -56,6 +56,8 @@ LAB_COLORS = {
     "Z.ai": "#3fc1ff",
     "NVIDIA": "#76b900",
     "Thinking Machines": "#f472b6",
+    "Meta": "#0866ff",
+    "Liquid AI": "#21d0c0",
 }
 DEFAULT_LAB_COLOR = "#7aa2f7"
 
@@ -88,6 +90,8 @@ def merge_model(bench_entry: dict, price_map: dict) -> dict:
         "params_total_b": bench_entry.get("params_total_b"),
         "params_active_b": bench_entry.get("params_active_b"),
         "context_tokens": (price_info or {}).get("context_length"),
+        "released_at": None,
+        "freshness": None,
         "benchmarks": {"aa_intelligence": aa, "frontiercode2": fc, "gpqa_diamond": gpqa},
         "pricing": None,
         "self_host": None,
@@ -100,6 +104,20 @@ def merge_model(bench_entry: dict, price_map: dict) -> dict:
         q8 = round(params_total * 1.10 + 1.5, 1)  # ~9 bits/poids + overhead
         fp16 = round(params_total * 2.0 + 2.5, 1) # ~16 bits/poids + overhead
         model["self_host"] = {"vram_q4_gb": q4, "vram_q8_gb": q8, "vram_fp16_gb": fp16}
+
+    created = (price_info or {}).get("created")
+    if created:
+        from datetime import date, datetime, timezone
+        rel = datetime.fromtimestamp(created, tz=timezone.utc).date()
+        model["released_at"] = rel.isoformat()
+        today = date.today()
+        months = (today - rel).days / 30.44
+        if months < 2:      score = 5
+        elif months < 5:    score = 4
+        elif months < 12:   score = 3
+        elif months < 24:   score = 2
+        else:               score = 1
+        model["freshness"] = {"score": score, "age_months": round(months, 1)}
 
     if price_info:
         price_in = price_info["pricing"]["prompt"] * 1_000_000
@@ -155,6 +173,7 @@ def main() -> int:
                 "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
             "provider_blended": "meme formule appliquee aux prix propres de chaque fournisseur",
                 "perf_per_dollar": "aa_intelligence / blended_per_m",
+                "freshness": "score 1-5 : 5 < 2 mois, 4 < 5 mois, 3 < 1 an, 2 < 2 ans, 1 plus vieux",
                 "self_host_vram": "q4 = total_b*0.58+1.5, q8 = total_b*1.10+1.5, fp16 = total_b*2.0+2.5 (GB, poids seuls, KV cache non inclus)",
             },
         },

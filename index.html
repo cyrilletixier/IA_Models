@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IA_Models — Dashboard</title>
+<title>IA_Models — Que prendre ?</title>
 <meta name="description" content="Suivi data driven des modèles d'IA : performances, coûts, fournisseurs d'inférence.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -14,7 +14,7 @@
 	<div class="topbar-inner">
 		<a class="brand" href="index.html">IA_Models<span class="cursor"></span></a>
 		<nav class="nav">
-			<a class="active" href="index.html">dashboard</a>
+			<a class="active" href="index.html">que prendre ?</a>
 			<a href="models.html">modèles</a>
 			<a href="costs.html">coûts</a>
 			<a href="providers.html">fournisseurs</a>
@@ -27,17 +27,15 @@
 <main class="wrap">
 
 	<section class="page-head">
-		<h1>dashboard</h1>
-		<p>État des modèles d'IA suivis : performance, prix, rendement. Dernière génération du dataset : <span id="generated-at">--</span>.</p>
+		<h1>que prendre ?</h1>
+		<p>L'aide au choix du tracker : le modèle qui gagne pour chaque usage, et les challengers. Dernière génération du dataset : <span id="generated-at">--</span>.</p>
 	</section>
 
-	<section class="kpi-grid">
-		<div class="kpi"><div class="k-label">Top code · FrontierCode 2.0</div><div id="kpi-code"></div></div>
-		<div class="kpi"><div class="k-label">Top analyse · GPQA Diamond</div><div id="kpi-analyse"></div></div>
-		<div class="kpi"><div class="k-label">Top global · AA Intelligence</div><div id="kpi-global"></div></div>
-		<div class="kpi"><div class="k-label">Top perf / $ (indice global par $/1M)</div><div id="kpi-value"></div></div>
-		<div class="kpi"><div class="k-label">Prix mélangé le plus bas</div><div id="kpi-cheap"></div></div>
-		<div class="kpi"><div class="k-label">Contexte</div><div id="kpi-ctx"></div></div>
+<section class="panel">
+		<div class="panel-title">le panel des choix rationnels — les autres sont ailleurs</div>
+		<div class="panel-body" style="padding:14px">
+			<div class="kpi-grid" id="dispatch"></div>
+		</div>
 	</section>
 
 	<section class="panel">

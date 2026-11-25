@@ -334,3 +334,22 @@ table.grid td.faint { color: var(--text-faint); }
 	margin-left: 4px;
 	vertical-align: middle;
 }
+
+a.cell-main { color: var(--text); }
+a.cell-main:hover { color: var(--green); text-decoration: none; }
+
+.dots { white-space: nowrap; letter-spacing: 1px; }
+.dot-f { color: var(--text-faint); font-size: 9px; }
+.dot-f.on { color: var(--green); }
+
+.kpi .k-name { font-size: 15px; margin: 2px 0 4px; }
+.pick-alt { color: var(--text-faint); font-size: 11.5px; margin-top: 6px; }
+.pick-alt a { color: var(--text-dim); }
+.pick-alt a:hover { color: var(--cyan); }
+
+.fit-ok { color: var(--green); }
+.fit-ok b { font-weight: 700; }
+.fit-no { color: var(--red); }
+
+.checklist { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; user-select: none; }
+.checklist input { accent-color: var(--green); }

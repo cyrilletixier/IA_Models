@@ -44,6 +44,7 @@ def slim(entry: dict) -> dict:
     return {
         "id": entry.get("id"),
         "name": entry.get("name"),
+        "created": entry.get("created"),
         "context_length": entry.get("context_length"),
         "pricing": {
             "prompt": float(pricing.get("prompt", 0) or 0),

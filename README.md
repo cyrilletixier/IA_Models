@@ -16,11 +16,11 @@
 
 | Page | Contenu |
 |---|---|
-| `/` (Dashboard) | KPIs, leaders par indice, top perf/prix |
+| `/` (Que prendre ?) | Aide au choix : le modèle gagnant par usage (code, analyse, budget, auto-hébergement, contexte long) + top perf/prix |
 | `/models.html` | Liste des modèles : contexte, prix, indices Code / Analyse / Global, perf par $ |
 | `/costs.html` | Coûts par scénario de charge (chat, refactoring, analyse de docs) |
 | `/providers.html` | Comparateur par modèle : prix, vitesse et latence de chaque fournisseur (OpenRouter, DeepInfra, Together, API du labo…) |
-| `/hosting.html` | Auto-hébergement : filtre par VRAM de GPU + quantisation, indique quels modèles ouverts tiennent chez soi |
+| `/hosting.html` | Auto-hébergement : filtre par VRAM de GPU, VRAM requise aux trois quantisations (Q4/Q8/FP16), option « seulement ce qui tient » |
 
 ## Indices suivis (v0)
 
@@ -32,6 +32,23 @@
 | Perf/$ | Indice Global / prix mélangé (3:1 input:output) | calcul maison |
 
 Prix en $ / 1M tokens, mélange standard 75 % input / 25 % output : `(3×in + out) / 4`.
+
+## Fraîcheur
+
+Chaque modèle porte sa date de sortie (champ `created` de l'API OpenRouter, date du
+snapshot publié) et un score de fraîcheur recalculé à chaque build :
+
+| Score | Âge |
+|---|---|
+| 5 | moins de 2 mois |
+| 4 | moins de 5 mois |
+| 3 | moins d'un an |
+| 2 | moins de 2 ans |
+| 1 | plus de 2 ans |
+
+Affiché en points (1 à 5) sur la page modèles et en date + points dans la synthèse
+fournisseurs. Cliquer un nom de modèle (dashboard, modèles, auto-hébergement) ouvre
+la page fournisseurs filtrée sur ce modèle (`providers.html#model=<id>`).
 
 ## Auto-hébergement
 
