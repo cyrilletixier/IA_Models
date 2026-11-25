@@ -1,12 +1,12 @@
 {
  "_meta": {
-  "generated_at_utc": "2026-11-25T09:11:26Z",
-  "pricing_fetched_at_utc": "2026-11-25T09:11:26Z",
+  "generated_at_utc": "2026-11-25T10:19:55Z",
+  "pricing_fetched_at_utc": "2026-11-25T10:19:55Z",
   "benchmarks_updated": "2026-11-25",
   "sources": {
-   "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (via BenchLeader, data as of 2026-11-25)",
-   "frontiercode2": "FrontierCode 2.0 (AA), 132 tasks by Cognition (via BenchLeader, data as of 2026-11-25)",
-   "gpqa_diamond": "GPQA Diamond, Epoch AI Benchmarking Hub (via BenchLeader, data as of 2026-11-25)"
+   "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
+   "frontiercode2": "FrontierCode 2.0 (AA), 132 tasks by Cognition (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
+   "gpqa_diamond": "GPQA Diamond, Epoch AI Benchmarking Hub (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)"
   },
   "formula": {
    "blended_per_m": "(3*price_in + price_out)/4, $/1M tokens",
@@ -156,7 +156,11 @@
      "setting": "max",
      "date": "2026-09-22"
     },
-    "gpqa_diamond": null
+    "gpqa_diamond": {
+     "value": 90.6,
+     "setting": "xhigh",
+     "date": null
+    }
    },
    "pricing": {
     "in_per_m": 4.0,
@@ -231,7 +235,11 @@
    "open_weights": false,
    "context_tokens": 1000000,
    "benchmarks": {
-    "aa_intelligence": null,
+    "aa_intelligence": {
+     "value": 56.0,
+     "setting": "xhigh",
+     "date": null
+    },
     "frontiercode2": {
      "value": 41.9,
      "setting": "max",
@@ -246,7 +254,8 @@
    "pricing": {
     "in_per_m": 2.0,
     "out_per_m": 10.0,
-    "blended_per_m": 4.0
+    "blended_per_m": 4.0,
+    "perf_per_dollar": 14.0
    }
   },
   {
@@ -257,7 +266,11 @@
    "open_weights": false,
    "context_tokens": 1050000,
    "benchmarks": {
-    "aa_intelligence": null,
+    "aa_intelligence": {
+     "value": 51.4,
+     "setting": "max",
+     "date": null
+    },
     "frontiercode2": {
      "value": 42.1,
      "setting": "max",
@@ -272,7 +285,8 @@
    "pricing": {
     "in_per_m": 1.0,
     "out_per_m": 5.0,
-    "blended_per_m": 2.0
+    "blended_per_m": 2.0,
+    "perf_per_dollar": 25.7
    }
   },
   {
@@ -283,7 +297,11 @@
    "open_weights": false,
    "context_tokens": 1050000,
    "benchmarks": {
-    "aa_intelligence": null,
+    "aa_intelligence": {
+     "value": 54.7,
+     "setting": "xhigh",
+     "date": null
+    },
     "frontiercode2": {
      "value": 40.6,
      "setting": "max",
@@ -298,7 +316,8 @@
    "pricing": {
     "in_per_m": 2.0,
     "out_per_m": 10.0,
-    "blended_per_m": 4.0
+    "blended_per_m": 4.0,
+    "perf_per_dollar": 13.675
    }
   },
   {
@@ -309,8 +328,16 @@
    "open_weights": false,
    "context_tokens": 1048576,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": null,
+    "aa_intelligence": {
+     "value": 54.1,
+     "setting": "high",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 39.0,
+     "setting": "high",
+     "date": null
+    },
     "gpqa_diamond": {
      "value": 96.8,
      "setting": "xhigh",
@@ -320,7 +347,8 @@
    "pricing": {
     "in_per_m": 1.5,
     "out_per_m": 7.5,
-    "blended_per_m": 3.0
+    "blended_per_m": 3.0,
+    "perf_per_dollar": 18.0333
    }
   },
   {
@@ -331,8 +359,16 @@
    "open_weights": false,
    "context_tokens": 1048576,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": null,
+    "aa_intelligence": {
+     "value": 52.6,
+     "setting": "low",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 25.7,
+     "setting": "medium",
+     "date": null
+    },
     "gpqa_diamond": {
      "value": 96.4,
      "setting": "high",
@@ -342,7 +378,8 @@
    "pricing": {
     "in_per_m": 2.0,
     "out_per_m": 10.0,
-    "blended_per_m": 4.0
+    "blended_per_m": 4.0,
+    "perf_per_dollar": 13.15
    }
   },
   {
@@ -353,8 +390,16 @@
    "open_weights": true,
    "context_tokens": 1048576,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": null,
+    "aa_intelligence": {
+     "value": 55.1,
+     "setting": "low",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 25.4,
+     "setting": "xhigh",
+     "date": null
+    },
     "gpqa_diamond": {
      "value": 94.2,
      "setting": "max",
@@ -364,7 +409,8 @@
    "pricing": {
     "in_per_m": 0.2403,
     "out_per_m": 8.4023,
-    "blended_per_m": 2.2808
+    "blended_per_m": 2.2808,
+    "perf_per_dollar": 24.1582
    }
   },
   {
@@ -375,8 +421,16 @@
    "open_weights": false,
    "context_tokens": 1000000,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": null,
+    "aa_intelligence": {
+     "value": 42.8,
+     "setting": "low",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 26.4,
+     "setting": "high",
+     "date": null
+    },
     "gpqa_diamond": {
      "value": 94.0,
      "setting": "xhigh",
@@ -386,7 +440,8 @@
    "pricing": {
     "in_per_m": 1.425,
     "out_per_m": 4.275,
-    "blended_per_m": 2.1375
+    "blended_per_m": 2.1375,
+    "perf_per_dollar": 20.0234
    }
   },
   {
@@ -397,14 +452,27 @@
    "open_weights": false,
    "context_tokens": 500000,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": null,
-    "gpqa_diamond": null
+    "aa_intelligence": {
+     "value": 46.5,
+     "setting": "medium",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 28.9,
+     "setting": "high",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 92.7,
+     "setting": "high",
+     "date": null
+    }
    },
    "pricing": {
     "in_per_m": 2.0,
     "out_per_m": 6.0,
-    "blended_per_m": 3.0
+    "blended_per_m": 3.0,
+    "perf_per_dollar": 15.5
    }
   },
   {
@@ -415,14 +483,27 @@
    "open_weights": false,
    "context_tokens": 1000000,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": null,
-    "gpqa_diamond": null
+    "aa_intelligence": {
+     "value": 43.4,
+     "setting": "xhigh",
+     "date": null
+    },
+    "frontiercode2": {
+     "value": 34.9,
+     "setting": "max",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 89.7,
+     "setting": "max",
+     "date": null
+    }
    },
    "pricing": {
     "in_per_m": 0.1,
     "out_per_m": 0.5,
-    "blended_per_m": 0.2
+    "blended_per_m": 0.2,
+    "perf_per_dollar": 217.0
    }
   },
   {
@@ -433,18 +514,27 @@
    "open_weights": false,
    "context_tokens": 1050000,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": {
-     "value": 12.8,
-     "setting": "medium",
-     "date": "2026-09-22"
+    "aa_intelligence": {
+     "value": 38.1,
+     "setting": "max",
+     "date": null
     },
-    "gpqa_diamond": null
+    "frontiercode2": {
+     "value": 25.2,
+     "setting": "max",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 90.5,
+     "setting": "max",
+     "date": null
+    }
    },
    "pricing": {
     "in_per_m": 0.1,
     "out_per_m": 0.5,
-    "blended_per_m": 0.2
+    "blended_per_m": 0.2,
+    "perf_per_dollar": 190.5
    }
   },
   {
@@ -455,18 +545,27 @@
    "open_weights": true,
    "context_tokens": 1048576,
    "benchmarks": {
-    "aa_intelligence": null,
-    "frontiercode2": {
-     "value": 13.6,
-     "setting": "default",
-     "date": "2026-10-06"
+    "aa_intelligence": {
+     "value": 38.4,
+     "setting": "medium",
+     "date": null
     },
-    "gpqa_diamond": null
+    "frontiercode2": {
+     "value": 15.0,
+     "setting": "medium",
+     "date": null
+    },
+    "gpqa_diamond": {
+     "value": 88.1,
+     "setting": "low",
+     "date": null
+    }
    },
    "pricing": {
     "in_per_m": 0.7,
     "out_per_m": 2.1,
-    "blended_per_m": 1.05
+    "blended_per_m": 1.05,
+    "perf_per_dollar": 36.5714
    }
   },
   {
@@ -477,14 +576,23 @@
    "open_weights": true,
    "context_tokens": 1048576,
    "benchmarks": {
-    "aa_intelligence": null,
+    "aa_intelligence": {
+     "value": 39.5,
+     "setting": "medium",
+     "date": null
+    },
     "frontiercode2": null,
-    "gpqa_diamond": null
+    "gpqa_diamond": {
+     "value": 89.8,
+     "setting": "high",
+     "date": null
+    }
    },
    "pricing": {
     "in_per_m": 0.14,
     "out_per_m": 0.42,
-    "blended_per_m": 0.21
+    "blended_per_m": 0.21,
+    "perf_per_dollar": 188.0952
    }
   }
  ]

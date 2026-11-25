@@ -2,11 +2,11 @@
   "_meta": {
     "updated": "2026-11-25",
     "sources": {
-      "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (via BenchLeader, data as of 2026-11-25)",
-      "frontiercode2": "FrontierCode 2.0 (AA), 132 tasks by Cognition (via BenchLeader, data as of 2026-11-25)",
-      "gpqa_diamond": "GPQA Diamond, Epoch AI Benchmarking Hub (via BenchLeader, data as of 2026-11-25)"
+      "aa_intelligence": "Artificial Analysis Intelligence Index v5.0.1 (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
+      "frontiercode2": "FrontierCode 2.0 (AA), 132 tasks by Cognition (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)",
+      "gpqa_diamond": "GPQA Diamond, Epoch AI Benchmarking Hub (leaderboards et pages synthese via BenchLeader, data as of 2026-11-25)"
     },
-    "notes": "Chaque metrique porte son reglage de raisonnement (setting) et sa date. null = pas de resultat publie. Prix/contexte viennent d'OpenRouter via scripts/fetch_pricing.py, ne pas remplir ici."
+    "notes": "Chaque metrique = meilleur score publie du modele, tous reglages de raisonnement confondus (max/xhigh/high/medium/low/not stated) ; le reglage retenu est dans setting. null = pas de resultat publie. Prix/contexte viennent d'OpenRouter via scripts/fetch_pricing.py, ne pas remplir ici."
   },
   "models": [
     {
@@ -56,7 +56,7 @@
       "benchmarks": {
         "aa_intelligence": {"value": 59.1, "setting": "max", "date": "2026-09-22"},
         "frontiercode2": {"value": 46.9, "setting": "max", "date": "2026-09-22"},
-        "gpqa_diamond": null
+        "gpqa_diamond": {"value": 90.6, "setting": "xhigh", "date": null}
       }
     },
     {
@@ -84,7 +84,7 @@
       "name": "Claude Sonnet 5.5",
       "lab": "Anthropic",
       "benchmarks": {
-        "aa_intelligence": null,
+        "aa_intelligence": {"value": 56.0, "setting": "xhigh", "date": null},
         "frontiercode2": {"value": 41.9, "setting": "max", "date": "2026-09-28"},
         "gpqa_diamond": {"value": 95.6, "setting": "max", "date": "2026-09-28"}
       }
@@ -94,7 +94,7 @@
       "name": "GPT-6.1 Terra",
       "lab": "OpenAI",
       "benchmarks": {
-        "aa_intelligence": null,
+        "aa_intelligence": {"value": 51.4, "setting": "max", "date": null},
         "frontiercode2": {"value": 42.1, "setting": "max", "date": "2026-10-26"},
         "gpqa_diamond": {"value": 94.3, "setting": "max", "date": "2026-10-26"}
       }
@@ -104,7 +104,7 @@
       "name": "GPT-6.1 Sol",
       "lab": "OpenAI",
       "benchmarks": {
-        "aa_intelligence": null,
+        "aa_intelligence": {"value": 54.7, "setting": "xhigh", "date": null},
         "frontiercode2": {"value": 40.6, "setting": "max", "date": "2026-09-29"},
         "gpqa_diamond": {"value": 95.4, "setting": "max", "date": "2026-09-29"}
       }
@@ -114,8 +114,8 @@
       "name": "Gemini 4 Hydrogen",
       "lab": "Google",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": null,
+        "aa_intelligence": {"value": 54.1, "setting": "high", "date": null},
+        "frontiercode2": {"value": 39.0, "setting": "high", "date": null},
         "gpqa_diamond": {"value": 96.8, "setting": "xhigh", "date": "2026-11-12"}
       }
     },
@@ -124,8 +124,8 @@
       "name": "Gemini 4 Argon",
       "lab": "Google",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": null,
+        "aa_intelligence": {"value": 52.6, "setting": "low", "date": null},
+        "frontiercode2": {"value": 25.7, "setting": "medium", "date": null},
         "gpqa_diamond": {"value": 96.4, "setting": "high", "date": "2026-10-13"}
       }
     },
@@ -134,8 +134,8 @@
       "name": "Kimi K3.1 Pro",
       "lab": "Moonshot AI",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": null,
+        "aa_intelligence": {"value": 55.1, "setting": "low", "date": null},
+        "frontiercode2": {"value": 25.4, "setting": "xhigh", "date": null},
         "gpqa_diamond": {"value": 94.2, "setting": "max", "date": "2026-10-23"}
       }
     },
@@ -144,8 +144,8 @@
       "name": "Qwen4 Max",
       "lab": "Alibaba",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": null,
+        "aa_intelligence": {"value": 42.8, "setting": "low", "date": null},
+        "frontiercode2": {"value": 26.4, "setting": "high", "date": null},
         "gpqa_diamond": {"value": 94.0, "setting": "xhigh", "date": "2026-11-16"}
       }
     },
@@ -154,9 +154,9 @@
       "name": "Grok 4.7",
       "lab": "SpaceXAI",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": null,
-        "gpqa_diamond": null
+        "aa_intelligence": {"value": 46.5, "setting": "medium", "date": null},
+        "frontiercode2": {"value": 28.9, "setting": "high", "date": null},
+        "gpqa_diamond": {"value": 92.7, "setting": "high", "date": null}
       }
     },
     {
@@ -164,9 +164,9 @@
       "name": "Claude Haiku 5.5",
       "lab": "Anthropic",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": null,
-        "gpqa_diamond": null
+        "aa_intelligence": {"value": 43.4, "setting": "xhigh", "date": null},
+        "frontiercode2": {"value": 34.9, "setting": "max", "date": null},
+        "gpqa_diamond": {"value": 89.7, "setting": "max", "date": null}
       }
     },
     {
@@ -174,9 +174,9 @@
       "name": "GPT-6 Luna",
       "lab": "OpenAI",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": {"value": 12.8, "setting": "medium", "date": "2026-09-22"},
-        "gpqa_diamond": null
+        "aa_intelligence": {"value": 38.1, "setting": "max", "date": null},
+        "frontiercode2": {"value": 25.2, "setting": "max", "date": null},
+        "gpqa_diamond": {"value": 90.5, "setting": "max", "date": null}
       }
     },
     {
@@ -184,9 +184,9 @@
       "name": "Mistral Large 4",
       "lab": "Mistral AI",
       "benchmarks": {
-        "aa_intelligence": null,
-        "frontiercode2": {"value": 13.6, "setting": "default", "date": "2026-10-06"},
-        "gpqa_diamond": null
+        "aa_intelligence": {"value": 38.4, "setting": "medium", "date": null},
+        "frontiercode2": {"value": 15.0, "setting": "medium", "date": null},
+        "gpqa_diamond": {"value": 88.1, "setting": "low", "date": null}
       }
     },
     {
@@ -194,9 +194,9 @@
       "name": "DeepSeek V4.1 Flash",
       "lab": "DeepSeek",
       "benchmarks": {
-        "aa_intelligence": null,
+        "aa_intelligence": {"value": 39.5, "setting": "medium", "date": null},
         "frontiercode2": null,
-        "gpqa_diamond": null
+        "gpqa_diamond": {"value": 89.8, "setting": "high", "date": null}
       }
     }
   ]
