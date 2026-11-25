@@ -53,9 +53,9 @@ python3 scripts/fetch_pricing.py   # snapshot OpenRouter -> data/raw/
 python3 scripts/build_dataset.py  # fusion + calcul des indices -> data/models.json
 ```
 
-- `data/benchmarks.json` : benchmarks curatés à la main, chaque métrique avec sa date et
-  son réglage de raisonnement (max / xhigh / high / medium). C'est le fichier à mettre à
-  jour quand de nouveaux scores sortent. Politique de sélection : pour chaque indice, le
+- `data/benchmarks.json` : benchmarks curatés à la main, chaque métrique avec son réglage
+  de raisonnement (max / xhigh / high / medium / low) et sa date quand elle est publiée.
+  C'est le fichier à mettre à jour quand de nouveaux scores sortent. Politique de sélection : pour chaque indice, le
   meilleur score publié du modèle, tous réglages de raisonnement confondus.
 - `scripts/fetch_pricing.py` : récupère les prix et contextes en direct sur l'API publique
   OpenRouter (aucune clé requise). Marque `OPEN` les modèles à poids ouverts.
@@ -70,8 +70,8 @@ python3 scripts/build_dataset.py  # fusion + calcul des indices -> data/models.j
 - `.github/workflows/deploy-pages.yml` : à chaque push sur `main`, déploie le site sur
   GitHub Pages (artifact du dépôt entier, `.nojekyll`).
 
-Première activation de Pages (une seule fois, Settings → Pages → Source : GitHub Actions),
-ensuite c'est automatique.
+GitHub Pages est activé en source "GitHub Actions" ;
+chaque push sur main déploie automatiquement, sans intervention.
 
 ## Ajouter un modèle
 
